@@ -8,7 +8,7 @@ import {useState} from 'react';
 import axios from 'axios';
  
 
-const http = "http://localhost/5000";
+const http = "http://localhost:5000";
 
 const Kitchenitem = (props) => { 
 
@@ -23,7 +23,6 @@ const Kitchenitem = (props) => {
     } catch (error) {
         console.log(error)
     } 
-
   } 
 
   useEffect(() => { 

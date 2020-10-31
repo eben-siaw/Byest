@@ -1,14 +1,11 @@
 import React, { useState, useRef } from "react";
-import JoditEditor from "jodit-react";
-
 // import { EditorState, convertToRow } from "draft-js";
 // import { Editor } from "react-draft-wysiwyg";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import OftadehLayout from "../../../components/AdminLayout/OftadehLayout";
 import OftadehBreadcrumbs from "../../../components/AdminBreadcrumbs/OftadehBreadcrumbs";
-import { Typography, Grid, makeStyles, TextField } from "@material-ui/core";
+import { Typography, Grid, makeStyles, TextField, FormControl, InputLabel, Input, InputAdornment } from "@material-ui/core";
 import AddPostRightPanels from "../../../components/extra/AddPostRightPanels/AddProductRightPanels";
- 
  
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +37,11 @@ const AddPostPage = props => {
 
   const [product, setProductName] = useState("");   
  
-  const [productDesc, setProductDesc] = useState("");
+  const [productDesc, setProductDesc] = useState(""); 
+
+  const [price, setProductPrice] = useState(""); 
+
+  const [quantity, setQuantity] = useState("");
  
   const handleProductChange = (event) => { 
    setProductName(event.target.value);
@@ -49,6 +50,14 @@ const AddPostPage = props => {
   const handleDescription = (event) => { 
    setProductDesc(event.target.value);
   
+  }
+  
+  const handlePrice = (event) => { 
+    setProductPrice(event.target.value)
+  }
+  
+  const handleQuantity = (event) => { 
+    setQuantity(event.target.value);
   }
 
   return ( 
@@ -67,10 +76,10 @@ const AddPostPage = props => {
             <Grid item xs={12}>
               <TextField
                 id="standard-full-width"
-                label="Add New Product"
                 className={classes.mb3} 
                 onChange={handleProductChange}
-                placeholder="Name of Product"
+                placeholder="Name of Product" 
+                value={product}
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
@@ -78,15 +87,38 @@ const AddPostPage = props => {
                 }}
               />
             </Grid> 
-
+     
+         <FormControl fullWidth className={classes.margin}>
+          <InputLabel htmlFor="standard-adornment-amount">Price</InputLabel>
+          <Input
+            id="standard-adornment-amount"
+            value={price}
+            onChange={handlePrice}
+            startAdornment={<InputAdornment position="start">GH₵</InputAdornment>}
+          />
+        </FormControl>
             
+            <TextField
+            id="standard-full-width"
+            className={classes.mb3} 
+            onChange={handleQuantity}
+            placeholder="Product Quantity" 
+            value={quantity}
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+            shrink: true
+            }}
+              />
+
             <Grid item xs={12}> 
 
              <TextField  
               variant="outlined"  
               fullWidth 
               placeholder="Product description here..."
-              multiline 
+              multiline  
+              value={productDesc}
               rows={5} 
               rowsMax={10}
               onChange={handleDescription}
@@ -94,7 +126,7 @@ const AddPostPage = props => {
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <AddPostRightPanels title={product} description={productDesc}/>
+        <AddPostRightPanels title={product} description={productDesc} price={price} quantity={quantity}/>
           </Grid>
         </Grid>
       </div>

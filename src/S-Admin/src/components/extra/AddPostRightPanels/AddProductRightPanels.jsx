@@ -5,7 +5,6 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import OfflinePinIcon from "@material-ui/icons/OfflinePin";
 import {
@@ -33,22 +32,23 @@ import { useSelector } from "react-redux";
 
  const checkedIcon = <CheckBoxIcon fontSize="small" />;
  
- const http = "http://localhost/5000";
+ const http = "http://localhost:5080";
  
  const category = [
   { value: 0, title: "Shoes & Outfits" }, 
-  { value: 1, title: "Drinks & Beverages" }, 
-  { value: 2, title: "Bags" },
-  { value: 3, title: "Electrical Appliances" },
-  { value: 4, title: "Hair & MakeUp" },
-  { value: 5, title: "Grocery & Items" },
+  { value: 0, title: "Drinks & Beverages" }, 
+  { value: 0, title: "Bags" },
+  { value: 0, title: "Electrical Appliances" },
+  { value: 0, title: "Hair & MakeUp" },
+  { value: 0, title: "Grocery & Items" }, 
+  {value: 0, title: "Phones & Laptops"}
 ] 
 
 const tags = [
   { value: 0, title1: "make up" }, 
-  { value: 1, title1: "design" }, 
-  { value: 2, title1: "travel" },
-  { value: 3, title1: "outings" },
+  { value: 0, title1: "design" }, 
+  { value: 0, title1: "travel" },
+  { value: 0, title1: "outings" },
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -70,15 +70,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AddPostRightPanels({title, description, handleFile}) { 
+export default function AddPostRightPanels({title, description, price, quantity}) { 
  
  // const user = useSelector(state => state.auth.user._id);
 
   const [expanded, setExpanded] = React.useState(true); 
   
-  const [Category, setCategory] = useState(""); 
+  const [Category, setCategory] = useState("Bags"); 
 
- const [Tags, setTags] = useState("");
+ const [Tags, setTags] = useState("design");
  
  const [imageFile, setImageFile] = useState("");
  
@@ -91,11 +91,11 @@ export default function AddPostRightPanels({title, description, handleFile}) {
   };  
 
   const handleCategory = (event) => { 
-    setCategory(event.target.value);
+    setCategory(event.target.title);
   }
    
   const handleTags = (event) => { 
-   setTags(event.target.value);
+   setTags(event.target.title1);
   }
   
   const handleClick = event => {
@@ -104,7 +104,7 @@ export default function AddPostRightPanels({title, description, handleFile}) {
 
   const handleChange = (event) => {
     const fileUploaded = setImageFile(event.target.files[0]); 
-    handleFile(fileUploaded);
+    console.log(fileUploaded);
   }
  
   const handleProductSubmit = async () => {  
@@ -124,23 +124,30 @@ export default function AddPostRightPanels({title, description, handleFile}) {
     },
     () => {  
 
-    storage.ref('Products').child(imageFile.name).getDownloadedURL().then(url => { 
+    storage.ref('products').child(imageFile.name).getDownloadURL().then(url => { 
       
       const productData = {  
-        productName: title, 
+
+        productName: title,  
+        productPrice: price, 
+        productQuantity: quantity,
         productDescription: description, 
-        imageUrl: url,
-        category: Category, 
-        Tags: Tags
+        productImage: url,
+        productCategory: Category, 
+        productTags: Tags
       }
-
-       axios.post(http + "/products/addproduct", productData)
-       .then(res => { 
-        if(res.data.message) { 
-          window.location.href = "/";
-        }
-      });
-
+       
+       try { 
+        axios.post(http + "/products/addproduct", productData)
+        .then(res => { 
+         if(res.data.message) { 
+           window.location.href = "/";
+         } 
+       });
+       } catch (error) {
+         console.log(error.error);   
+      }
+       
     }) 
 
    }) 
@@ -160,7 +167,7 @@ export default function AddPostRightPanels({title, description, handleFile}) {
        <Typography className={classes.heading}>Upload Product Image</Typography>
         </ExpansionPanelSummary>
         <Divider /> 
-        
+
         <ExpansionPanelDetails>
           <Grid container>
             <Grid
@@ -176,7 +183,7 @@ export default function AddPostRightPanels({title, description, handleFile}) {
                   <ListItemIcon>
                     <OfflinePinIcon />
                   </ListItemIcon>
-                  <ListItemText primary="status" />
+                  <span>{imageFile.name}</span>
                 </ListItem>
               </List>
             </Grid>
@@ -217,7 +224,8 @@ export default function AddPostRightPanels({title, description, handleFile}) {
         <Autocomplete
       size="small"
       onChange={handleCategory}
-      options={category}
+      options={category} 
+      value={category.title}
       disableCloseOnSelect
       getOptionLabel={option => option.title}
       renderOption={(option, { selected }) => (
@@ -258,7 +266,8 @@ export default function AddPostRightPanels({title, description, handleFile}) {
         <Autocomplete
       size="small"
       onChange={handleTags}
-      options={tags}
+      options={tags} 
+      value={tags.title1}
       disableCloseOnSelect
       getOptionLabel={option => option.title1}
       renderOption={(option, { selected }) => (

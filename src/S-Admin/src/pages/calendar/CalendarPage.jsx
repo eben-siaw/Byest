@@ -40,7 +40,8 @@ const myEventsList = [
   }
 ];
 
-const CalendarPage = props => {
+const CalendarPage = props => { 
+  
   const { history } = props;
 
   return (

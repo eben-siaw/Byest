@@ -50,8 +50,8 @@ const OftadehNavigation = (props) => {
           component="h1"
           align="center"
         >
-          &copy; OFTADEH
-          <span>React Admin</span>
+          &copy; MEKEXPRESS
+          <span> Admin</span>
         </Typography>
         <iframe
           title="star repo"

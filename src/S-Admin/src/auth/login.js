@@ -29,33 +29,26 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      firstName: null,
-      lastName: null,
       email: null,
       password: null,
       formErrors: {
-        firstName: "",
-        lastName: "",
         email: "",
         password: ""
       }
     };
   }
 
-  handleSubmit = async e => { 
+  handleSubmit = (event) => { 
 
-    e.preventDefault(); 
+    event.preventDefault(); 
 
     const user = { 
       email: this.state.email, 
       password: this.state.password
     }
     if (isformValid(this.state)) {
-       await login(user).then(res => { 
-       if(res) { 
-        window.location = "/admin/dasboard/main"
-       } 
-
+       login(user).then(res => {  
+        console.log(res);
      })
 
     } 
@@ -74,7 +67,7 @@ class Login extends Component {
         break;
       case "password":
         formErrors.password =
-          value.length < 6 ? "minimum 6 characaters required" : "";
+          value.length < 8 ? "minimum 8 characaters required" : "";
         break;
       default:
         break;
@@ -89,7 +82,7 @@ class Login extends Component {
 
     return ( 
 
-      <div className="wrapper">
+      <main className="wrapper">
         <div className="form-wrapper">
           <h1>Login</h1>
           <form onSubmit={this.handleSubmit} noValidate>
@@ -106,7 +99,8 @@ class Login extends Component {
               {formErrors.email.length > 0 && (
                 <span className="errorMessage">{formErrors.email}</span>
               )}
-            </div>
+            </div>  
+
             <div className="password">
               <label htmlFor="password">Password</label>
               <input
@@ -122,24 +116,29 @@ class Login extends Component {
               )}
             </div>
             <div className="createAccount">
-              <button type="submit">Login</button> 
-              <Link to="/admin/dashboard/register"> <small> Create an account?</small>  </Link>
-            </div>
+              <button className="admin-register" type="submit">Login</button> 
+            </div> 
+            <Link style={{textDecoration: 'none'}} to="/admin/register"> <p> Create an account?</p>  </Link>
           </form>
         </div> 
         <style jsx>{`
-         .wrapper {
+         .wrapper { 
+          background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+          margin: 0px; 
+          font-family: 'Ubuntu', sans-serif;
+          background-size: 100% 110%;
           height: 100vh;
-          width: 100%;
+          width: 100%; 
+          margin: 0; 
+          padding: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          background-color: #258ea6;
         }
         
         .form-wrapper {
-          width: 400px;
+          width: 380px;
           display: flex;
           flex-direction: column;
           padding: 20px 40px;
@@ -148,6 +147,10 @@ class Login extends Component {
           background-color: #ffffff;
         }
         
+        .admin-register { 
+          cursor: pointer; 
+        }
+
         form {
           width: 100%;
           display: flex;
@@ -207,7 +210,7 @@ class Login extends Component {
         .password {
           display: flex;
           flex-direction: column;
-          margin-bottom: 15px;
+          margin-bottom: 18px;
         }
         
         .firstName,
@@ -228,31 +231,47 @@ class Login extends Component {
         }
         
         .createAccount button {
-          background-color: #519e8a;
-          color: #fff;
-          border: 2px solid #fff;
           width: 100%;
-          margin-top: 1em;
-          padding: 8px 0px;
-          font-size: 1em;
-          font-weight: lighter;
-          letter-spacing: 1px;
-          margin-bottom: 0.25em;
+          padding: 12px;
+          font-size: 18px;
+          background: #15C39A;
+          color: #fff;
+          border: none;
+          border-radius: 100px;
+          cursor: pointer;
+          font-family: 'Open Sans', sans-serif;
+          margin-top: 15px;
+          transition: background 0.2s ease-out;
         }
         
         .createAccount button:hover {
-          color: #519e8a;
-          background-color: #fff;
-          border: 2px solid #519e8a;
+          background: #55D3AC;
         }
         
         .createAccount small {
           color: #999;
           font-weight: lighter;
-        }        
+        }         
+
+        @media (max-width: 458px) { 
+          .wrapper {
+            margin: 0 18px;
+          }
+          
+          form {
+            background: #f9faff;
+            border: none;
+            box-shadow: none;
+            padding: 20px 0;
+          } 
+       
+          .form-wrapper {
+            max-width: 200px;
+          }
+        }  
          `} 
         </style>
-      </div>
+      </main>
     );
   }
 }

@@ -1,25 +1,25 @@
 import axios from 'axios'; 
 
-const local = "http://localhost:5000";
+const local = "http://localhost:5080";
 
 export const register = async (newCustomer) => { 
  
     try {
-       return await axios.post(local + "/customer/addcustomer", newCustomer)
-       .then(res => { 
-       return res.data;
+       return await axios.post(local + "/customers/addcustomer", newCustomer)
+       .then(res => {   
+        console.log(res.data)
+        return res.data;
       })
-    } catch (error) {
+      } catch (error) {
        console.log(error) 
-    }
+   }
     
 } 
 
 
 export const login = async (customer) => { 
 
- const {data} = await axios.post(local + "/customer/login", customer)
- data.status && localStorage.setItem("customertoken"); 
- return data;
-
+ const {data} = await axios.post(local + "/customers/login", customer); 
+ localStorage.setItem("customertoken", data); 
+ window.location = "/checkout"
 }

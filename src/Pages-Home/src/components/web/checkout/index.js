@@ -1,106 +1,125 @@
 import React, { Component } from 'react'
-import { Grid, Paper } from '@material-ui/core/';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Summarycart from './summarycart';
 import { connect } from 'react-redux';
 import { productQuantity, clearProduct } from '../../../actions/productQuantity'
 import { Link } from 'react-router-dom';
+import axios from 'axios'; 
+import jwtdecode from 'jwt-decode'; 
+import { Button, TextField } from '@material-ui/core';
+import {setCustomerAuth, setCurrentCustomer} from '../../../actions/userActions';
 
-class Checkout extends Component {
-    render() {
+ const http = "http://localhost:5080";
+
+class Checkout extends Component { 
+ 
+   constructor(props) { 
+    super(props); 
+    this.state = { 
+     address: "", 
+     locality: "", 
+     city: "", 
+     name: "", 
+     state: ""
+    }
+  
+    this.handleChange =  this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+   }
+    
+   componentDidMount() { 
+    const customertoken = localStorage.getItem("customertoken"); 
+    if(!customertoken) { 
+       window.location = "/login" 
+    } 
+
+    const decoded = jwtdecode(customertoken); 
+    this.props.setCurrentCustomer(decoded); 
+    this.props.setCustomerAuth(true);
+   }
+
+   handleChange (event) { 
+    this.setState({[event.target.name]: event.target.value})
+   }
+  
+   handleCancel () { 
+    window.location = "/";   
+   }
+
+   handleSubmit (event) { 
+
+    event.preventDefault(); 
+  
+   const data = { 
+    address: this.state.address, 
+    locality: this.state.locality, 
+    city: this.state.city, 
+    name: this.state.name, 
+    state: this.state.state    
+   }
+    const admin = this.props.cartProps.product.Admin; 
+
+    axios.post(`/order/requestOrder`, data)
+    .then(response => { 
+        if(response.data.message) { 
+          return response.data;
+        }
+    })
+     .catch(err => { 
+       console.log(err);  
+    })
+   }
+
+    render() { 
+
         return (
-            <div>
-                <header className="header1 header1--white-mode">
-                    <div className="header1-item header1-item--checkout-promise display--none@mobile">
-                        <div className="checkout-promise-item checkout-promise-item--replacement-guarantee">100% Replacement Guarantee</div>
-                        <div className="checkout-promise-item checkout-promise-item--genuine-products">100% Genuine Products</div>
-                        <div className="checkout-promise-item checkout-promise-item--secure-payments">Secure Payments</div>
-                    </div>
-                </header>
-                <Grid container>
+            <div> 
+                <Grid className="grid-wrapper" container>
                     <Grid item md={2} xl={2} lg={2}></Grid>
                     <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
-                                <Paper className="summary_bottom_size">
-                                    <div className="checkout-step checkout-step--active">
-                                        <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">1</span><span className="_1_m52b">Login or Signup</span></h3>
-                                    </div>
-                                    <Grid container className="_30BGxP">
-                                        <Grid item xs={12} sm={12} md={12} xl={7} lg={7} className="login_bk_sk">
-                                            <form>
-                                                <div className="checkout-login__msg">We need your phone/email so that we can update you about your order.</div>
-                                                <div className="login-phone">
-                                                    <input type="text" className="login-phone__input input" data-test-id="phone-no-text-box" placeholder="Enter Email/Mobile Number" />
-                                                    <input type="password" className="login-phone__input input" data-test-id="phone-no-text-box" placeholder="Enter Password" />
-                                                    <div className="_3VM3wx">
-                                                        By continuing, you agree to Mekexpress
-                                                    <Link className="_1eS5je" target="_blank" to="/term-and-condition">Terms of Use</Link> and
-                                                    <Link className="_1eS5je" target="_blank" to="/privacy-and-policy"> Privacy Policy</Link>.
-                                                </div>
-                                                </div>
-                                                <div className="_1-GI4s">
-                                                    <button className="_2AkmmA T7K48m _7UHT_c" type="submit">
-                                                        <div className="_2VTdOs _1_qmw3"><svg className="_2zN0mv" viewBox="25 25 50 50">
-                                                            <circle stroke="#fff" className="_1VgS7d" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10">
-                                                            </circle></svg>
-                                                        </div>
-                                                        <span>CONTINUE</span>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </Grid>
-                                        <Grid item xl={5} lg={5}></Grid>
-                                    </Grid>
-                                </Paper>
-                                {/* 2nd block address */}
-                                <Paper >
-                                    <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">2</span><span className="_1_m52b">Delivery Address</span></h3>
+                               
+                                {/* 1st step block address */}
+                                <Paper > 
+                                    <div className="paper-content">  
+                                    <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj"></span><span className="_1_m52b">STEP 1</span></h3>
                                     <Grid container spacing={4} className="address_bk_checkout ">
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="text" className="login-phone__input input" data-test-id="phone-no-text-box" placeholder="Name" />
+                                            <TextField variant="outlined" name="name" className="text-input" placeholder="Name" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="Number" className="address_field_bk__input input" data-test-id="phone-no-text-box" placeholder="Number" />
+                                            <TextField variant="outlined" name="name" className="text-input"  placeholder="Phone number" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="Number" className="address_field_bk__input input" data-test-id="phone-no-text-box" placeholder="Pincode" />
+                                            <TextField variant="outlined" name="pincode" className="text-input"  placeholder="Pincode" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="Number" className="address_field_bk__input input" data-test-id="phone-no-text-box" placeholder="Locality" />
+                                            <TextField variant="outlined" name="locality" className="text-input"  placeholder="Locality" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={12} lg={12}>
-                                            <textarea className="address_field_bk__input input" data-test-id="phone-no-text-box" placeholder="Address(Area and Street)" />
+                                            <TextField variant="outlined" name="address" className="text-input" placeholder="Address(Area and Street)" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="text" className="address_field_bk__input input" data-test-id="phone-no-text-box" placeholder="City/District/Town" />
+                                            <TextField variant="outlined" name="city" className="text-input"  placeholder="City/District/Town" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <input type="text" className="login-phone__input input" data-test-id="phone-no-text-box" placeholder="state" />
+                                            <TextField variant="outlined" name="state" className="text-input"  placeholder="State" />
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                            <div className="_3XXwRR">
-                                                <p className="_2dwzAy">Address Type</p>
-                                                <div className="_3qg3HS">
-                                                    <div>
-                                                        <label htmlFor="HOME" className="_8J-bZE _2tcMoY">
-                                                            <input type="radio" className="_2haq-9" name="locationTypeTag" readOnly id="HOME" defaultValue="on" />
-                                                            <div className="_6ATDKp" />
-                                                            <div className="_2o59RR"><span>Home (All day delivery)</span></div></label>
-                                                        <label htmlFor="WORK" className="_8J-bZE _2tcMoY">
-                                                            <input type="radio" className="_2haq-9" name="locationTypeTag" readOnly id="WORK" defaultValue="on" />
-                                                            <div className="_6ATDKp" />
-                                                            <div className="_2o59RR"><span>Work (Delivery between 10 AM - 5 PM)</span></div>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
+                                            <br/>
 
-                                            <div class="_1qbqu2 uK6xOa">
-                                                <button class="_2AkmmA EqjTfe _7UHT_c" type="button">Save and Deliver Here</button>
-                                                <button class="_2AkmmA _237M5J" type="button" >Cancel</button>
-                                            </div>
+                                         <div >
+                                            <Button onSubmit={this.handleSubmit} size="large"  color="primary" variant="contained">SUBMIT ORDER</Button> 
+                                            <Button onClick={this.handleCancel} color="secondary" variant="contained" size="large">Cancel</Button>
+                                        </div> 
+
                                         </Grid>
-                                    </Grid>
+                                    </Grid> 
+                                    </div>
                                 </Paper>
                                 {/* 2nd end block address */}
                                 <Summarycart />
@@ -123,19 +142,37 @@ class Checkout extends Component {
                                                 <div className="_10vVqD">Total Amount</div>
                                                 <span>
                                                     <div className="tnAu1u">
-                                                        <span > ₹{this.props.cartProps.cartPrice}</span>
+                                                        <span > GH₵{this.props.cartProps.cartPrice}</span>
                                                     </div>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="_22vQVX">You will save ₹210 on this order</div>
+                                        <div className="_22vQVX">You will save GH₵210 on this order</div>
                                     </div>
                                 </Paper>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} xl={2} lg={2}></Grid>
-                </Grid>
+                </Grid> 
+                <style jsx>{` 
+                  .grid-wrapper { 
+                    padding-top: 150px;
+                   }   
+
+                   .paper-content {
+                    padding-left: 50px;    
+                   }  
+
+                   .text-input { 
+                     width: 300px;  
+                   }  
+
+                   .order-btn { 
+                     padding: 14px;
+                   }
+                `}
+                </style>
             </div>
         )
     }
@@ -145,4 +182,4 @@ const mapStateToProps = (state) => ({
     cartProps: state.cartState
 });
 
-export default connect(mapStateToProps, { productQuantity, clearProduct })(Checkout);
+export default connect(mapStateToProps, { productQuantity, clearProduct, setCurrentCustomer, setCustomerAuth})(Checkout);

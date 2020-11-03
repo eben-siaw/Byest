@@ -1,3 +1,6 @@
+export const USER_AUTH = "USER_AUTH"; 
+export const USER_LOGGEDIN = "USER_LOGGEDIN";
+
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const GET_NUMBERS_BASKET = 'GET_NUMBERS_BASKET';

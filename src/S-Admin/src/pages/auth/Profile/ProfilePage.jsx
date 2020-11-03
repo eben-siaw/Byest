@@ -1,5 +1,7 @@
 import React from "react";
 import { makeStyles, Typography, Button, TextField } from "@material-ui/core";
+ 
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,9 +28,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LoginPage = props => {
-  const classes = useStyles();
+const ProfilePage = props => { 
+
+  const classes = useStyles();  
+
   const { history } = props;
+ 
+  const user = useSelector(state => state.auth.user);
 
   return (
     <div className={classes.root}>
@@ -105,4 +111,4 @@ const LoginPage = props => {
   );
 };
 
-export default LoginPage;
+export default ProfilePage;

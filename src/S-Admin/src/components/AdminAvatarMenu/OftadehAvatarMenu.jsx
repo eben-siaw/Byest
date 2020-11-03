@@ -19,6 +19,8 @@ import {
 
 import OftadehAvatarBadge from "../AdminAvatarBadge/OftadehAvatarBadge";
 import { AccountCircle, Settings, ExitToApp } from "@material-ui/icons";
+import {useSelector} from 'react-redux';
+
 
 const useStyles = makeStyles(theme => ({
   inline: {
@@ -32,8 +34,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const OftadehAvatarMenu = props => {
-  const classes = useStyles(props);
+const OftadehAvatarMenu = props => { 
+
+  const classes = useStyles(props); 
+
+  const first_name = useSelector(state => state.auth.user.first_name); 
+
+  const last_name = useSelector(state => state.auth.user.last_name);
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -71,7 +78,7 @@ const OftadehAvatarMenu = props => {
             variant="dot"
           >
             <Avatar
-              alt="Mohammad Oftadeh"
+              alt="admin"
               src="https://lh5.googleusercontent.com/-WqhFe4eMggE/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdFUa5CK9Wi6g5qd8ZUt6apKFYSwA/photo.jpg?sz=328"
             />
           </OftadehAvatarBadge>
@@ -81,7 +88,7 @@ const OftadehAvatarMenu = props => {
             primary={
               <React.Fragment>
                 <Typography component="span" variant="subtitle2">
-                  Mohammad Oftadeh
+                  {first_name} {last_name}
                 </Typography>
               </React.Fragment>
             }

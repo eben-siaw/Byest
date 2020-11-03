@@ -19,10 +19,12 @@ export default class Login extends Component {
    }
   
    handleOnChange(event) { 
- 
+    this.setState({[event.target.name]: event.target.value})
    } 
    
-   handleSubmit() { 
+   handleSubmit(event) { 
+  
+   event.preventDefault();
 
    const user = { 
      email: this.state.email, 
@@ -30,11 +32,7 @@ export default class Login extends Component {
    } 
    
     login(user).then(res => { 
-   
-     if(res.data.message) { 
-     
-     } 
-
+       console.log(res); 
     })
    }
 
@@ -55,15 +53,17 @@ export default class Login extends Component {
                     <div className="main-agileits">
                         <div className="form-w3agile">
                             <h3>Login</h3>
-                            <form action="#" method="post">
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="key">
                                     <i className="fa fa-envelope" aria-hidden="true" />
-                                    <input type="text" defaultValue="Email" name="Email"/>
+                                    <input type="text" onChange={this.handleOnChange} placeholder="Email" name="email" 
+                                    value={this.state.email}/>
                                     <div className="clearfix" />
                                 </div>
                                 <div className="key">
                                     <i className="fa fa-lock" aria-hidden="true" />
-                                    <input type="password" defaultValue="Password" name="Password" />
+                                    <input type="password" onChange={this.handleOnChange} placeholder="Password" defaultValue="Password" name="password" 
+                                    value={this.state.password} />
                                     <div className="clearfix" />
                                 </div>
                                 <input type="submit" defaultValue="Login" />

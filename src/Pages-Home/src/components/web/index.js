@@ -4,13 +4,14 @@ import Home from './home/index';
 import Header from './header';
 import Footer from './footer';
 import NotFound from '../nomatch'
-import Kitchen from './HomeProducts';
-import Care from './personalcare';
-import Household from './household';
+import Phones from './HomeProducts';
+import DrinksCategory from './drinks-category';
+import OutfitsCategory from './outfits-category';
+import AppliancesCategory from './appliances-category/appliances';
+import CarsCategory from './cars-category';
 import Contact from './contact';
 import Faq from './customer/faq';
-import Term from './customer/term'; 
-import AdminPage from '../../../../S-Admin/src/AdminPage'; 
+import Term from './customer/term';  
 import Desclaimer from './customer/desclaimer';
 import Privacypolicy from './customer/privacy-policy';
 import Login from '../auth/login';
@@ -28,10 +29,12 @@ export default class Main extends Component {
             <Header/>
             <Switch>
               <Route  exact path='/' component={Home} /> 
-              <Route  path='/kitchen' component={Kitchen} />
+              <Route  path='/phones' component={Phones} />  
+              <Route  path="/drinks" component={DrinksCategory} />
+              <Route  path='/outfits' component={OutfitsCategory} />
+              <Route  path='/cars' component={CarsCategory} /> 
+              <Route  path='/appliances' component={AppliancesCategory} />
               <Route  path="/product-details" component={Singleproduct} />
-              <Route  path='/care' component={Care} />
-              <Route  path='/house-hold' component={Household} />
               <Route  path='/contact' component={Contact} />
               <Route  path='/faq' component={Faq} />
               <Route  path='/term-and-condition' component={Term} />
@@ -42,7 +45,6 @@ export default class Main extends Component {
               <Route  path='/categories' component={Category} />
               <Route  path='/carts' component={Cart} />
               <Route  path='/checkout' component={Checkout} />
-              <Route  component={NotFound} />
             </Switch>
             <Footer/>
           </div> 

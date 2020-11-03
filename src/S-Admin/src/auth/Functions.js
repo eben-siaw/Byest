@@ -1,12 +1,12 @@
 import axios from 'axios'; 
 
-const http = "http://localhost/5000";
+const http = "http://localhost:5080";
 
 export const register = (newUser) => { 
- 
     try {
-        return axios.post(http + "/register", newUser) 
-        .then(results => { 
+        return axios.post(http + "/admins/register", newUser) 
+        .then(results => {  
+            console.log(results.data);
            return results.data;
         });
     } catch (error) {
@@ -16,10 +16,16 @@ export const register = (newUser) => {
 
 } 
 
-export const login = (user) => { 
+export const login = async (user) => { 
     try {
-    const {data} = axios.post(http + "/login", user) 
-     return data.status && localStorage.setItem("admintoken")  
+    return await axios.post(http + "/admins/login", user)   
+    .then(response => {  
+        if(response.data) { 
+         window.location = "/admin/page"
+         localStorage.setItem("admintoken", response.data);
+        }  
+    })
+    
     } catch (error) {
         console.log(error);
     }

@@ -23,36 +23,51 @@ const isformValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class Register extends Component {
-  constructor(props) {
+class Register extends Component { 
+
+  constructor(props) { 
+
     super(props);
 
     this.state = {
       firstName: null,
       lastName: null,
-      email: null,
+      email: null, 
+      phone: null, 
+      address: null,
       password: null,
       formErrors: {
         firstName: "",
-        lastName: "",
+        lastName: "", 
         email: "",
+        phone: "", 
+        address: "",
         password: ""
       }
     };
   }
 
-  handleSubmit = async () => {
+  handleSubmit = async (event) => { 
+   
+    event.preventDefault();
+
     const newUser = { 
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        email: this.state.email,
+        email: this.state.email, 
+        phone: this.state.phone, 
+        address: this.state.address,
         password: this.state.password
     } 
     if(isformValid(this.state)) {
       await register(newUser)
-      .then(res => { 
-        window.location = "/admin/dashboard/auth";
-      });
+      .then(res => {  
+        console.log(res);
+        window.location = "/admin/auth";
+      }) 
+      .catch(error => { 
+        console.log(error)
+      })
     } 
   };
 
@@ -69,15 +84,23 @@ class Register extends Component {
       case "lastName":
         formErrors.lastName =
           value.length < 3 ? "minimum 3 characaters required" : "";
-        break;
+        break; 
+
       case "email":
         formErrors.email = emailRegex.test(value)
           ? ""
           : "invalid email address";
-        break;
+        break; 
+
+        case "phone":
+          formErrors.phone = value.length < 7
+            ? "Phone number should be more than 7 characters"
+            : "";
+          break;
+
       case "password":
         formErrors.password =
-          value.length < 6 ? "minimum 6 characaters required" : "";
+          value.length < 8 ? "minimum 8 characaters required" : "";
         break;
       default:
         break;
@@ -90,7 +113,7 @@ class Register extends Component {
     const { formErrors } = this.state;
 
     return (
-      <div className="wrapper">
+      <main className="wrapper">
         <div className="form-wrapper">
           <h1>Create Account</h1>
           <form onSubmit={this.handleSubmit} noValidate>
@@ -121,7 +144,8 @@ class Register extends Component {
               {formErrors.lastName.length > 0 && (
                 <span className="errorMessage">{formErrors.lastName}</span>
               )}
-            </div>
+            </div> 
+
             <div className="email">
               <label htmlFor="email">Email</label>
               <input
@@ -135,7 +159,38 @@ class Register extends Component {
               {formErrors.email.length > 0 && (
                 <span className="errorMessage">{formErrors.email}</span>
               )}
-            </div>
+            </div>  
+
+            <div className="email">
+              <label htmlFor="email">Phone Number</label>
+              <input
+                className={formErrors.email.length > 0 ? "error" : null}
+                placeholder="Phone number"
+                type="text"
+                name="phone"
+                noValidate
+                onChange={this.handleChange}
+              />
+              {formErrors.phone.length > 0 && (
+                <span className="errorMessage">{formErrors.phone}</span>
+              )}
+            </div> 
+
+            <div className="email">
+              <label htmlFor="email">Address</label>
+              <input
+                className={formErrors.address.length > 0 ? "error" : null}
+                placeholder="Address"
+                type="text"
+                name="address"
+                noValidate
+                onChange={this.handleChange}
+              />
+              {formErrors.phone.length > 0 && (
+                <span className="errorMessage">{formErrors.address}</span>
+              )}
+            </div> 
+
             <div className="password">
               <label htmlFor="password">Password</label>
               <input
@@ -149,140 +204,163 @@ class Register extends Component {
               {formErrors.password.length > 0 && (
                 <span className="errorMessage">{formErrors.password}</span>
               )}
-            </div>
+            </div> 
+
             <div className="createAccount">
               <button type="submit">Create Account</button>
-              <Link to="/admin/dashboard/auth"> <small>  Already Have an Account? Login</small>  </Link>
-            </div>
+            </div> 
+           <Link style={{textDecoration: 'none'}} to="/admin/auth"> <small>  Already Have an Account? Login</small>  </Link>
           </form>
-        </div> 
-        <style jsx> 
-        {` 
-         .wrapper {
-          height: 100vh;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          background-color: #258ea6;
-        }
+        </div>  
+      <style jsx>{` 
+      .wrapper { 
+        background: rgb(34,193,195);
+        background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        font-family: "work sans";
+        height: 100vh;
+        width: 100%;  
+        margin: 0px; 
+        font-family: 'Ubuntu', sans-serif;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .form-wrapper {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 40px; 
         
-        .form-wrapper {
-          width: 400px;
-          display: flex;
-          flex-direction: column;
-          padding: 20px 40px;
-          border-radius: 10px;
-          box-shadow: 0px 10px 50px #555;
-          background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 10px 50px #555;
+        background-color: #ffffff;
+      }
+      
+      form {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      h1 {
+        text-align: center;
+        width: 100%;
+        color: #111;
+        font-weight: lighter;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+          Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+      
+      label {
+        font-size: 0.8em;
+        margin-bottom: 0.25em;
+        color: #222;
+        font-weight: lighter;
+      }
+      
+      input {
+        padding: 10px 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #cfcfcf;
+      }
+      
+      input::placeholder {
+        font-size: 1.2em;
+        font-weight: lighter;
+        color: #999;
+      }
+      
+      input.error {
+        border: 1px solid red;
+      }
+      
+      .errorMessage {
+        color: red;
+        font-size: 0.75em;
+        display: relative;
+      }
+      
+      .firstName {
+        margin-right: 1%;
+      }
+      
+      .lastName {
+        margin-left: 1%;
+      }
+      
+      .firstName,
+      .lastName,
+      .email,
+      .password {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+      
+      .firstName,
+      .lastName {
+        width: 49%;
+      }
+      
+      .email,
+      .password {
+        width: 100%;
+      }
+      
+      .createAccount {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .createAccount button {
+        border-radius: 25px;
+        width: 80%;
+        height: 40px;
+        font-size: 1.3rem;
+        color: white;
+        font-weight: 700;
+        background: rgb(34,193,195);
+        background: linear-gradient(90deg, rgba(34,193,195,1) 0%,  rgba(253,187,45,1) 100%);
+        border: 0px;
+       cursor: pointer;
+       transition: opacity 0.25s ease-out;
+}
+      }
+      
+      .createAccount button:hover {
+        opacity: 0.8;
+      }
+      
+      .createAccount small {
+        color: #999;
+        font-weight: lighter;
+      }           
+    
+      @media (max-width: 480px) { 
+        .wrapper {
+          margin: 0 18px; 
+          background: #fff;
         }
         
         form {
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
+          background: #f9faff;
+          border: none;
+          box-shadow: none;
+          padding: 20px 0;
+        } 
+        .form-wrapper { 
+          max-width: 240px; 
         }
-        
-        h1 {
-          text-align: center;
-          width: 100%;
-          color: #111;
-          font-weight: lighter;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        }
-        
-        label {
-          font-size: 0.8em;
-          margin-bottom: 0.25em;
-          color: #222;
-          font-weight: lighter;
-        }
-        
-        input {
-          padding: 10px 10px;
-          border-radius: 5px;
-          outline: none;
-          border: 1px solid #cfcfcf;
-        }
-        
-        input::placeholder {
-          font-size: 1.2em;
-          font-weight: lighter;
-          color: #999;
-        }
-        
-        input.error {
-          border: 1px solid red;
-        }
-        
-        .errorMessage {
-          color: red;
-          font-size: 0.75em;
-          display: relative;
-        }
-        
-        .firstName {
-          margin-right: 1%;
-        }
-        
-        .lastName {
-          margin-left: 1%;
-        }
-        
-        .firstName,
-        .lastName,
-        .email,
-        .password {
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 15px;
-        }
-        
-        .firstName,
-        .lastName {
-          width: 49%;
-        }
-        
-        .email,
-        .password {
-          width: 100%;
-        }
-        
-        .createAccount {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        
-        .createAccount button {
-          background-color: #519e8a;
-          color: #fff;
-          border: 2px solid #fff;
-          width: 100%;
-          margin-top: 1em;
-          padding: 8px 0px;
-          font-size: 1em;
-          font-weight: lighter;
-          letter-spacing: 1px;
-          margin-bottom: 0.25em;
-        }
-        
-        .createAccount button:hover {
-          color: #519e8a;
-          background-color: #fff;
-          border: 2px solid #519e8a;
-        }
-        
-        .createAccount small {
-          color: #999;
-          font-weight: lighter;
-        }          
-        `}
-        </style>
-      </div>
+      }
+      `} 
+      </style>
+      </main>
     );
   }
 }

@@ -10,15 +10,15 @@ const navigationConfig = [
         id: "dashboard",
         title: "Dashboard",
         type: "item",
-        icon: "apps",
-        url: "/admin",
+    //  icon: "apps",
+        url: "/admin/page",
         exact: true,
       },
       {
         id: "posts",
         title: "Products",
         type: "collapse",
-        icon: "file_copy",
+    //    icon: "file_copy",
         badge: {
           title: "2",
           bg: "#525E8A",
@@ -40,12 +40,19 @@ const navigationConfig = [
             exact: true,
           },
         ],
+      }, 
+      { 
+       id: "order", 
+       title: "Orders", 
+       type: "item", 
+       url: "/admin/orders", 
+       exact: true,
       },
       {
         id: "calendar",
         title: "Calendar",
         type: "item",
-        icon: "event",
+  //      icon: "event",
         url: "/admin/calendar",
         exact: true,
       },
@@ -53,72 +60,16 @@ const navigationConfig = [
   },
   {
     id: "Pages",
-    title: "Orders",
+    title: "Pages",
     type: "group",
     children: [
-      {
-        id: "Authentication",
-        title: "My Orders",
-        type: "collapse",
-        icon: "lock",
-        children: [
-          {
-            id: "Login",
-            title: "Offers",
-            type: "item",
-            url: "/admin/pages/auth/login",
-            exact: true,
-          },
-          {
-            id: "Register",
-            title: "Messages",
-            type: "item",
-            url: "/admin/pages/auth/register",
-            exact: true,
-          },
-          {
-            id: "Forgot Password",
-            title: "Settings",
-            type: "item",
-            url: "/pages/auth/forgot-password",
-            exact: true,
-          },
-        ],
-      },
       {
         id: "About",
         title: "About",
         type: "item",
         icon: "description",
-        url: "/pages/about",
+        url: "/admin/about",
         exact: true,
-      },
-      {
-        id: "Errors",
-        title: "Errors",
-        type: "collapse",
-        icon: "warning",
-        badge: {
-          title: "new",
-          bg: "#513E8A",
-          fg: "#FFFFFF",
-        },
-        children: [
-          {
-            id: "404",
-            title: "404",
-            type: "item",
-            url: "/pages/errors/error-404",
-            exact: true,
-          },
-          {
-            id: "500",
-            title: "500",
-            type: "item",
-            url: "/pages/errors/error-500",
-            exact: true,
-          },
-        ],
       },
     ],
   },
@@ -126,28 +77,7 @@ const navigationConfig = [
     id: "divider-1",
     type: "divider",
   },
-  {
-    id: "Documentation",
-    title: "DOCUMENTATION",
-    type: "group",
-    children: [
-      // {
-      //   id: "Material UI Components",
-      //   title: "Material UI Components",
-      //   type: "collapse",
-      //   icon: "layers",
-      //   children: [...MaterialUIComponentsNavigation]
-      // },
-      {
-        id: "Oftadeh - React Admin",
-        title: "Oftadeh - React Admin",
-        type: "link",
-        icon: "link",
-        url: "https://github.com/mohammadoftadeh/oftadeh-react-admin",
-        exact: true,
-      },
-    ],
-  },
+  
   // {
   //   id: "dashboard",
   //   title: "Dashboard",
@@ -167,49 +97,9 @@ const navigationConfig = [
   //       title: "Pages",
   //       type: "collapse",
   //       icon: "stars",
-  //       badge: {
-  //         title: "new",
-  //         bg: "#525E8A",
-  //         fg: "#FFFFFF"
-  //       },
-  //       children: [
-  //         {
-  //           id: "about",
-  //           title: "About",
-  //           type: "item",
-  //           icon: "info",
-  //           url: "/pages/about",
-  //           exact: true
-  //         },
-  //         {
-  //           id: "contact",
-  //           title: "Contact",
-  //           type: "item",
-  //           icon: "group",
-  //           url: "/pages/contact",
-  //           exact: true
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: "divider-1",
-  //   type: "divider"
-  // },
-  // {
-  //   id: "oftadeh-github",
-  //   title: "Oftadeh Github",
-  //   type: "link",
-  //   icon: "link",
-  //   url: "https://github.com/mohammadoftadeh",
-  //   target: "_blank",
-  //   badge: {
-  //     title: "git",
-  //     bg: "green",
-  //     fg: "#FFFFFF"
-  //   }
-  // }
+  
+  
+  
 ];
 
 export default navigationConfig;

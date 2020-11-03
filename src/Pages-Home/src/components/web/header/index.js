@@ -42,7 +42,7 @@ class Header extends Component {
                             <Grid container>
                                 <Grid item md={3} lg={2} xl={2}>
                                     <div className="logo">
-                                        <h1><Link to="#"><b>T<br />H<br />E</b><span>Online shopping and Advertisement</span></Link></h1>
+                                        <h1><Link to="#"><b>T<br />H<br />E</b><span>Online shopping</span></Link></h1>
                                     </div>
                                 </Grid>
                                 <Grid item md={6} lg={7} xl={6}>
@@ -92,36 +92,36 @@ class Header extends Component {
                                         <ul className="nav navbar-nav ">
                                             <li className="active"><Link to="/" className="hyper "><span>Home</span></Link></li>
                                             <li className="dropdown ">
-                                                <Link to="/kitchen" className="dropdown-toggle  hyper"><span>Grocery & Staples<b className="caret" /></span></Link>
+                                                <Link to="/phones" className="dropdown-toggle  hyper"><span>Phones & Laptops<b className="caret" /></span></Link>
                                                 <ul className="dropdown-menu multi">
                                                     <div className="row">
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Water &amp; Beverages</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Fruits &amp; Vegetables</Link></li>
-                                                                <li><Link to="/kitchen"> <i className="fa fa-angle-right" aria-hidden="true" />Staples</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Branded Food</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Samsung &amp; Iphone</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Acer</Link></li>
+                                                                <li><Link to="/phones"> <i className="fa fa-angle-right" aria-hidden="true" />MacBooks</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Dell &amp; HP </Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Breakfast &amp; Cereal</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Snacks</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Spices</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Biscuit &amp; Cookie</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Sweets</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Infinix </Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Techno</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Huawei</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Tablets &amp; Ipads</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Airpods</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Pickle &amp; Condiment</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Instant Food</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Dry Fruit</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Tea &amp; Coffee</Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" /> Alienware </Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" /> Gaming Laptops </Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />  </Link></li>
+                                                                <li><Link to="/phones"><i className="fa fa-angle-right" aria-hidden="true" />Tea &amp; Coffee</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3 w3l">
-                                                            <Link to="/kitchen"><img src="images/me.png" className="img-responsive" alt="" /></Link>
+                                                            <Link to="/phones"><img src="images/me.png" className="img-responsive" alt="" /></Link>
                                                         </div>
                                                         <div className="clearfix" />
                                                     </div>
@@ -129,36 +129,29 @@ class Header extends Component {
                                             </li>
 
                                             <li className="dropdown ">
-                                                <Link to="/kitchen" className="dropdown-toggle  hyper"><span>Beverages<b className="caret" /></span></Link>
+                                                <Link to="/cars" className="dropdown-toggle  hyper"><span>Cars<b className="caret" /></span></Link>
                                                 <ul className="dropdown-menu multi">
                                                     <div className="row">
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Water &amp; Beverages</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Fruits &amp; Vegetables</Link></li>
-                                                                <li><Link to="/kitchen"> <i className="fa fa-angle-right" aria-hidden="true" />Staples</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Branded Food</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Golf</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Hyundai</Link></li>
+                                                                <li><Link to="/cars"> <i className="fa fa-angle-right" aria-hidden="true" />SUV</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Hybrid</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Breakfast &amp; Cereal</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Snacks</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Spices</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Biscuit &amp; Cookie</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Sweets</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Sedan</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Ford</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Pickup Truck</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />MiniVan</Link></li>
+                                                                <li><Link to="/cars"><i className="fa fa-angle-right" aria-hidden="true" />Sweets</Link></li>
                                                             </ul>
                                                         </div>
-                                                        <div className="col-sm-3">
-                                                            <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Pickle &amp; Condiment</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Instant Food</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Dry Fruit</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Tea &amp; Coffee</Link></li>
-                                                            </ul>
-                                                        </div>
+                                
                                                         <div className="col-sm-3 w3l">
-                                                            <Link to="/kitchen"><img src="images/me.png" className="img-responsive" alt="" /></Link>
+                                                            <Link to="/cars"><img src="images/me.png" className="img-responsive" alt="" /></Link>
                                                         </div>
                                                         <div className="clearfix" />
                                                     </div>
@@ -166,36 +159,36 @@ class Header extends Component {
                                             </li>
 
                                             <li className="dropdown ">
-                                                <Link to="/kitchen" className="dropdown-toggle  hyper"><span>Breakfast & Dairy<b className="caret" /></span></Link>
+                                                <Link to="/drinks" className="dropdown-toggle  hyper"><span>Drinks & Beverages<b className="caret" /></span></Link>
                                                 <ul className="dropdown-menu multi">
                                                     <div className="row">
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Water &amp; Beverages</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Fruits &amp; Vegetables</Link></li>
-                                                                <li><Link to="/kitchen"> <i className="fa fa-angle-right" aria-hidden="true" />Staples</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Branded Food</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Water &amp; Beverages</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Fruits &amp; Vegetables</Link></li>
+                                                                <li><Link to="/drinks"> <i className="fa fa-angle-right" aria-hidden="true" />Staples</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Branded Food</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Breakfast &amp; Cereal</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Snacks</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Spices</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Biscuit &amp; Cookie</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Sweets</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Breakfast &amp; Cereal</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Wine</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Spices</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Biscuit &amp; Cookie</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Sweets</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Pickle &amp; Condiment</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Instant Food</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Dry Fruit</Link></li>
-                                                                <li><Link to="/kitchen"><i className="fa fa-angle-right" aria-hidden="true" />Tea &amp; Coffee</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Pickle &amp; Condiment</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Instant Food</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Dry Fruit</Link></li>
+                                                                <li><Link to="/drinks"><i className="fa fa-angle-right" aria-hidden="true" />Tea &amp; Coffee</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3 w3l">
-                                                            <Link to="/kitchen"><img src="images/me.png" className="img-responsive" alt="" /></Link>
+                                                            <Link to="/drinks"><img src="images/me.png" className="img-responsive" alt="" /></Link>
                                                         </div>
                                                         <div className="clearfix" />
                                                     </div>
@@ -203,70 +196,70 @@ class Header extends Component {
                                             </li>
 
                                             <li className="dropdown">
-                                                <Link to="#" className="dropdown-toggle hyper" data-toggle="dropdown"><span> Personal Care <b className="caret" /></span></Link>
+                                                <Link to="#" className="dropdown-toggle hyper" data-toggle="dropdown"><span> Appliances <b className="caret" /></span></Link>
                                                 <ul className="dropdown-menu multi multi1">
                                                     <div className="row">
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" /> Ayurvedic </Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Baby Care</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Cosmetics</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Deo &amp; Purfumes</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" /> Television </Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Radio</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Washing Machine</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Deo &amp; Purfumes</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/care"> <i className="fa fa-angle-right" aria-hidden="true" />Hair Care </Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Oral Care</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Personal Hygiene</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Skin care</Link></li>
+                                                                <li><Link to="/appliances"> <i className="fa fa-angle-right" aria-hidden="true" /> Home Theater </Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Blenders</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Fridges</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Microwave</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" /> Fashion Accessories </Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Grooming Tools</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Shaving Need</Link></li>
-                                                                <li><Link to="/care"><i className="fa fa-angle-right" aria-hidden="true" />Sanitary Needs</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" /> Fashion Accessories </Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Grooming Tools</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Shaving Need</Link></li>
+                                                                <li><Link to="/appliances"><i className="fa fa-angle-right" aria-hidden="true" />Sanitary Needs</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3 w3l">
-                                                            <Link to="/care"><img src="images/me1.png" className="img-responsive" alt="" /></Link>
+                                                            <Link to="/appliances"><img src="images/me1.png" className="img-responsive" alt="" /></Link>
                                                         </div>
                                                         <div className="clearfix" />
                                                     </div>
                                                 </ul>
                                             </li>
                                             <li className="dropdown">
-                                                <Link to="#" className="dropdown-toggle hyper" data-toggle="dropdown"><span>Household<b className="caret" /></span></Link>
+                                                <Link to="#" className="dropdown-toggle hyper" data-toggle="dropdown"><span>Shoes & Outfits<b className="caret" /></span></Link>
                                                 <ul className="dropdown-menu multi multi2">
                                                     <div className="row">
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Cleaning Accessories</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />CookWear</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Detergents</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Gardening Needs</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Cleaning Accessories</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />CookWear</Link></li>
+                                                                <li><Link to="/outifts"><i className="fa fa-angle-right" aria-hidden="true" />Detergents</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Gardening Needs</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Kitchen &amp; Dining</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />KitchenWear</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Pet Care</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Plastic Wear</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Kitchen &amp; Dining</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />KitchenWear</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Pet Care</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Plastic Wear</Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3">
                                                             <ul className="multi-column-dropdown">
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Pooja Needs</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Serveware</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Safety Accessories</Link></li>
-                                                                <li><Link to="/house-hold"><i className="fa fa-angle-right" aria-hidden="true" />Festive Decoratives </Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Pooja Needs</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Serveware</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Safety Accessories</Link></li>
+                                                                <li><Link to="/outfits"><i className="fa fa-angle-right" aria-hidden="true" />Festive Decoratives </Link></li>
                                                             </ul>
                                                         </div>
                                                         <div className="col-sm-3 w3l">
-                                                            <Link to="/house-hold"><img src="images/me2.png" className="img-responsive" alt="" /></Link>
+                                                            <Link to="/outfits"><img src="images/me2.png" className="img-responsive" alt="" /></Link>
                                                         </div>
                                                         <div className="clearfix" />
                                                     </div>

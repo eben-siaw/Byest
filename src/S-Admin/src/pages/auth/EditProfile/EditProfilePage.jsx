@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const RegisterPage = props => {
+const EditProfilePage = props => {
   const classes = useStyles();
   const { history } = props;
 
@@ -114,4 +114,4 @@ const RegisterPage = props => {
   );
 };
 
-export default RegisterPage;
+export default EditProfilePage;

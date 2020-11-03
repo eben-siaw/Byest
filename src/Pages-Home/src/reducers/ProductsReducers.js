@@ -1,47 +1,28 @@
 import { ADD_TO_CART, GET_NUMBERS_BASKET, INCREASE_QUANTITY, DECREASE_QUANTITY, CLEAR_PRODUCT } from '../actions/types';
 
 
-// initial states of products and a payload to be returned 
+// initial states of products fetched and a payload to be returned 
 
 const initialState = {
     cart: 0,
-    cartPrice: 0,
-    products: {
-        moong: {
-            name: "Moong",
-            price: 12.00,
-            tagName: "moong",
-            numbers: 0,
-            inCart: false
-        },
-        sunflower: {
-            name: "Sunflower oil",
-            price: 70.00,
-            tagName: "sunflower",
-            numbers: 0,
-            inCart: false
-        },
-        kabuli: {
-            name: "Kabuli Chana(1 kg)",
-            price: 80.00,
-            tagName: "kabuli",
-            numbers: 0,
-            inCart: false
-        },
-        soyachunks: {
-            name: "Soya Chunks(1 kg)",
-            price: 90.00,
-            tagName: "soyachunks",
-            numbers: 0,
-            inCart: false
-        }
-    }
-}
+    cartPrice: 0, 
+    products: []
+} 
 
-export default (state = initialState, action) => {
-    let productSelected = "";
-    switch (action.type) {
-        case ADD_TO_CART:
+// action.payload is the returned data from the server 
+
+// state of product is an initial array which returns a payload of the details of the products 
+
+// to be added to the cart page
+
+export default (state = initialState, action) => { 
+
+    let productSelected = ""; 
+
+    switch (action.type) { 
+
+        case ADD_TO_CART: 
+
             productSelected = { ...state.products[action.payload] }
             productSelected.numbers += 1;
             productSelected.inCart = true;
@@ -49,7 +30,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cart: state.cart + 1,
-                cartPrice: state.cartPrice + state.products[action.payload].price,
+                cartPrice: state.cartPrice + state.products[action.payload.productPrice],
                 products: {
                     ...state.products,
                     [action.payload]: productSelected
@@ -66,7 +47,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 cart: state.cart +1 ,
-                cartPrice: state.cartPrice + state.products[action.payload].price,
+                cartPrice: state.cartPrice + state.products[action.payload.productPrice],
                 products: {
                     ...state.products,
                     [action.payload]: productSelected
@@ -84,7 +65,7 @@ export default (state = initialState, action) => {
             }
             else {
                 productSelected.numbers -= 1;
-                newCartPrice = state.cartPrice - state.products[action.payload].price
+                newCartPrice = state.cartPrice - state.products[action.payload.productPrice]
                 newCartNumbers = state.cart - 1
             }
             return {
@@ -104,7 +85,7 @@ export default (state = initialState, action) => {
             productSelected.inCart = false
             return {
                 ...state,
-                cartPrice: state.cartPrice - (numbersBackup * productSelected.price),
+                cartPrice: state.cartPrice - (numbersBackup * productSelected.productPrice),
                 cart: state.cart - numbersBackup,
                 products: {
                     ...state.products,

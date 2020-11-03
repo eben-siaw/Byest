@@ -3,12 +3,13 @@ import { Redirect } from "react-router-dom";
 
 import { DashboardPageConfig } from "../pages/dashboard/DashboardPageConfig";
 import { AboutPageConfig } from "../pages/about/AboutPageConfig";
-import { AddPostPageConfig } from "../pages/posts/Products/AddProductPageConfig";
+import { AddPostPageConfig } from "../pages/posts/Products/AddProductPageConfig"; 
+import {AllOrdersConfig} from "../pages/orders/Orders/OrdersConfig";
 import { AllPostsPageConfig } from "../pages/posts/all-products/AllProductsConfig";
 import { CalendarPageConfig } from "../pages/calendar/CalendarPageConfig";
 import { ForgotPasswordPageConfig } from "../pages/auth/forgot-password/ForgotPasswordPageConfig";
-import { LoginPageConfig } from "../pages/auth/login/LoginPageConfig";
-import { RegisterPageConfig } from "../pages/auth/register/RegisterPageConfig";
+import { ProfilePageConfig } from "../pages/auth/Profile/ProfilePageConfig";
+import { EditProfilePageConfig } from "../pages/auth/EditProfile/EditProfilePageConfig";
 import { Error404PageConfig } from "../pages/errors/404/Error404PageConfig";
 import { Error500PageConfig } from "../pages/errors/500/Error500PageConfig";
 // import { DocumentationConfig } from "../pages/documentation/DocumentationConfig";
@@ -16,11 +17,12 @@ import { Error500PageConfig } from "../pages/errors/500/Error500PageConfig";
 const routeConfigs = [
   ...DashboardPageConfig.routes,
   ...AllPostsPageConfig.routes,
-  ...AddPostPageConfig.routes,
+  ...AddPostPageConfig.routes, 
+  ...AllOrdersConfig.routes,
   ...CalendarPageConfig.routes,
   ...ForgotPasswordPageConfig.routes,
-  ...LoginPageConfig.routes,
-  ...RegisterPageConfig.routes,
+  ...ProfilePageConfig.routes,
+  ...EditProfilePageConfig.routes,
   ...Error404PageConfig.routes,
   ...Error500PageConfig.routes,
   ...AboutPageConfig.routes

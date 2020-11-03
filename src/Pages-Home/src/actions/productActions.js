@@ -1,13 +1,24 @@
+import axios from 'axios';
 import { ADD_TO_CART , GET_NUMBERS_BASKET } from './types';
 
-export const addToCart = (productName)=> {
+ const http = "http://localhost:5080";
+
+export const addToCart = (cartproduct) => { 
+     
     return(dispatch)=> {
-        // console.log("Adding basket of item");
-        dispatch({
-            type: ADD_TO_CART,
-            payload: productName
-        });
-    }
+      console.log(cartproduct);
+     dispatch({
+     type: ADD_TO_CART,
+      payload: {  
+      productName: cartproduct.productName, 
+      productDescription: cartproduct.productDescription, 
+      productPrice: cartproduct.productPrice, 
+      productQuantity: cartproduct.productQuantity        
+      }
+    })      
+        
+ }
+
 }
 
 export const getCartNumbers = ()=> {

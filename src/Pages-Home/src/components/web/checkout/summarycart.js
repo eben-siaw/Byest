@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' 
+import Button from '@material-ui/core/Button';
 import { Grid, Paper, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core/';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -8,7 +9,7 @@ export default class Summarycart extends Component {
             <div>
                 <Paper style={{ marginTop: '3rem' }}>
                     <div className="checkout-step checkout-step--active">
-                        <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">3</span><span class="_1_m52b">Order Summary</span></h3>
+                        <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">2 - </span><span class="_1_m52b">Order Summary</span></h3>
                     </div>
                     <Grid container className="_30BGxP">
                         <Grid item xs={12} sm={12} md={12} xl={12} lg={12} className="summary_order_list">
@@ -20,15 +21,15 @@ export default class Summarycart extends Component {
                                     <div className="_3RkJty">
                                         <div className="_3md1dr">
                                             <button className="wNrY5O" disabled> – </button>
-                                            <div className="_2zH4zg"><input type="text" defaultValue={1} className="_2csFM9" autoComplete="off" /></div
-                                            ><button className="wNrY5O"> + </button>
+                                            <div className="_2zH4zg"><input type="text" defaultValue={1} className="_2csFM9" autoComplete="off" /></div>
+                                            <button className="wNrY5O"> + </button>
                                         </div>
                                     </div>
 
                                 </Grid>
                                 <Grid item xs={6} sm={6} md={6} xl={6} lg={6}>
                                     <div className="_3vIvU_bk">
-                                        <div className="title">Miss &amp; Chief Bed Protector Sheet- Waterproof &amp; Reusable</div>
+                                        <div className="title">Note -&amp; Product owners will receive an order for your request. &amp; Reusable</div>
                                         <div className="seller_bk"><span>Seller: RetailNet</span></div>
                                         <div className="price_bk">
                                             <h5>&#8377;151</h5>
@@ -45,10 +46,10 @@ export default class Summarycart extends Component {
                         <Grid item xs={12} sm={12} md={12} xl={12} lg={12}>
                             <Grid container className="order_confirm_email">
                                 <Grid item xs={12} sm={12} md={8} xl={8} lg={8}>
-                                    <div><h5>Order confirmation email will be sent to <b>pandit.bechu@gmail.com</b></h5></div>
+                                    <div><h5>Order confirmation email will be sent to <b>the sellers of the products</b></h5></div>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={4} xl={4} lg={4}>
-                                    <span id="to-payment"><button className="_continue">CONTINUE</button></span>
+                                    <span id="to-payment"><button className="_continue"></button></span>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -57,7 +58,7 @@ export default class Summarycart extends Component {
 
                 <Paper style={{ marginTop: '1.4rem' }}>
                     <div className="checkout-step checkout-step--active">
-                        <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">4</span><span className="_1_m52b">Payment Options</span></h3>
+                        <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj">3 -</span><span className="_1_m52b">Payment Options</span></h3>
                         <ExpansionPanel>
                             <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
@@ -116,7 +117,7 @@ export default class Summarycart extends Component {
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-xs-12">
-                                                                <button className="btn btn-success btn-lg btn-block" type="submit">Pay &#8377;444</button>
+                                                                <button className="btn btn-success btn-lg btn-block" type="submit">NOT AVAILABLE</button>
                                                             </div>
                                                         </div>
                                                         <div className="row" style={{ display: 'none' }}>
@@ -141,8 +142,8 @@ export default class Summarycart extends Component {
                                 <h5>2. Cash on Delivery</h5>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails className="card_details_parent">
-                                <div className="clearfix"><div className="payment-confirm-tip" data-spm-anchor-id="a2a0e.payment_page.0.i6.28766af7uWKlE7">You can pay in cash to our courier when you receive the goods at your doorstep.</div></div>
-                                <div id="to-payment"><button className="_continue">confirm order</button></div>
+                                <div className="clearfix"><div className="payment-confirm-tip" data-spm-anchor-id="a2a0e.payment_page.0.i6.28766af7uWKlE7">You will pay in cash to the seller when you receive your order at your doorstep.</div></div>
+                                <div style={{paddingLeft: 8}} id="to-payment"> <Button color="primary" variant="contained" className="_continue">I agree</Button></div>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     </div>

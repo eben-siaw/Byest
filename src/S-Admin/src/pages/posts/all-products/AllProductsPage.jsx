@@ -8,7 +8,7 @@ import axios from "axios";
  
 import {useSelector} from 'react-redux';
 
- const http = "http://localhost/5000";
+ const http = "http://localhost:5080";
 
  const useStyles = makeStyles(theme => ({
   my3: {
@@ -28,15 +28,15 @@ import {useSelector} from 'react-redux';
 const columns = [
   {
     name: "title",
-    label: "Title",
+    label: "Product Name",
     options: {
       filter: true,
       sort: true
     }
   },
   {
-    name: "author",
-    label: "Author",
+    name: "quantity",
+    label: "Product Quantity",
     options: {
       filter: true,
       sort: false
@@ -51,8 +51,8 @@ const columns = [
     }
   },
   {
-    name: "tags",
-    label: "Tags",
+    name: "price",
+    label: "Price GH₵",
     options: {
       filter: true,
       sort: false
@@ -68,44 +68,56 @@ const columns = [
   }
 ];
 
-const data = [
-  {
-    title: "Learn Javascript",
-    author: "Mohammad Oftadeh",
-    categories: "javascript",
-    tags: "web, javascript",
-    date: "12-12-2020"
-  },
-  {
-    title: "React.js with Material UI",
-    author: "John Doe",
-    categories: "react, material-ui",
-    tags: "react, material ui",
-    date: "12-12-2020"
-  }
-];
+
 
 const options = {
   filterType: "checkbox"
 };
 
 const AllProductsPage = props => { 
-   
+    
+  const admin = useSelector(state => state.auth.user._id);
+
   const [productlist, setProductlist] = useState([]); 
   
-  const fetchProducts = () => {  
-
-    axios.get(http + "/products/fetchProducts").then(resp => { 
-     if(resp.data.message) { 
-       setProductlist(resp.data.product)
-     }
-    }) 
+  const [productsCount, setProductCount] = useState(0);
+  
+  const numberOfproducts = () => { 
+  
+    axios.get(http + `/products/displayProducts/${admin}`) 
+    .then(response => { 
+      if(response.data.message) { 
+        setProductCount(response.data.products.length);
+      }
+    })
+     .catch(error =>  { 
+       console.log(error.error);
+     })
+  }
+ 
+  // display admin products
+  const fetchProducts = async () => {  
+ 
+    try {
+    return await axios.get(http + `/products/displayProducts/${admin}`) 
+      .then(resp => { 
+       if(resp.data.message) {  
+         console.log(resp.data.products);
+         setProductlist(resp.data.products)
+       }
+      }) 
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => { 
-   fetchProducts();
+   fetchProducts(); 
+   numberOfproducts();
   }); 
+   
   
+
   const { history } = props;
   const classes = useStyles();
 
@@ -119,7 +131,7 @@ const AllProductsPage = props => {
         </Grid>
         <Grid item>
           <Button
-            onClick={() => history.push("/admin/pages/posts/add-post")}
+            onClick={() => history.push("/admin/add-post")}
             variant="outlined"
             color="primary"
             size="small"
@@ -133,7 +145,14 @@ const AllProductsPage = props => {
       
       <MUIDataTable
         title={"Posts List"}
-        data={data}
+        data={productlist.map(items => { 
+          return [ 
+           items.productName, 
+           items.productPrice, 
+           items.productCategory, 
+           items.productQuantity
+        ]
+        })}
         columns={columns}
         options={options}
       />

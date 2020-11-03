@@ -35,20 +35,20 @@ import { useSelector } from "react-redux";
  const http = "http://localhost:5080";
  
  const category = [
-  { value: 0, title: "Shoes & Outfits" }, 
-  { value: 0, title: "Drinks & Beverages" }, 
-  { value: 0, title: "Bags" },
-  { value: 0, title: "Electrical Appliances" },
-  { value: 0, title: "Hair & MakeUp" },
-  { value: 0, title: "Grocery & Items" }, 
-  {value: 0, title: "Phones & Laptops"}
+  {title: "Shoes & Outfits" }, 
+  {title: "Drinks & Beverages" }, 
+  {title: "Bags" },
+  {title: "Electrical Appliances" },
+  {title: "Hair & MakeUp" },
+  {title: "Grocery & Items" }, 
+  {title: "Phones & Laptops"}
 ] 
 
 const tags = [
-  { value: 0, title1: "make up" }, 
-  { value: 0, title1: "design" }, 
-  { value: 0, title1: "travel" },
-  { value: 0, title1: "outings" },
+  {title1: "make up" }, 
+  {title1: "design" }, 
+  {title1: "travel" },
+  {title1: "outings" },
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -72,13 +72,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddPostRightPanels({title, description, price, quantity}) { 
  
- // const user = useSelector(state => state.auth.user._id);
+ const admin = useSelector(state => state.auth.user._id);
 
   const [expanded, setExpanded] = React.useState(true); 
   
-  const [Category, setCategory] = useState("Bags"); 
+  const [Category, setCategory] = useState(""); 
 
- const [Tags, setTags] = useState("design");
+ const [Tags, setTags] = useState("");
  
  const [imageFile, setImageFile] = useState("");
  
@@ -90,12 +90,14 @@ export default function AddPostRightPanels({title, description, price, quantity}
     setExpanded(!expanded);
   };  
 
-  const handleCategory = (event) => { 
-    setCategory(event.target.title);
+  const handleCategory = (event, value) => { 
+    setCategory(value); 
+    console.log(value);
   }
    
-  const handleTags = (event) => { 
-   setTags(event.target.title1);
+  const handleTags = (event, value) => { 
+   setTags(value); 
+   console.log(value);
   }
   
   const handleClick = event => {
@@ -127,7 +129,7 @@ export default function AddPostRightPanels({title, description, price, quantity}
     storage.ref('products').child(imageFile.name).getDownloadURL().then(url => { 
       
       const productData = {  
-
+        Admin: admin,
         productName: title,  
         productPrice: price, 
         productQuantity: quantity,
@@ -223,7 +225,7 @@ export default function AddPostRightPanels({title, description, price, quantity}
           
         <Autocomplete
       size="small"
-      onChange={handleCategory}
+      onInputChange={handleCategory}
       options={category} 
       value={category.title}
       disableCloseOnSelect
@@ -265,7 +267,7 @@ export default function AddPostRightPanels({title, description, price, quantity}
      
         <Autocomplete
       size="small"
-      onChange={handleTags}
+      onInputChange={handleTags}
       options={tags} 
       value={tags.title1}
       disableCloseOnSelect

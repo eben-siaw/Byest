@@ -1,0 +1,41 @@
+.container-fluid {  
+    width: 100%; 
+    height: auto; 
+
+    /* flex style */
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: row;  
+    flex-grow: 1;
+ } 
+ 
+ .dashboard-report-card {
+    position: relative;
+    margin-bottom: 30px;
+    border: 1px solid #efefef;
+    box-shadow: none;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+	background: #fff;
+} 
+
+.box-card { 
+    width: 200px; 
+    margin: 20px;
+   box-sizing: border-box;
+}
+
+
+ /* media queries */ 
+
+ @media (max-width: 480px) { 
+ 
+    .box-card { 
+     width: 40%;   
+    }
+
+ }

@@ -3,7 +3,7 @@ import DashboardPage from "./DashboardPage";
 export const DashboardPageConfig = {
   routes: [
     {
-      path: "/admin",
+      path: "/admin/page",
       exact: true,
       component: DashboardPage
     }

@@ -19,7 +19,7 @@ const App = () => {
       <div className="App">
         <Router>
             <Route path='/' component={Web} />          
-            <Route component={NotFound} />
+            <Route path="/notfound" component={NotFound} />
         </Router>
       </div>
     </Provider> 

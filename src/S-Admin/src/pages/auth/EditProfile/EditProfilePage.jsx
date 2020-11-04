@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles, Typography, Button, TextField } from "@material-ui/core";
+import OftadehLayout from "../../../components/AdminLayout/OftadehLayout"; 
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +31,8 @@ const EditProfilePage = props => {
   const classes = useStyles();
   const { history } = props;
 
-  return (
+  return ( 
+    <OftadehLayout> 
     <div className={classes.root}>
       <div className={classes.loginCard}>
         <Typography variant="h5" component="h1">
@@ -110,7 +112,8 @@ const EditProfilePage = props => {
       >
         Back to Home
       </Button> */}
-    </div>
+    </div> 
+    </OftadehLayout>
   );
 };
 

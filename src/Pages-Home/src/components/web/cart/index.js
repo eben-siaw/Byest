@@ -5,14 +5,16 @@ import { connect } from 'react-redux';
 import { productQuantity, clearProduct } from '../../../actions/productQuantity'
 import './cart.css';
 
-function Cart({ cartProps, productQuantity, clearProduct }) {
+
+
+function Cart({cartProducts, cartProps, productQuantity, clearProduct }) {
     let productsInCart = [];
-    Object.keys(cartProps.products).forEach(function (item) {
-        if (cartProps.products[item].inCart) {
-            productsInCart.push(cartProps.products[item])
+    Object.keys(cartProducts).forEach(function (item) {
+        if (cartProducts[item]) {
+            productsInCart.push(cartProducts[item])
         }
     })
-    // console.log("cart number", cartProps)
+    console.log("cart products", cartProducts)
     return (
         <div>
             <Grid container className="shopping_cart">
@@ -40,23 +42,23 @@ function Cart({ cartProps, productQuantity, clearProduct }) {
                                             return (
                                                 <tr className="cross1" key={index}>
                                                     <td className="t-data ring-in">
-                                                        <Link className="at-in"><img src="images/wi1.png" className="img-responsive" alt="" /></Link>
+                                                        <Link className="at-in"><img src={product.productImage} className="img-responsive" alt="" /></Link>
                                                         <div className="sed">
-                                                            <h5>{product.name}</h5>
+                                                            <h5>{product.productName}</h5>
                                                         </div>
                                                         <div className="clearfix"> </div>
                                                         <div className="close2" onClick={() => clearProduct(product.tagName)}> <i className="fa fa-times" aria-hidden="true" /></div>
                                                     </td>
-                                                    <td className="t-data">{product.price}</td>
+                                                    <td className="t-data">{product.productPrice}</td>
                                                     <td className="t-data"><div className="quantity">
                                                         <div className="quantity-select">
                                                             <div className="entry value-minus" onClick={() => productQuantity('decrease', product.tagName)}>&nbsp;</div>
-                                                            <div className="entry value"><span className="span-1">{product.numbers}</span></div>
+                                                            <div className="entry value"><span className="span-1">{product.productQuantity}</span></div>
                                                             <div className="entry value-plus active" onClick={() => productQuantity('increase', product.tagName)}>&nbsp;</div>
                                                         </div>
                                                     </div>
                                                     </td>
-                                                    <td className="t-data t-w3l">{product.price * product.numbers}</td>
+                                                    <td className="t-data t-w3l">{product.productPrice * product.productQuantity}</td>
                                                 </tr>
                                             )
                                         })
@@ -82,12 +84,12 @@ function Cart({ cartProps, productQuantity, clearProduct }) {
                                             <div class="_10vVqD">Total Amount</div>
                                             <span>
                                                 <div class="tnAu1u">
-                                                    <span > ₹{cartProps.cartPrice}</span>
+                                                    <span > GH₵{cartProps.cartPrice}</span>
                                                 </div>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="_22vQVX">You will save ₹210 on this order</div>
+                                    <div class="_22vQVX">You will save GH₵4 on this order</div>
                                 </div>
                                 <Link to="/checkout">
                                     <div className="process_checkout_bk">
@@ -105,7 +107,8 @@ function Cart({ cartProps, productQuantity, clearProduct }) {
     )
 }
 const mapStateToProps = (state) => ({
-    cartProps: state.cartState
+    cartProps: state.cartState,                                               
+    cartProducts: state.cartState.products
 });
 
 export default connect(mapStateToProps, { productQuantity, clearProduct })(Cart);

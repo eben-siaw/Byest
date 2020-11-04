@@ -21,7 +21,7 @@ import './Orders.css';
      
     const FetchOrders = () => {   
 
-     axios.get(`/orders/getOrders/${admin}`) 
+     axios.get(`/orders/displayOrders/${admin}`) 
      .then(response => { 
          if(response.data.message) { 
            setOrders(response.data.orders);  
@@ -30,16 +30,15 @@ import './Orders.css';
     }
 
    // get number of orders 
-
    const CheckCount = () => { 
 
-   axios.get(`/orders/getOrders/${admin}`)
+    axios.get(`/orders/getOrders/${admin}`)
     .then(response => { 
       if(response.data.message) { 
         setOrdersCount(response.data.orders.lenght);  
       }  
-    })
-   }
+     })
+    }
 
     useEffect(() => { 
      FetchOrders(); 
@@ -61,8 +60,8 @@ import './Orders.css';
                               <div className="box-card"> 
                                 <div className="dashboard-report-card purple">
                                     <div className="card-content">
-                                        <span className="card-title">Order Pending</span>
-                                        <span className="card-count">2</span>
+                                        <span className="card-title">Orders from customers</span>
+                                        <span className="card-count">{ordersCount}</span>
                                     </div>
                                     <div className="card-media">
                                         <i className="fab fa-rev" />
@@ -120,38 +119,38 @@ import './Orders.css';
                                             <table className="table ucp-table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style={{ width: 130 }}>Order ID</th>
+                                                        <th style={{ width: 130 }}>Product Name</th>
                                                         <th style={{ width: 130 }}>Customer's Name</th>
                                                         <th style={{ width: 200 }}>Address</th>
                                                         <th style={{ width: 200 }}>Phone Number</th>
                                                         <th style={{ width: 130 }}>Location</th>
                                                         <th style={{ width: 130 }}>State</th>
-                                                        <th style={{ width: 100 }}>Product Name</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                        {Orders.map((orders, index) => {  
 
-                                                    <tr >
-                                                        <td>#ORDER 123</td>
-                                                        <td>Card </td>
-                                                        <td>
+                                        return (                    
+                                               <tr >
+                                               <td>{orders.productName}</td> 
 
-                                                        </td>
-                                                        <td>
-                                                            2013-01-12 09:10
-                                                                    </td>
-                                                        <td>
-                                                            Pending
-                                                                    </td>
-                                                        <td>&#8377;5000</td>
-                                                        <td className="action-btns">
+                                                <td>{orders.name}</td> 
 
-                                                            <i className="fas fa-eye" />
+                                               <td>{orders.address} </td> 
 
-                                                            <i className="fas fa-edit" />
-                                                        </td>
-                                                    </tr>
-                                                    
+                                               <td>{orders.phone}</td> 
+
+                                                <td>{orders.location}</td>  
+
+                                                <td>&#8377;{orders.state}</td>
+                                               <td className="action-btns">
+
+                                                   <i className="fas fa-eye" />
+
+                                                   <i className="fas fa-edit" />
+                                               </td>
+                                           </tr>
+                                        )})}                        
                                                 </tbody>
                                             </table>
                                         </div>

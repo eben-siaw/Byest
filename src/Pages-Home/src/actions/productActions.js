@@ -9,14 +9,9 @@ export const addToCart = (cartproduct) => {
       console.log(cartproduct);
      dispatch({
      type: ADD_TO_CART,
-      payload: {  
-      productName: cartproduct.productName, 
-      productDescription: cartproduct.productDescription, 
-      productPrice: cartproduct.productPrice, 
-      productQuantity: cartproduct.productQuantity        
-      }
-    })      
-        
+      payload: cartproduct 
+    
+    });      
  }
 
 }

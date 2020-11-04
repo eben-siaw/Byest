@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import { Paper, Grid } from '@material-ui/core';
 import './category.css';
+ 
+ // mobile category
 
 export default class Category extends Component {
     render() {
@@ -16,7 +18,7 @@ export default class Category extends Component {
                         </div>
                         <div className="category-name">
                             <div className="category-name__discount">Up to 71% off</div>
-                            <div className="category-name__name">Grocery &amp; Staples</div>
+                            <div className="category-name__name">Drinks &amp; Beverages</div>
                             <div className="category-name__description" title="Pulses, Atta & Other Flours, Rice & Other Grains, Dry Fruits & Nuts, Edible Oils, Ghee & Vanaspati, Spices, Salt & Sugar, Organic Staples">Pulses, Atta &amp; Other Flours, Rice &amp; Other Grains, Dry Fruits &amp; Nuts, Edible Oils, Ghee &amp; Vanaspati, Spices, Salt &amp; Sugar, Organic Staples</div>
                         </div>
                         <div className="category-icon">
@@ -33,8 +35,8 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 33% off</div>
-                            <div class="category-name__name">Vegetables &amp; Fruits</div>
-                            <div class="category-name__description" title="Fruits, Mangoes, Vegetables">Fruits, Mangoes, Vegetables</div>
+                            <div class="category-name__name">Shoes &amp; Outfits</div>
+                            <div class="category-name__description" title="Fruits, Mangoes, Vegetables">Begs, shoes, Dresses</div>
                         </div>
                         <div className="category-icon">
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -51,8 +53,8 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 69% off</div>
-                            <div class="category-name__name">Personal Care</div>
-                            <div class="category-name__description" title="Personal Care Best offers, Safety Must Haves, Bath &amp; Body, Hair Care, Skin Care, Oral Care, Fragrances, Face Care, Feminine Hygiene, Men's Grooming, Health And Wellness, Cosmetics">Personal Care Best offers, Safety Must Haves, Bath &amp; Body, Hair Care, Skin Care, Oral Care, Fragrances, Face Care, Feminine Hygiene, Men's Grooming, Health And Wellness, Cosmetics</div>
+                            <div class="category-name__name">Cars</div>
+                            <div class="category-name__description" title="Personal Care Best offers, Safety Must Haves, Bath &amp; Body, Hair Care, Skin Care, Oral Care, Fragrances, Face Care, Feminine Hygiene, Men's Grooming, Health And Wellness, Cosmetics">Cars Best offers, trucks &amp; coupe, Golf</div>
                         </div>
                         <div className="category-icon">
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -68,7 +70,7 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 69% off</div>
-                            <div class="category-name__name">Household Items</div>
+                            <div class="category-name__name">Phones & Laptops</div>
                             <div class="category-name__description" title="Buy 1 Get 1 Free, Household Best Offers, Laundry Detergents, Dishwashers, Cleaners, Pooja Needs, Repellents, Home &amp; Car Fresheners, Tissues &amp; Disposables, Shoe Care" >Buy 1 Get 1 Free, Household Best Offers, Laundry Detergents, Dishwashers, Cleaners, Pooja Needs, Repellents, Home &amp; Car Fresheners, Tissues &amp; Disposables, Shoe Care</div>
                         </div>
                         <div className="category-icon">
@@ -85,7 +87,7 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 80% off</div>
-                            <div class="category-name__name">Home &amp; Kitchen</div>
+                            <div class="category-name__name">Electrical Appliances</div>
                             <div class="category-name__description" title="Best Deals &amp; Offers, Cookware, Storage &amp; Containers, Kitchen Tools &amp; Accessories, Dining &amp; Serving, Bags &amp; Travel Accessories, Bathroom Essentials, Cleaning Equipment, Electrical Goods &amp; Accessories, Gas Stoves" >Best Deals &amp; Offers, Cookware, Storage &amp; Containers, Kitchen Tools &amp; Accessories, Dining &amp; Serving, Bags &amp; Travel Accessories, Bathroom Essentials, Cleaning Equipment, Electrical Goods &amp; Accessories, Gas Stoves</div>
                         </div>
                         <div className="category-icon">
@@ -102,7 +104,7 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 50% off</div>
-                            <div class="category-name__name">Beverages</div>
+                            <div class="category-name__name">Bags</div>
                             <div class="category-name__description" title="Best Offers, Cold Drinks, Juices &amp; Drinks, Tea &amp; Coffee, Health &amp; Energy Drinks, Water &amp; Soda, Milk Drinks">Best Offers, Cold Drinks, Juices &amp; Drinks, Tea &amp; Coffee, Health &amp; Energy Drinks, Water &amp; Soda, Milk Drinks</div>
                         </div>
                         <div className="category-icon">
@@ -119,7 +121,7 @@ export default class Category extends Component {
                         </div>
                         <div class="category-name">
                             <div class="category-name__discount">Up to 39% off</div>
-                            <div class="category-name__name">Breakfast &amp; Dairy</div>
+                            <div class="category-name__name"> Outfits </div>
                             <div class="category-name__description" title="Breakfast &amp; Dairy Best Offers, Milk &amp; Milk Products, Bread &amp; Eggs, Breakfast Cereal &amp; Mixes, Jams, Honey &amp; Spreads" >Breakfast &amp; Dairy Best Offers, Milk &amp; Milk Products, Bread &amp; Eggs, Breakfast Cereal &amp; Mixes, Jams, Honey &amp; Spreads</div>
                         </div>
                         <div className="category-icon">

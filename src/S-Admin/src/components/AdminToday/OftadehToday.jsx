@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const OftadehToday = () => {
-  const classes = useStyles();
+  const {classes} = useStyles();
   return (
     <div>
       <Typography variant="h5">{moment().format("dddd")}</Typography>

@@ -49,13 +49,28 @@ const navigationConfig = [
        exact: true,
       },
       {
-        id: "calendar",
-        title: "Calendar",
-        type: "item",
-  //      icon: "event",
-        url: "/admin/calendar",
-        exact: true,
+        id: "account",
+        title: "My Account",
+        type: "collapse",
+       // icon: "lock",
+        children: [
+          {
+            id: "profile",
+            title: "Profile",
+            type: "item",
+            url: "/admin/profile",
+            exact: true,
+          },
+          {
+            id: "Register",
+            title: "Edit Profile",
+            type: "item",
+            url: "/admin/edit",
+            exact: true,
+          },
+        ],
       },
+
     ],
   },
   {
@@ -67,7 +82,7 @@ const navigationConfig = [
         id: "About",
         title: "About",
         type: "item",
-        icon: "description",
+     //   icon: "description",
         url: "/admin/about",
         exact: true,
       },

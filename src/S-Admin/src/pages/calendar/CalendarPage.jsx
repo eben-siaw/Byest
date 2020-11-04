@@ -6,7 +6,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "../../components/AdminToday/OftadehToday";
 import { Paper } from "@material-ui/core"; 
 
-const localizer = momentLocalizer(moment);
 
 const myEventsList = [
   {
@@ -41,7 +40,9 @@ const myEventsList = [
 ];
 
 const CalendarPage = props => { 
-  
+ 
+  const localizer = momentLocalizer(moment);
+
   const { history } = props;
 
   return (

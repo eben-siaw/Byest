@@ -32,12 +32,14 @@ class Checkout extends Component {
    componentDidMount() { 
     const customertoken = localStorage.getItem("customertoken"); 
     if(!customertoken) { 
-       window.location = "/login" 
+       window.location = "/login"  
     } 
 
     const decoded = jwtdecode(customertoken); 
     this.props.setCurrentCustomer(decoded); 
-    this.props.setCustomerAuth(true);
+    this.props.setCustomerAuth(true); 
+
+    
    }
 
    handleChange (event) { 
@@ -51,15 +53,19 @@ class Checkout extends Component {
    handleSubmit (event) { 
 
     event.preventDefault(); 
-  
-   const data = { 
+   
+  const productAdmin = this.props.cartProps.product.Admin; 
+
+   const data = {  
+    admin: productAdmin,    
     address: this.state.address, 
     locality: this.state.locality, 
-    city: this.state.city, 
+    city: this.state.city,  
+    phone: this.state.phone,
     name: this.state.name, 
     state: this.state.state    
    }
-    const admin = this.props.cartProps.product.Admin; 
+   
 
     axios.post(`/order/requestOrder`, data)
     .then(response => { 
@@ -73,7 +79,7 @@ class Checkout extends Component {
    }
 
     render() { 
-
+    
         return (
             <div> 
                 <Grid className="grid-wrapper" container>
@@ -91,7 +97,7 @@ class Checkout extends Component {
                                             <TextField variant="outlined" name="name" className="text-input" placeholder="Name" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="name" className="text-input"  placeholder="Phone number" />
+                                            <TextField variant="outlined" name="phone" className="text-input"  placeholder="Phone number" />
                                         </Grid>
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
                                             <TextField variant="outlined" name="pincode" className="text-input"  placeholder="Pincode" />

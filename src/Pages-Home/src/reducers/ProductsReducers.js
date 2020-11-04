@@ -3,6 +3,8 @@ import { ADD_TO_CART, GET_NUMBERS_BASKET, INCREASE_QUANTITY, DECREASE_QUANTITY, 
 
 // initial states of products fetched and a payload to be returned 
 
+ // amount cart product [] .. {_id name price}
+
 const initialState = {
     cart: 0,
     cartPrice: 0, 
@@ -23,17 +25,16 @@ export default (state = initialState, action) => {
 
         case ADD_TO_CART: 
 
-            productSelected = { ...state.products[action.payload] }
+            productSelected = { ...state.products}
             productSelected.numbers += 1;
             productSelected.inCart = true;
 
             return {
                 ...state,
                 cart: state.cart + 1,
-                cartPrice: state.cartPrice + state.products[action.payload.productPrice],
+                cartPrice: state.cartPrice + action.payload.productPrice,
                 products: {
-                    ...state.products,
-                    [action.payload]: productSelected
+                    ...state.products, products: action.payload
                 }
             }
         case GET_NUMBERS_BASKET:

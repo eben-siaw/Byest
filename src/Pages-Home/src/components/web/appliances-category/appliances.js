@@ -33,7 +33,7 @@ export default class AppliancesCategory extends Component {
 
     render() { 
        
-        if(this.state.cars.length < 1) {  
+        if(this.state.appliances.length < 1) {  
 
          return( 
             <div>

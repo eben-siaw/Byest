@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import OftadehLayout from '../../../components/AdminLayout/OftadehLayout';
 import './Orders.css'; 
 
- const BASE_URL = "";
+ const URL = "https://mekexpress-backend.herokuapp.com";
 
  const http = "http://localhost:5080";
 
@@ -71,7 +71,7 @@ import './Orders.css';
                              </div>
                             
 
-                                <div className="box-card"> 
+                                <div className="contents-card"> 
                                 <div className="dashboard-report-card red">
                                     <div className="card-content">
                                         <span className="card-title">Order Cancel</span>
@@ -83,7 +83,7 @@ import './Orders.css';
                                 </div>
                                 </div>
 
-                             <div className="box-card"> 
+                             <div className="contents-card"> 
                                 <div className="dashboard-report-card info">
                                     <div className="card-content">
                                         <span className="card-title">Order Process</span>
@@ -94,7 +94,7 @@ import './Orders.css';
                                     </div>
                                 </div>
                             </div>
-                                <div className="box-card"> 
+                                <div className="contents-card"> 
                                 <div className="dashboard-report-card success">
                                     <div className="card-content">
                                         <span className="card-title">Target Income</span>

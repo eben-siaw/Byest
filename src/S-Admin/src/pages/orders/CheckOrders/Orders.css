@@ -24,9 +24,9 @@
 	 background: #fff;
 } 
 
-.box-card { 
-    width: 200px; 
-    margin: 20px;
+.contents-card { 
+   width: 200px; 
+   margin: 20px;
    box-sizing: border-box;
 }
 
@@ -35,8 +35,8 @@
 
  @media (max-width: 480px) { 
  
-    .box-card { 
-     width: 40%;   
+    .contents-card { 
+     display: flex; 
     }
 
  }

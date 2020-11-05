@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
  
 import {useSelector} from 'react-redux';
+ 
+ const URL = "https://mekexpress-backend.herokuapp.com"
 
  const http = "http://localhost:5080";
 

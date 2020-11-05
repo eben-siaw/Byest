@@ -22,7 +22,7 @@ export default class Category extends Component {
                             <div className="category-name__description" title="Pulses, Atta & Other Flours, Rice & Other Grains, Dry Fruits & Nuts, Edible Oils, Ghee & Vanaspati, Spices, Salt & Sugar, Organic Staples">Pulses, Atta &amp; Other Flours, Rice &amp; Other Grains, Dry Fruits &amp; Nuts, Edible Oils, Ghee &amp; Vanaspati, Spices, Salt &amp; Sugar, Organic Staples</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          <a href="/drinks">  <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
                     {/* //2nd div */}
@@ -39,7 +39,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Fruits, Mangoes, Vegetables">Begs, shoes, Dresses</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <a href="/shoes">  <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
 
@@ -57,7 +57,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Personal Care Best offers, Safety Must Haves, Bath &amp; Body, Hair Care, Skin Care, Oral Care, Fragrances, Face Care, Feminine Hygiene, Men's Grooming, Health And Wellness, Cosmetics">Cars Best offers, trucks &amp; coupe, Golf</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <a href="/cars">   <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
                     {/* 4th div */}
@@ -74,7 +74,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Buy 1 Get 1 Free, Household Best Offers, Laundry Detergents, Dishwashers, Cleaners, Pooja Needs, Repellents, Home &amp; Car Fresheners, Tissues &amp; Disposables, Shoe Care" >Buy 1 Get 1 Free, Household Best Offers, Laundry Detergents, Dishwashers, Cleaners, Pooja Needs, Repellents, Home &amp; Car Fresheners, Tissues &amp; Disposables, Shoe Care</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                         <a href="/phones">  <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
                     {/* 5th div */}
@@ -91,7 +91,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Best Deals &amp; Offers, Cookware, Storage &amp; Containers, Kitchen Tools &amp; Accessories, Dining &amp; Serving, Bags &amp; Travel Accessories, Bathroom Essentials, Cleaning Equipment, Electrical Goods &amp; Accessories, Gas Stoves" >Best Deals &amp; Offers, Cookware, Storage &amp; Containers, Kitchen Tools &amp; Accessories, Dining &amp; Serving, Bags &amp; Travel Accessories, Bathroom Essentials, Cleaning Equipment, Electrical Goods &amp; Accessories, Gas Stoves</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <a href="/appliances">   <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
                     {/* 6th div */}
@@ -108,7 +108,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Best Offers, Cold Drinks, Juices &amp; Drinks, Tea &amp; Coffee, Health &amp; Energy Drinks, Water &amp; Soda, Milk Drinks">Best Offers, Cold Drinks, Juices &amp; Drinks, Tea &amp; Coffee, Health &amp; Energy Drinks, Water &amp; Soda, Milk Drinks</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                           <i class="fa fa-angle-down" aria-hidden="true"></i>  
                         </div>
                     </div>
                     {/* 7th div */}
@@ -125,7 +125,7 @@ export default class Category extends Component {
                             <div class="category-name__description" title="Breakfast &amp; Dairy Best Offers, Milk &amp; Milk Products, Bread &amp; Eggs, Breakfast Cereal &amp; Mixes, Jams, Honey &amp; Spreads" >Breakfast &amp; Dairy Best Offers, Milk &amp; Milk Products, Bread &amp; Eggs, Breakfast Cereal &amp; Mixes, Jams, Honey &amp; Spreads</div>
                         </div>
                         <div className="category-icon">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                         <a href="/outfits"> <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
                         </div>
                     </div>
 

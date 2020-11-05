@@ -5,6 +5,8 @@ import './phones.css';
 import {addToCart} from '../../../actions/productActions';
 import {useDispatch} from 'react-redux';
 
+const URL = "https://mekexpress-backend.herokuapp.com";
+
 const http = "http://localhost:5080";
 
 export default function PhonesCategory() { 

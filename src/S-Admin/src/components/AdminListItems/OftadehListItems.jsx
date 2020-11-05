@@ -7,6 +7,8 @@ import axios from 'axios';
 import {useEffect, useState} from 'react'; 
 import {useSelector} from 'react-redux'; 
 
+const URL = "https://mekexpress-backend.herokuapp.com";
+
 const http = "http://localhost:5080";
 
 const OftadehListItems = props => {

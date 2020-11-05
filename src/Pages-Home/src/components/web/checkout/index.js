@@ -9,7 +9,10 @@ import axios from 'axios';
 import jwtdecode from 'jwt-decode'; 
 import { Button, TextField } from '@material-ui/core';
 import {setCustomerAuth, setCurrentCustomer} from '../../../actions/userActions';
-import { TransferWithinAStationSharp } from '@material-ui/icons';
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'; 
+
+ const URL = "https://mekexpress-backend.herokuapp.com";
 
  const http = "http://localhost:5080";
 
@@ -55,8 +58,10 @@ class Checkout extends Component {
 
     axios.post(http + `/orders/requestOrder`, data)
     .then(response => { 
-        if(response.data.message) { 
-          return response.data;
+        if(response.data.message) {  
+         toast("Order submitted successfully!"); 
+         window.location = "/";
+         return response.data; 
         }
     })
      .catch(err => { 
@@ -144,7 +149,8 @@ class Checkout extends Component {
                                             <br/>
                                          <div >
                                             <Button onClick={event => this.handleSubmit(event)} size="large"  color="primary" variant="contained">SUBMIT ORDER</Button> 
-                                            <Button onClick={this.handleCancel} color="secondary" variant="contained" size="large">Cancel</Button>
+                                            <Button onClick={this.handleCancel} color="secondary" variant="contained" size="large">Cancel</Button> 
+                                            <ToastContainer/>
                                         </div> 
 
                                         </Grid>

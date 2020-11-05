@@ -1,5 +1,7 @@
 import axios from 'axios'; 
 
+const URL = "https://mekexpress-backend.herokuapp.com";
+
 const http = "http://localhost:5080";
 
 export const register = (newUser) => { 

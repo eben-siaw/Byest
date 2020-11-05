@@ -3,9 +3,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import {useEffect, useState} from 'react';
 import Sliderproduct from '../home/Carousel/sliderproduct/index';
-import { useDispatch } from 'react-redux';
-import {setCustomerAuth, setCurrentCustomer} from '../../../actions/userActions'; 
-import jwt_decode from 'jwt-decode';
+
+const URL = "https://mekexpress-backend.herokuapp.com";
 
  const http = "http://localhost:5080";
 

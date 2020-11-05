@@ -61,7 +61,7 @@ export default class Footer extends Component {
                         </div>
                     </div>
                     <div className="copy-right">
-                        <p> © 2020 Big store. All Rights Reserved | Design by  <Link to="http://abhinashkumar.com/"> Abhinash kumar</Link></p>
+                        <p> © 2020 Mekexpress. All Rights Reserved | Develped by  <Link to="#"> Ebenezer</Link></p>
                     </div>
                 </div>
             </div>

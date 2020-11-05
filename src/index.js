@@ -22,7 +22,7 @@ const routing = (
         <Route exact path="/" component={App} />    
         <Route path="/login" component={Customer} /> 
         <Route path="/register" component={CustRegister} /> 
-        <Route path="/carts" component={CartPage} />
+        <Route exact path="/carts" component={CartPage} />
           {/* Admin Pages  */}
         <Route path="/admin/auth" component={AdminPage} />   
         <Route path="/admin/register" component={Register} /> 

@@ -16,6 +16,9 @@ import OftadehAvatarMenu from "../AdminAvatarMenu/OftadehAvatarMenu";
 import clsx from "clsx";
 import NavigationContext from "../../context/NavigationContext";
 import ThemeContext from "../../context/ThemeContext";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -97,13 +100,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OftadehAppBar = (props) => {
+ const http = "http://localhost:5080"
+
+const OftadehAppBar = (props) => { 
+ 
+ const admin = useSelector(state => state.auth.user._id)
+
   const classes = useStyles(props);
   const { open, handleDrawerToggle, handleRightPanelOpen } = React.useContext(
     NavigationContext
   );
 
   const { setThemeName, curThemeName } = React.useContext(ThemeContext);
+  
+  const [counts, setCounts] = useState(0);
+
+  const FetchOrders = () => {   
+
+    axios.get(http + `/orders/getOrders/${admin}`) 
+    .then(response => { 
+        if(response.data.message) {  
+            console.log(response.data)
+          setCounts(response.data.orders.length);  
+        } 
+    })
+   } 
+
+   useEffect(() => { 
+     FetchOrders();
+   })
 
   return (
     <AppBar
@@ -166,7 +191,7 @@ const OftadehAppBar = (props) => {
               aria-label="show 4 new messages"
               color="inherit"
             >
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -177,7 +202,7 @@ const OftadehAppBar = (props) => {
             aria-label="show 17 new notifications"
             color="inherit"
           >
-            <Badge badgeContent={17} color="secondary">
+            <Badge badgeContent={counts} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>

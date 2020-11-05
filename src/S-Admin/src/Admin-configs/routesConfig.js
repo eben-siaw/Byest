@@ -7,9 +7,9 @@ import { AddPostPageConfig } from "../pages/posts/Products/AddProductPageConfig"
 import {AllOrdersConfig} from "../pages/orders/Orders/OrdersConfig";
 import { AllPostsPageConfig } from "../pages/posts/all-products/AllProductsConfig";
 import { CalendarPageConfig } from "../pages/calendar/CalendarPageConfig";
-import { ForgotPasswordPageConfig } from "../pages/auth/forgot-password/ForgotPasswordPageConfig";
-import { ProfilePageConfig } from "../pages/auth/Profile/ProfilePageConfig";
-import { EditProfilePageConfig } from "../pages/auth/EditProfile/EditProfilePageConfig";
+import { ForgotPasswordPageConfig } from "../pages/Profile/forgot-password/ForgotPasswordPageConfig";
+import { ProfilePageConfig } from "../pages/Profile/Profile/ProfilePageConfig";
+import { EditProfilePageConfig } from "../pages/Profile/EditProfile/EditProfilePageConfig";
 import { Error404PageConfig } from "../pages/errors/404/Error404PageConfig";
 import { Error500PageConfig } from "../pages/errors/500/Error500PageConfig";
 // import { DocumentationConfig } from "../pages/documentation/DocumentationConfig";

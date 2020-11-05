@@ -1,7 +1,8 @@
 import React, { Component } from "react"; 
 import {register} from './Functions' 
 import {Link} from 'react-router-dom';
-import "./Page.css";
+import "./Page.css"; 
+import HomeIcon from '@material-ui/icons/Home';
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/

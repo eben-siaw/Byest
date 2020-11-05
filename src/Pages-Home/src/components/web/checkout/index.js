@@ -9,55 +9,40 @@ import axios from 'axios';
 import jwtdecode from 'jwt-decode'; 
 import { Button, TextField } from '@material-ui/core';
 import {setCustomerAuth, setCurrentCustomer} from '../../../actions/userActions';
+import { TransferWithinAStationSharp } from '@material-ui/icons';
 
  const http = "http://localhost:5080";
 
 class Checkout extends Component { 
  
    constructor(props) { 
-    super(props); 
+    super(props);  
+
     this.state = { 
      address: "", 
-     locality: "", 
+     locality: "",  
+     phone: "", 
+     pincode: "",
      city: "", 
      name: "", 
      state: ""
     }
-  
-    this.handleChange =  this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
    }
     
-   componentDidMount() { 
-    const customertoken = localStorage.getItem("customertoken"); 
-    if(!customertoken) { 
-       window.location = "/login"  
-    } 
-
-    const decoded = jwtdecode(customertoken); 
-    this.props.setCurrentCustomer(decoded); 
-    this.props.setCustomerAuth(true); 
-
-    
-   }
-
-   handleChange (event) { 
-    this.setState({[event.target.name]: event.target.value})
-   }
   
    handleCancel () { 
     window.location = "/";   
    }
 
-   handleSubmit (event) { 
+   handleSubmit(event) { 
+  
+    const {adminId} = this.props.match.params;
 
     event.preventDefault(); 
    
-  const productAdmin = this.props.cartProps.product.Admin; 
-
    const data = {  
-    admin: productAdmin,    
+    admin: adminId,     
     address: this.state.address, 
     locality: this.state.locality, 
     city: this.state.city,  
@@ -66,8 +51,9 @@ class Checkout extends Component {
     state: this.state.state    
    }
    
+   console.log(data);
 
-    axios.post(`/order/requestOrder`, data)
+    axios.post(http + `/orders/requestOrder`, data)
     .then(response => { 
         if(response.data.message) { 
           return response.data;
@@ -79,7 +65,7 @@ class Checkout extends Component {
    }
 
     render() { 
-    
+      const {address, phone, name, pincode, locality, city, state} = this.state
         return (
             <div> 
                 <Grid className="grid-wrapper" container>
@@ -92,34 +78,72 @@ class Checkout extends Component {
                                 <Paper > 
                                     <div className="paper-content">  
                                     <h3 className="_1fM65H _2RMAtd"><span className="_1Tmvyj"></span><span className="_1_m52b">STEP 1</span></h3>
-                                    <Grid container spacing={4} className="address_bk_checkout ">
+                                    <Grid container spacing={4} className="address_bk_checkout "> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="name" className="text-input" placeholder="Name" />
-                                        </Grid>
+                                            <TextField variant="outlined"   
+                                              defaultValue={this.state.name}
+                                              onChange={event => {
+                                                const { value } = event.target; 
+                                                console.log(value);
+                                                this.setState({ name: value });  }}
+                                              className="text-input" placeholder="Your Name" />
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="phone" className="text-input"  placeholder="Phone number" />
-                                        </Grid>
+                                            <TextField variant="outlined" defaultValue={this.state.phone}
+                                              onChange={event => {
+                                                const { value } = event.target; 
+                                                console.log(value);
+                                                this.setState({phone: value });  }} 
+                                                className="text-input"  placeholder="Phone number" />
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="pincode" className="text-input"  placeholder="Pincode" />
-                                        </Grid>
+                                            <TextField variant="outlined" defaultValue={this.state.pincode} 
+                                             className="text-input"  placeholder="Pincode"  
+                                             onChange={event => {
+                                             const { value } = event.target;
+                                             this.setState({ pincode: value });  }}/>
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="locality" className="text-input"  placeholder="Locality" />
-                                        </Grid>
+                                            <TextField variant="outlined"  defaultValue={this.state.locality}  
+                                              onChange={event => {
+                                                const { value } = event.target;
+                                                this.setState({ locality: value });  }}
+                                            className="text-input"  placeholder="Locality" />
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={12} lg={12}>
-                                            <TextField variant="outlined" name="address" className="text-input" placeholder="Address(Area and Street)" />
-                                        </Grid>
+                                            <TextField variant="outlined"  defaultValue={this.state.address}  
+                                              onChange={event => {
+                                                const { value } = event.target;
+                                                this.setState({ address: value });  }}
+                                             className="text-input" placeholder="Address(Area and Street)" />
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="city" className="text-input"  placeholder="City/District/Town" />
-                                        </Grid>
+                                            <TextField variant="outlined" defaultValue={this.state.city} 
+                                              onChange={event => {
+                                                const { value } = event.target;
+                                                this.setState({ city: value });  }}
+                                             className="text-input"  placeholder="City/District/Town" />
+                                        </Grid> 
+
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" name="state" className="text-input"  placeholder="State" />
-                                        </Grid>
+                                            <TextField variant="outlined" defaultValue={this.state.city} 
+                                              onChange={event => {
+                                                const { value } = event.target;
+                                                this.setState({ state: value });  }}
+                                               className="text-input"  placeholder="State" />
+                                        </Grid> 
+
                                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                             
                                             <br/>
-
                                          <div >
-                                            <Button onSubmit={this.handleSubmit} size="large"  color="primary" variant="contained">SUBMIT ORDER</Button> 
+                                            <Button onClick={event => this.handleSubmit(event)} size="large"  color="primary" variant="contained">SUBMIT ORDER</Button> 
                                             <Button onClick={this.handleCancel} color="secondary" variant="contained" size="large">Cancel</Button>
                                         </div> 
 

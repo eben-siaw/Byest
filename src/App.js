@@ -8,20 +8,16 @@ import { Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 /* Store from redux*/
-import store from './Pages-Home/src/store'; 
 
 const App = () => { 
   
 
   return ( 
-   
-    <Provider store={store}> 
       <div className="App">
         <Router>
-            <Route path='/' component={Web} />          
+          <Web/>          
         </Router>
       </div>
-    </Provider> 
    
   );
 }

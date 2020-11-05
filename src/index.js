@@ -9,18 +9,28 @@ import AdminDashboard from './S-Admin/src/AdminDashboard';
 import { Provider } from 'react-redux';
  
 import store from './Pages-Home/src/store'; 
+import Web  from './Pages-Home/src/components/web'
+import Register from './S-Admin/src/auth/register';
+import Customer from './Pages-Home/src/components/home-auth/customer';
+import CustRegister from './Pages-Home/src/components/home-auth/custregister';
+import CartPage from './Pages-Home/src/components/home-auth/cart_page';
 
-const routing = (
+const routing = ( 
+  <Provider store={store}>  
     <Router>
       <div>
-        <Route exact path="/" component={App} /> 
-        <Provider store={store}>  
-        <Route path="/admin/auth" component={AdminPage} />  
+        <Route exact path="/" component={App} />    
+        <Route path="/login" component={Customer} /> 
+        <Route path="/register" component={CustRegister} /> 
+        <Route path="/carts" component={CartPage} />
+          {/* Admin Pages  */}
+        <Route path="/admin/auth" component={AdminPage} />   
+        <Route path="/admin/register" component={Register} /> 
         <Route path="/admin/page" component={AdminDashboard}/>  
         <Route path="/notFound" component={NotFound} />
-        </Provider>
       </div>
-    </Router>
+    </Router> 
+    </Provider>
   )
 
 ReactDOM.render(routing, document.getElementById('root') 

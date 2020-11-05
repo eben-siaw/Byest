@@ -21,5 +21,5 @@ export const login = async (customer) => {
 
  const {data} = await axios.post(local + "/customers/login", customer); 
  localStorage.setItem("customertoken", data); 
- window.location = "/checkout"
+ window.location = "/cart"
 }

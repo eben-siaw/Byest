@@ -6,7 +6,8 @@
     display: flex; 
     justify-content: space-between;
     flex-direction: row;  
-    flex-grow: 1;
+    flex-grow: 1; 
+    flex-wrap: wrap;
  } 
  
  .dashboard-report-card {
@@ -20,7 +21,7 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
-	background: #fff;
+	 background: #fff;
 } 
 
 .box-card { 

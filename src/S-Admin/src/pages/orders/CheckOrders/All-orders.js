@@ -21,9 +21,10 @@ import './Orders.css';
      
     const FetchOrders = () => {   
 
-     axios.get(`/orders/displayOrders/${admin}`) 
+     axios.get(http + `/orders/getOrders/${admin}`) 
      .then(response => { 
-         if(response.data.message) { 
+         if(response.data.message) {  
+             console.log(response.data)
            setOrders(response.data.orders);  
          } 
      })
@@ -32,7 +33,7 @@ import './Orders.css';
    // get number of orders 
    const CheckCount = () => { 
 
-    axios.get(`/orders/getOrders/${admin}`)
+    axios.get(http + `/orders/getOrders/${admin}`)
     .then(response => { 
       if(response.data.message) { 
         setOrdersCount(response.data.orders.lenght);  
@@ -132,7 +133,7 @@ import './Orders.css';
 
                                         return (                    
                                                <tr >
-                                               <td>{orders.productName}</td> 
+                                               <td>orders</td> 
 
                                                 <td>{orders.name}</td> 
 
@@ -140,7 +141,7 @@ import './Orders.css';
 
                                                <td>{orders.phone}</td> 
 
-                                                <td>{orders.location}</td>  
+                                                <td>{orders.locality}</td>  
 
                                                 <td>&#8377;{orders.state}</td>
                                                <td className="action-btns">

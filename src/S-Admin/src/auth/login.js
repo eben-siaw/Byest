@@ -254,7 +254,8 @@ class Login extends Component {
         }         
 
         @media (max-width: 458px) { 
-          .wrapper {
+          .wrapper { 
+            display: flex; 
             margin: 0 18px;
           }
           

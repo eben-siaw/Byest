@@ -15,7 +15,7 @@ const navigationConfig = [
         exact: true,
       },
       {
-        id: "posts",
+        id: "products",
         title: "Products",
         type: "collapse",
     //    icon: "file_copy",
@@ -26,7 +26,7 @@ const navigationConfig = [
         },
         children: [
           {
-            id: "all posts",
+            id: "all products",
             title: "All Products",
             type: "item",
             url: "/admin/products",

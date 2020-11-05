@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-
 import OftadehListItems from "../AdminListItems/OftadehListItems";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +36,9 @@ const notifList = [
   }
 ];
 
-const NotificationsContainer = props => {
+
+const NotificationsContainer = props => { 
+
   const classes = useStyles();
 
   return (

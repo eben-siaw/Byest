@@ -19,7 +19,7 @@ export default class AppliancesCategory extends Component {
 
   componentDidMount() { 
     
-    const appliances = "Appliances";
+    let appliances = "Appliances";
 
     try { 
      axios.get(http + `/products/getCars/${appliances}`) 

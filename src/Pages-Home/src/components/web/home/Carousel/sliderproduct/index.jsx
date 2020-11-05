@@ -60,7 +60,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b " onClick={() => this.props.state.addToCart("moong")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("sunflower")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("kabuli")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -214,14 +214,14 @@ export default class Sliderproduct extends Component {
                                         <h6><Link to="/product-details">Soya Chunks</Link>(1 kg)</h6>
                                     </div>
                                     <div className="mid-2">
-                                        <p><label>$4.00</label><em className="item_price">$3.50</em></p>
+                                        <p><label></label><em className="item_price"></em></p>
                                         <div className="block">
                                             <div className="starbox small ghosting"> </div>
                                         </div>
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                        <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -235,29 +235,7 @@ export default class Sliderproduct extends Component {
             return (
                 <div>
                     <Slider {...settings}>
-                        <div className="col-md-3 m-wthree">
-                            <div className="col-m">
-                                <Link to="/" data-toggle="modal" data-target="#myModal1" className="offer-img">
-                                    <img src="/images/of.png" className="img-responsive" alt="" />
-                                    <div className="offer"><p><span>Offer</span></p></div>
-                                </Link>
-                                <div className="mid-1">
-                                    <div className="women">
-                                        <h6><Link to="/product-details">Moong</Link>(1 kg)</h6>
-                                    </div>
-                                    <div className="mid-2">
-                                        <p><label>$2.00</label><em className="item_price">$1.50</em></p>
-                                        <div className="block">
-                                            <div className="starbox small ghosting"> </div>
-                                        </div>
-                                        <div className="clearfix" />
-                                    </div>
-                                    <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b " onClick={() => this.props.state.addToCart("moong")}>Add to Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    
                         <div className="col-md-3 m-wthree">
                             <div className="col-m">
                                 <Link to="#" data-toggle="modal" data-target="#myModal2" className="offer-img">
@@ -276,7 +254,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("sunflower")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +277,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("kabuli")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -322,7 +300,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +323,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -368,7 +346,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -391,7 +369,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +392,7 @@ export default class Sliderproduct extends Component {
                                         <div className="clearfix" />
                                     </div>
                                     <div className="add">
-                                        <button className="btn btn-danger my-cart-btn my-cart-b" onClick={() => this.props.state.addToCart("soyachunks")}>Add to Cart</button>
+                                    <button className="btn btn-danger my-cart-btn my-cart-b">Common Items</button>
                                     </div>
                                 </div>
                             </div>

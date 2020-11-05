@@ -42,19 +42,19 @@ function Cart({cartProducts, cartProps, productQuantity, clearProduct }) {
                                             return (
                                                 <tr className="cross1" key={index}>
                                                     <td className="t-data ring-in">
-                                                        <Link className="at-in"><img src={product.productImage} className="img-responsive" alt="" /></Link>
+                                                        <Link to={"/product-details/" + product._id}  className="at-in"><img src={product.productImage} className="img-responsive" alt="" /></Link>
                                                         <div className="sed">
-                                                            <h5>{product.productName}</h5>
+                                                          <Link to={"/product-details/" + product._id}> <h5>{product.productName}</h5> </Link>
                                                         </div>
                                                         <div className="clearfix"> </div>
-                                                        <div className="close2" onClick={() => clearProduct(product.tagName)}> <i className="fa fa-times" aria-hidden="true" /></div>
+                                                        <div className="close2" onClick={() => clearProduct(product._id)}> <i className="fa fa-times" aria-hidden="true" /></div>
                                                     </td>
                                                     <td className="t-data">{product.productPrice}</td>
                                                     <td className="t-data"><div className="quantity">
                                                         <div className="quantity-select">
-                                                            <div className="entry value-minus" onClick={() => productQuantity('decrease', product.tagName)}>&nbsp;</div>
+                                                            <div className="entry value-minus">&nbsp;</div>
                                                             <div className="entry value"><span className="span-1">{product.productQuantity}</span></div>
-                                                            <div className="entry value-plus active" onClick={() => productQuantity('increase', product.tagName)}>&nbsp;</div>
+                                                            <div className="entry value-plus active">&nbsp;</div>
                                                         </div>
                                                     </div>
                                                     </td>
@@ -91,11 +91,9 @@ function Cart({cartProducts, cartProps, productQuantity, clearProduct }) {
                                     </div>
                                     <div class="_22vQVX">You will save GH₵4 on this order</div>
                                 </div>
-                                <Link to="/checkout">
                                     <div className="process_checkout_bk">
-                                        <span>Proceed to Checkout</span>
+                                        <span>Click on product to continue</span>
                                     </div>
-                                </Link>
                             </Card>
                         </Grid>
                     </Grid>

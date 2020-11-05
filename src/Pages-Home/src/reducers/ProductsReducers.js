@@ -11,88 +11,93 @@ const initialState = {
     products: []
 } 
 
-// action.payload is the returned data from the server 
 
 // state of product is an initial array which returns a payload of the details of the products 
 
 // to be added to the cart page
 
 export default (state = initialState, action) => { 
+  
+    // we increase cart number and check if cart already exist 
 
     let productSelected = ""; 
 
     switch (action.type) { 
 
         case ADD_TO_CART: 
+            
+            productSelected = { ...state.products[action.payload]}
+            productSelected.productQuantity += 1;
+            productSelected.inCart = true; 
+   
+            const items = action.payload;  
 
-            productSelected = { ...state.products}
-            productSelected.numbers += 1;
-            productSelected.inCart = true;
-
+            // check if cart selected already exists in the redux store
+            const cartItems = state.products.find(item => item._id === items._id)
+           
+           if(cartItems) { 
+            return {...state, products: state.products.map(item => item._id === cartItems._id ? items : item) }
+           }
+          
+           // inserting a new cart
             return {
                 ...state,
                 cart: state.cart + 1,
                 cartPrice: state.cartPrice + action.payload.productPrice,
-                products: {
-                    ...state.products, products: action.payload
-                }
+                products: [ 
+                    ...state.products, items
+                ]
             }
-        case GET_NUMBERS_BASKET:
+            case GET_NUMBERS_BASKET:
             return {
                 ...state
-            }
+            } 
 
-        case INCREASE_QUANTITY:
+          case CLEAR_PRODUCT:   
+            const selected = state.products.find(item => item._id === action.payload._id)
+            return {
+            ...state, 
+            cartPrice:  state.cartPrice + action.payload.productPrice,
+            cart: state.cart - 1,
+            products: state.products.filter(item => item._id !== action.payload)  
+                
+         }    
+
+           // Not going to be used  //
+      /*  case INCREASE_QUANTITY:
             productSelected = { ...state.products[action.payload] }
-            productSelected.numbers += 1;
+            productSelected.productQuantity += 1;
             return {
                 ...state,
-                cart: state.cart +1 ,
-                cartPrice: state.cartPrice + state.products[action.payload.productPrice],
-                products: {
-                    ...state.products,
-                    [action.payload]: productSelected
-                }
-            }
+                cart: state.cart + 1 ,
+                cartPrice: state.cartPrice + action.payload.productPrice,
+                products: [ 
+                    ...state.products, action.payload
+                ]
+        }
 
         case DECREASE_QUANTITY:
-            productSelected = { ...state.products[action.payload] }
+            productSelected = action.payload;
             let newCartPrice = 0;
             let newCartNumbers = 0;
-            if (productSelected.numbers === 0) {
-                productSelected.numbers = 0
+            if (productSelected.productQuantity === 0) {
+                productSelected.productPrice = 0
                 newCartPrice = state.cartPrice
                 newCartNumbers = state.cart
             }
             else {
-                productSelected.numbers -= 1;
-                newCartPrice = state.cartPrice - state.products[action.payload.productPrice]
+                productSelected.productQuantity -= 1;
+                newCartPrice = state.cartPrice - action.payload.productPrice;
                 newCartNumbers = state.cart - 1
             }
             return {
                 ...state,
                 cart: newCartNumbers ,
                 cartPrice: newCartPrice,
-                products: {
-                    ...state.products,
-                    [action.payload]: productSelected
-                }
-            }
-
-        case CLEAR_PRODUCT:
-            productSelected = { ...state.products[action.payload] };
-            let numbersBackup = productSelected.numbers;
-            productSelected.numbers = 0 ;
-            productSelected.inCart = false
-            return {
-                ...state,
-                cartPrice: state.cartPrice - (numbersBackup * productSelected.productPrice),
-                cart: state.cart - numbersBackup,
-                products: {
-                    ...state.products,
-                    [action.payload]: productSelected
-                }
-            }
+                products: [ 
+                    ...state.products, action.payload
+                ]
+            } */
 
         default:
             return state;

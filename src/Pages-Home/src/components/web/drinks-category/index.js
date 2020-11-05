@@ -19,7 +19,7 @@ export default class Household extends Component {
 
   componentDidMount() { 
     
-    const cars = "cars";
+    let cars = "cars";
 
     try { 
      axios.get(http + `/products/getCars/${cars}`) 

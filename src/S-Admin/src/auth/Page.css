@@ -6,3 +6,7 @@ medium green: #7EB09B
 light green: #A3C4BC
 */ 
 
+body { 
+ padding: 0px; 
+ margin: 0px;   
+}

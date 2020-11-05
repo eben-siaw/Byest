@@ -73,7 +73,7 @@ function Cart({cartProducts, cartProps, productQuantity, clearProduct }) {
                                 <div class="_2twTWD">
                                     <div class="hJYgKM">
                                         <div class="_10vVqD">Price ({cartProps.cart} item)</div>
-                                        <span> ₹{cartProps.cartPrice}</span>
+                                        <span> GH₵ {cartProps.cartPrice}</span>
                                     </div>
                                     <div class="hJYgKM">
                                         <div class="_10vVqD">Delivery Fee</div>
@@ -92,7 +92,7 @@ function Cart({cartProducts, cartProps, productQuantity, clearProduct }) {
                                     <div class="_22vQVX">You will save GH₵4 on this order</div>
                                 </div>
                                     <div className="process_checkout_bk">
-                                        <span>Click on product to continue</span>
+                                        <span>Select a cart item</span>
                                     </div>
                             </Card>
                         </Grid>

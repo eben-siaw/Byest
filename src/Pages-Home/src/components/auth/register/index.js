@@ -81,7 +81,7 @@ export default class Register extends Component {
                                 </div>
                                 <div className="key">
                                     <i className="fa fa-lock" aria-hidden="true" />
-                                    <input type="text" defaultValue="Address" name="address" placeholder="Address" required />
+                                    <input type="text" name="address" placeholder="Address" required />
                                     <div className="clearfix" />
                                 </div>
                                 <input type="submit" defaultValue="Sign Up" />

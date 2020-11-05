@@ -58,10 +58,10 @@ import './Orders.css';
                         </ol> 
 
                         <div className="container-fluid">         
-                              <div className="box-card"> 
+                              <div className="contents-card"> 
                                 <div className="dashboard-report-card purple">
                                     <div className="card-content">
-                                        <span className="card-title">Orders from customers</span>
+                                        <span className="card-title">Total Orders</span>
                                         <span className="card-count">{ordersCount}</span>
                                     </div>
                                     <div className="card-media">

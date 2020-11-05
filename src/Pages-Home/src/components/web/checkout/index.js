@@ -147,9 +147,9 @@ class Checkout extends Component {
                                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                             
                                             <br/>
-                                         <div >
-                                            <Button onClick={event => this.handleSubmit(event)} size="large"  color="primary" variant="contained">SUBMIT ORDER</Button> 
-                                            <Button onClick={this.handleCancel} color="secondary" variant="contained" size="large">Cancel</Button> 
+                                         <div>
+                                            <Button onClick={event => this.handleSubmit(event)} size="large" className="button-inline" color="primary" variant="contained">SUBMIT ORDER</Button> 
+                                            <Button onClick={this.handleCancel} color="secondary" variant="contained" className="button-inline" size="large">Cancel</Button> 
                                             <ToastContainer/>
                                         </div> 
 
@@ -167,7 +167,7 @@ class Checkout extends Component {
                                     <div className="_2twTWD">
                                         <div className="hJYgKM">
                                             <div className="_10vVqD">Price ({this.props.cartProps.cart} item)</div>
-                                            <span> ₹{this.props.cartProps.cartPrice}</span>
+                                            <span> GH₵{this.props.cartProps.cartPrice}</span>
                                         </div>
                                         <div className="hJYgKM">
                                             <div className="_10vVqD">Delivery Fee</div>
@@ -206,6 +206,11 @@ class Checkout extends Component {
 
                    .order-btn { 
                      padding: 14px;
+                   }  
+
+                   .button-inline { 
+                    display:inline-block;
+                    margin-right:5px;    
                    }
                 `}
                 </style>

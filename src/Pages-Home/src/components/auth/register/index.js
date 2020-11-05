@@ -88,7 +88,7 @@ export default class Register extends Component {
                             </form>
                         </div> 
                         <div className="forg">
-                            <Link to="/login" className="forg-right">Register</Link>
+                            <Link to="/login" className="forg-right">Login</Link>
                             <div className="clearfix" />
                         </div>
                     </div>

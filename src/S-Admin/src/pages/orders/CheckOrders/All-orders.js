@@ -21,7 +21,7 @@ import './Orders.css';
      
     const FetchOrders = () => {   
 
-     axios.get(http + `/orders/getOrders/${admin}`) 
+     axios.get(URL + `/orders/getOrders/${admin}`) 
      .then(response => { 
          if(response.data.message) {  
              console.log(response.data)
@@ -33,11 +33,13 @@ import './Orders.css';
    // get number of orders 
    const CheckCount = () => { 
 
-    axios.get(http + `/orders/getOrders/${admin}`)
+    axios.get(URL + `/orders/getOrders/${admin}`)
     .then(response => { 
       if(response.data.message) { 
         setOrdersCount(response.data.orders.lenght);  
       }  
+     }).catch(error => { 
+        console.log(error)
      })
     }
 

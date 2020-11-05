@@ -19,7 +19,7 @@ export default function PhonesCategory() {
 
    const fetchAllProducts = () => {  
      try {
-        axios.get(`/category/getPhones/${phones}`) 
+        axios.get(URL + `/category/getPhones/${phones}`) 
         .then(resp => { 
             if(resp.data.message) { 
              setProductList(resp.data.phones);

@@ -18,7 +18,7 @@ export default function Singleproduct(props) {
     
    useEffect(() => { 
     try {
-    axios.get(http + `/products/singleproduct/${id}`) 
+    axios.get(URL + `/products/singleproduct/${id}`) 
     .then(response => {  
       if(response.data.success) { 
         setProduct(response.data.product); 

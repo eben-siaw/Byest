@@ -20,7 +20,7 @@ const OftadehListItems = props => {
 
   const FetchOrders = () => {   
 
-    axios.get(http + `/orders/getOrders/${admin}`) 
+    axios.get(URL + `/orders/getOrders/${admin}`) 
     .then(response => { 
         if(response.data.message) {  
           setNotification(response.data.orders);  

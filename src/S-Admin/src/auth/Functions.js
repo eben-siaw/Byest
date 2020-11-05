@@ -6,7 +6,7 @@ const http = "http://localhost:5080";
 
 export const register = (newUser) => { 
     try {
-        return axios.post(http + "/admins/register", newUser) 
+        return axios.post(URL + "/admins/register", newUser) 
         .then(results => {  
             console.log(results.data);
            return results.data;
@@ -20,7 +20,7 @@ export const register = (newUser) => {
 
 export const login = async (user) => { 
     try {
-    return await axios.post(http + "/admins/login", user)   
+    return await axios.post(URL + "/admins/login", user)   
     .then(response => {  
         if(response.data) { 
          window.location = "/admin/page"

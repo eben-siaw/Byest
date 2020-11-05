@@ -86,7 +86,7 @@ const AllProductsPage = props => {
   
   const numberOfproducts = () => { 
   
-    axios.get(http + `/products/displayProducts/${admin}`) 
+    axios.get(URL + `/products/displayProducts/${admin}`) 
     .then(response => { 
       if(response.data.message) { 
         setProductCount(response.data.products.length);
@@ -101,7 +101,7 @@ const AllProductsPage = props => {
   const fetchProducts = async () => {  
  
     try {
-    return await axios.get(http + `/products/displayProducts/${admin}`) 
+    return await axios.get(URL + `/products/displayProducts/${admin}`) 
       .then(resp => { 
        if(resp.data.message) {  
          console.log(resp.data.products);

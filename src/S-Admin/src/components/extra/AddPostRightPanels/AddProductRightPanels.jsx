@@ -28,10 +28,14 @@ import { useState } from "react";
 import { storage } from "../../../../../Firebase/firebase";
 import { useSelector } from "react-redux";
 
+import {toast, ToastContainer} from 'react-toastify';
+
  const icon = <CheckBoxOutlineBlankIcon fontSize="small" />; 
 
  const checkedIcon = <CheckBoxIcon fontSize="small" />;
  
+ const URL = "https://mekexpress-backend.herokuapp.com"
+
  const http = "http://localhost:5080";
  
  const category = [
@@ -140,9 +144,10 @@ export default function AddPostRightPanels({title, description, price, quantity}
       }
        
        try { 
-        axios.post(http + "/products/addproduct", productData)
+        axios.post(URL + "/products/addproduct", productData)
         .then(res => { 
-         if(res.data.message) { 
+         if(res.data.message) {  
+           toast("Product Submitted Successfully!")
            window.location.href = "/";
          } 
        });
@@ -300,7 +305,8 @@ export default function AddPostRightPanels({title, description, price, quantity}
       <Button variant="contained" color="primary" size="small" 
        onClick={handleProductSubmit}>
        Submit Product
-     </Button> 
+     </Button>  
+     <ToastContainer />
     </div>
   );
 }

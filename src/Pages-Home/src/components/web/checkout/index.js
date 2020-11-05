@@ -56,7 +56,7 @@ class Checkout extends Component {
    
    console.log(data);
 
-    axios.post(http + `/orders/requestOrder`, data)
+    axios.post(URL + `/orders/requestOrder`, data)
     .then(response => { 
         if(response.data.message) {  
          toast("Order submitted successfully!"); 

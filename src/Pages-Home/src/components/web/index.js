@@ -48,17 +48,9 @@ export default class Main extends Component {
               <Route  path='/checkout/:adminId' component={Checkout} />
             </Switch> 
             <div className="no-display">
-            <Footer/> 
+            <Footer /> 
             </div>
           </div>  
-          <style jsx> 
-          {` 
-          @media (max-width: 500px) { 
-          .no-display { 
-           display: none;  
-          }
-        } 
-        `}</style>
         </main>
       );
     }

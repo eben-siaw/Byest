@@ -16,7 +16,7 @@ const ProfilePage = props => {
     <div>  
     <Grid>  
     <Paper> 
-      <Avatar> A </Avatar>
+      <Avatar> A </Avatar> 
      <Typography> {user.first_name} {user.last_name} </Typography> 
      <Typography> {user.email} </Typography> 
      <Typography> {user.phone} </Typography>

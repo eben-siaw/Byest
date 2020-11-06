@@ -346,7 +346,6 @@ class Register extends Component {
       @media (max-width: 480px) { 
         .wrapper {
           margin: 0 18px; 
-          background: #fff;
         }
         
         form {

@@ -253,9 +253,8 @@ class Login extends Component {
           font-weight: lighter;
         }         
 
-        @media (max-width: 458px) { 
-          .wrapper { 
-            display: flex; 
+        @media (max-width: 480px) { 
+          .wrapper {  
             margin: 0 18px;
           }
           
@@ -267,7 +266,7 @@ class Login extends Component {
           } 
        
           .form-wrapper {
-            max-width: 200px;
+            width: 100% !important;
           }
         }  
          `} 

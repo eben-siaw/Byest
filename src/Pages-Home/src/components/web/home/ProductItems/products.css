@@ -1,14 +1,28 @@
 .products-container-wrapper { 
   display: flex; 
   flex-direction: row;  
-  flex-wrap: wrap;
-  padding: 10px;  
-} 
+  flex-wrap: wrap; 
+ 
+/* lenght styles */
+  width: 100%; 
+  height: auto; 
+}
 
-.box-card { 
+.box-card {  
+ width: 20%;  
+ height: 250px;
  background-color: #fff;
  border-radius: 10px;  
- box-shadow: 0px 10px 5px #b2bec3;
+ box-shadow: 0px 10px 5px #b2bec3; 
+ margin: 20px;
+}
+
+@media (max-width: 1200px) { 
+ 
+  .box-card { 
+   width: 30%;  
+  }
+
 }
 
 @media (max-width: 480px) { 

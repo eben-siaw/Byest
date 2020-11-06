@@ -89,12 +89,15 @@ const Kitchenitem = (props) => {
 
             <div className="products-container-wrapper">  
             {ProductSpecials()}   
-          {loading ? <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} timeout={15000}/> : null}
+
+            <div className="loader-spin"> 
+             {loading ? <Loader type="ThreeDots" color="#00BFFF" height={60} width={80} timeout={15000}/> : null} 
             </div>
+            </div> 
 
         </div >
 
-    )
+    );
 }
 
 export default connect(null, {addToCart})(Kitchenitem);

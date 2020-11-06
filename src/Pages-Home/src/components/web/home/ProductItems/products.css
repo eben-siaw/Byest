@@ -25,6 +25,15 @@
 
 }
 
+ .loader-spin { 
+  margin: 0;
+  position: absolute;
+  top: 650px;
+  left: 50%;
+ -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+ }
+
 @media (max-width: 480px) { 
  
     .product-container-wrapper { 
@@ -35,4 +44,13 @@
       width: 100% !important;
     } 
 
-}
+    .loader-spin { 
+      margin: 0;
+      position: absolute;
+      top: 58%;
+      left: 50%;
+     -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+} 
+

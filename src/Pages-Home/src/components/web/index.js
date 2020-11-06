@@ -46,9 +46,19 @@ export default class Main extends Component {
               <Route  path='/categories' component={Category} />
               <Route  path='/carts' component={Cart} />
               <Route  path='/checkout/:adminId' component={Checkout} />
-            </Switch>
-            <Footer/>
-          </div> 
+            </Switch> 
+            <div className="no-display">
+            <Footer/> 
+            </div>
+          </div>  
+          <style jsx> 
+          {` 
+          @media (max-width: 500px) { 
+          .no-display { 
+           display: none;  
+          }
+        } 
+        `}</style>
         </main>
       );
     }

@@ -64,14 +64,7 @@ export default class Footer extends Component {
                         <p> © 2020 Mekexpress. All Rights Reserved | Develped by  <Link to="#"> Ebenezer</Link></p>
                     </div>
                 </div> 
-                <style jsx> 
-                {` 
-                @media (max-width: 500px) { 
-                .footer { 
-                 display: none;  
-                }
-                } 
-                `}</style>
+               
             </div>
 
         )

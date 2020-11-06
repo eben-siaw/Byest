@@ -29,19 +29,20 @@ import { storage } from "../../../../../Firebase/firebase";
 import { useSelector } from "react-redux";
 
 import {toast, ToastContainer} from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
  const icon = <CheckBoxOutlineBlankIcon fontSize="small" />; 
 
  const checkedIcon = <CheckBoxIcon fontSize="small" />;
  
  const URL = "https://mekexpress-backend.herokuapp.com"
 
- const http = "http://localhost:5080";
+ //const http = "http://localhost:5080";
  
  const category = [
   {title: "Shoes & Outfits" }, 
   {title: "Drinks & Beverages" }, 
-  {title: "Bags" },
+  {title: "Bags" }, 
+  {title: "cars"},
   {title: "Electrical Appliances" },
   {title: "Hair & MakeUp" },
   {title: "Grocery & Items" }, 

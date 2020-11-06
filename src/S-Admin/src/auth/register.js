@@ -1,8 +1,8 @@
-import React, { Component } from "react"; 
-import {register} from './Functions' 
+import React, { Component } from "react";   
 import {Link} from 'react-router-dom';
-import "./Page.css"; 
-import HomeIcon from '@material-ui/icons/Home';
+import {register} from './Functions';
+import "./Page.css";
+
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -24,12 +24,10 @@ const isformValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class Register extends Component { 
+class Login extends Component { 
 
-  constructor(props) { 
-
+  constructor(props) {
     super(props);
-
     this.state = {
       firstName: null,
       lastName: null,
@@ -48,27 +46,24 @@ class Register extends Component {
     };
   }
 
-  handleSubmit = async (event) => { 
-   
-    event.preventDefault();
+  handleSubmit = (event) => { 
+
+    event.preventDefault(); 
 
     const newUser = { 
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email, 
-        phone: this.state.phone, 
-        address: this.state.address,
-        password: this.state.password
-    } 
-    if(isformValid(this.state)) {
-      await register(newUser)
-      .then(res => {  
-        console.log(res);
-        window.location = "/admin/auth";
-      }) 
-      .catch(error => { 
-        console.log(error)
-      })
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email, 
+      phone: this.state.phone, 
+      address: this.state.address,
+      password: this.state.password
+  }  
+
+  if(isformValid(this.state)) {
+       register(newUser).then(res => {  
+        console.log(res); 
+        window.location = "/admin/auth"
+     })
     } 
   };
 
@@ -110,259 +105,449 @@ class Register extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
-  render() {
+  render() { 
+
     const { formErrors } = this.state;
 
-    return (
-      <main className="wrapper">
-        <div className="form-wrapper">
-          <h1>Create Account</h1>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="firstName">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                className={formErrors.firstName.length > 0 ? "error" : null}
-                placeholder="First Name"
-                type="text"
-                name="firstName"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.firstName.length > 0 && (
-                <span className="errorMessage">{formErrors.firstName}</span>
+    return ( 
+
+    <main>
+        <img className="wave" src="/img/wave.png" />
+	       <div className="container"> 
+	    	<div className="register-img">
+		     	<img src="/img/bg.svg" />
+	       </div>   
+
+	      <div class="register-content">
+		     	<form onSubmit={this.handleSubmit} noValidate>
+			   	<img src="/img/avatar.svg" />			  
+
+            <div className="singup-wrapper">  
+           		<div className="input-div one">
+           		   <div className="i">
+           		   		<i className="fas fa-user"></i>
+           		   </div> 
+           		   <div className="div">
+           		   		<h5></h5>
+                    <input type="text" placeholder="First Name" className="input" name="firstName"
+                    onChange={this.handleChange}/> 
+                  {formErrors.firstName.length > 0 && (
+                <div error={formErrors.firstName} className="errorMessage"> 
+                !</div>
               )}
-            </div>
-            <div className="lastName">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                className={formErrors.lastName.length > 0 ? "error" : null}
-                placeholder="Last Name"
-                type="text"
-                name="lastName"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.lastName.length > 0 && (
-                <span className="errorMessage">{formErrors.lastName}</span>
-              )}
+           		</div>
+           		</div> 
+
+           		<div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
+           		   </div>
+           		   <div className="div">
+           		    	<h5></h5>
+                    <input type="text" placeholder="Last Name" className="input" name="lastName"
+                    onChange={this.handleChange} /> 
+                    {formErrors.lastName.length > 0 && (
+                <div error={formErrors.lastName} className="errorMessage"> 
+                ! 
+                </div>
+               )}
+            	   </div>
+            	</div>  
+
+              <div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
+           		   </div>
+           		   <div className="div">
+           		    	<h5></h5>
+           		    <input placeholder="Email" type="email" className="input" name="email"  
+                     onChange={this.handleChange}/> 
+                      {formErrors.email.length > 0 && (
+                <div error={formErrors.email} className="errorMessage"> 
+                ! 
+                </div>
+               )}
+            	   </div>
+            	</div>  
+
+              <div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
+           		   </div>
+           		   <div className="div">
+           		    	<h5></h5>
+           		    	<input placeholder="Password" type="password" className="input" name="password" 
+                     onChange={this.handleChange}/> 
+                      {formErrors.password.length > 0 && (
+                <div error={formErrors.password} className="errorMessage"> 
+                ! 
+                </div>
+               )}
+            	   </div>
+            	</div>  
+
+              <div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
+           		   </div>
+           		   <div className="div">
+           		    	<h5></h5>
+           		    	<input placeholder="Phone number" type="text" className="input" name="phone" 
+                     onChange={this.handleChange}/> 
+                      {formErrors.phone.length > 0 && (
+                <div error={formErrors.phone} className="errorMessage"> 
+                ! 
+                </div>
+               )}
+            	   </div>
+            	</div>  
+
+              <div className="input-div pass">
+           		   <div className="i"> 
+           		    	<i className="fas fa-lock"></i>
+           		   </div>
+           		   <div className="div">
+           		    	<h5></h5>
+           		    	<input type="text" placeholder="Address" className="input" name="address" 
+                     onChange={this.handleChange}/> 
+                      {formErrors.address.length > 0 && (
+                <div error={formErrors.address} className="errorMessage"> 
+                ! 
+                </div>
+               )}
+            	   </div>
+            	</div>  
             </div> 
 
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                className={formErrors.email.length > 0 ? "error" : null}
-                placeholder="Email"
-                type="email"
-                name="email"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )}
-            </div>  
-
-            <div className="email">
-              <label htmlFor="email">Phone Number</label>
-              <input
-                className={formErrors.email.length > 0 ? "error" : null}
-                placeholder="Phone number"
-                type="text"
-                name="phone"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.phone.length > 0 && (
-                <span className="errorMessage">{formErrors.phone}</span>
-              )}
-            </div> 
-
-            <div className="email">
-              <label htmlFor="email">Address</label>
-              <input
-                className={formErrors.address.length > 0 ? "error" : null}
-                placeholder="Address"
-                type="text"
-                name="address"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.phone.length > 0 && (
-                <span className="errorMessage">{formErrors.address}</span>
-              )}
-            </div> 
-
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <input
-                className={formErrors.password.length > 0 ? "error" : null}
-                placeholder="Password"
-                type="password"
-                name="password"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )}
-            </div> 
-
-            <div className="createAccount">
-              <button type="submit">Create Account</button>
-            </div> 
-           <Link style={{textDecoration: 'none'}} to="/admin/auth"> <small>  Already Have an Account? Login</small>  </Link>
-          </form>
-        </div>  
+            	<Link to="/admin/auth">Sign in to your account?</Link>
+            	<input type="submit" className="btn" value="Register"/>
+            </form>
+        </div> 
+      </div>  
       <style jsx>{` 
-      .wrapper { 
-        background: rgb(34,193,195);
-        background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-        font-family: "work sans";
-        height: 100vh;
-        width: 100%;  
-        margin: 0px; 
-        font-family: 'Ubuntu', sans-serif;
-        padding: 0px;
+      .wave{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+      }
+      
+      .container{
+          width: 100vw;
+          height: 100vh;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap :7rem;
+          padding: 0 2rem;
+      }
+      
+      .register-img{
         display: flex;
-        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center; 
+        padding-top: 50px;
+      }
+      
+      .signup-wrapper { 
+        max-height: 80vh;
+        overflow: scroll;
+        padding-top: 20px;
+        padding-bottom: 50px;
+      }
+     
+      .signup-wrapper::webkit-scrollbar { 
+        display: none;
+      }
+
+      .register-content{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center; 
+      }
+      
+      .register-img img{
+        width: 500px;
+      }
+      
+      form{
+        width: 360px;
+      }
+      
+      .register-content img{
+          height: 100px;
+      }
+      
+      .register-content h2{
+        margin: 15px 0;
+        color: #333;
+        text-transform: uppercase;
+        font-size: 2.9rem;
+      }
+       
+      .errorMessage {
+        background: red;
+        color: #fff;
+        font-size: 12px;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: bold;
+      }
+      
+      .errorMessage:hover::after {
+        display: block;
+        animation: fade-slide-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-animation: fade-slide-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      @keyframes fade-slide-up {
+        0% {
+          transform: translateY(10px);
+          -webkit-transform: translateY(10px);
+          -moz-transform: translateY(10px);
+          -ms-transform: translateY(10px);
+          -o-transform: translateY(10px);
+          opacity: 0;
+        }
+      }
+      
+      .errorMessage::after {
+        position: absolute;
+        content: attr(error);
+        min-width: 150px;
+        bottom: 150%;
+        padding: 10px;
+        background: rgba(255, 0, 0, 0.212);
+        color: red;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        text-align: center;
+        display: none;
+      }
+      
+      .errorMessage::before {
+        position: absolute;
+        content: "";
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        -webkit-border-radius: inherit;
+        -moz-border-radius: inherit;
+        -ms-border-radius: inherit;
+        -o-border-radius: inherit;
+        background: rgba(255, 0, 0, 0.315);
+        animation: blink-fade 1s linear infinite;
+        -webkit-animation: blink-fade 1s linear infinite;
+      }
+      
+      @keyframes blink-fade {
+        0% {
+          transform: scale(0);
+          -webkit-transform: scale(0);
+          -moz-transform: scale(0);
+          -ms-transform: scale(0);
+          -o-transform: scale(0);
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.8);
+          -webkit-transform: scale(1.8);
+          -moz-transform: scale(1.8);
+          -ms-transform: scale(1.8);
+          -o-transform: scale(1.8);
+          opacity: 0;
+        }
+      }
+
+      .register-content .input-div{
+        position: relative;
+          display: grid;
+          grid-template-columns: 7% 93%;
+          margin: 25px 0;
+          padding: 5px 0;
+          border-bottom: 2px solid #d9d9d9;
+      }
+      
+      .register-content .input-div.one{
+        margin-top: 0;
+      }
+      
+      .i{
+        color: #d9d9d9;
+        display: flex;
         justify-content: center;
         align-items: center;
       }
       
-      .form-wrapper {
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px 40px; 
-        
-        border-radius: 10px;
-        box-shadow: 0px 10px 50px #555;
-        background-color: #ffffff;
+      .i i{
+        transition: .3s;
       }
       
-      form {
+      .input-div > div{
+          position: relative;
+        height: 45px;
+      }
+      
+      .input-div > div > h5{
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 18px;
+        transition: .3s;
+      }
+      
+      .input-div:before, .input-div:after{
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background-color: #38d39f;
+        transition: .4s;
+      }
+      
+      .input-div:before{
+        right: 50%;
+      }
+      
+      .input-div:after{
+        left: 50%;
+      }
+      
+      .input-div.focus:before, .input-div.focus:after{
+        width: 50%;
+      }
+      
+      .input-div.focus > div > h5{
+        top: -5px;
+        font-size: 15px;
+      }
+      
+      .input-div.focus > .i > i{
+        color: #38d39f;
+      }
+      
+      .input-div > div > input{
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-      h1 {
-        text-align: center;
-        width: 100%;
-        color: #111;
-        font-weight: lighter;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-          Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      }
-      
-      label {
-        font-size: 0.8em;
-        margin-bottom: 0.25em;
-        color: #222;
-        font-weight: lighter;
-      }
-      
-      input {
-        padding: 10px 10px;
-        border-radius: 5px;
+        height: 100%;
+        border: none;
         outline: none;
-        border: 1px solid #cfcfcf;
+        background: none;
+        padding: 0.5rem 0.7rem;
+        font-size: 1.2rem;
+        color: #555;
+        font-family: 'poppins', sans-serif;
       }
       
-      input::placeholder {
-        font-size: 1.2em;
-        font-weight: lighter;
+      .input-div.pass{
+        margin-bottom: 4px;
+      }
+      
+      a{
+        display: block;
+        text-align: right;
+        text-decoration: none;
         color: #999;
+        font-size: 0.9rem;
+        transition: .3s;
       }
       
-      input.error {
-        border: 1px solid red;
+      a:hover{
+        color: #38d39f;
       }
       
-      .errorMessage {
-        color: red;
-        font-size: 0.75em;
-        display: relative;
-      }
-      
-      .firstName {
-        margin-right: 1%;
-      }
-      
-      .lastName {
-        margin-left: 1%;
-      }
-      
-      .firstName,
-      .lastName,
-      .email,
-      .password {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 15px;
-      }
-      
-      .firstName,
-      .lastName {
-        width: 49%;
-      }
-      
-      .email,
-      .password {
+      .btn{
+        display: block;
         width: 100%;
-      }
-      
-      .createAccount {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .createAccount button {
+        height: 50px;
         border-radius: 25px;
-        width: 80%;
-        height: 40px;
-        font-size: 1.3rem;
-        color: white;
-        font-weight: 700;
-        background: rgb(34,193,195);
-        background: linear-gradient(90deg, rgba(34,193,195,1) 0%,  rgba(253,187,45,1) 100%);
-        border: 0px;
-       cursor: pointer;
-       transition: opacity 0.25s ease-out;
-}
+        outline: none;
+        border: none;
+        background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+        background-size: 200%;
+        font-size: 1.2rem;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+        margin: 1rem 0;
+        cursor: pointer;
+        transition: .5s;
+      }
+      .btn:hover{
+        background-position: right;
       }
       
-      .createAccount button:hover {
-        opacity: 0.8;
+      
+      @media screen and (max-width: 1050px){
+        .container{
+          grid-gap: 5rem;
+        }
       }
       
-      .createAccount small {
-        color: #999;
-        font-weight: lighter;
-      }           
-    
-      @media (max-width: 480px) { 
-        .wrapper {
-          margin: 0 18px; 
+      @media screen and (max-width: 1000px){
+        form{
+          width: 290px;
         }
-        
-        form {
-          background: #f9faff;
-          border: none;
-          box-shadow: none;
-          padding: 20px 0;
-        } 
-        .form-wrapper { 
-          max-width: 240px; 
+      
+        .register-content h2{
+              font-size: 2.4rem;
+              margin: 8px 0;
+        }
+      
+        .register-img img{
+          width: 400px;
         }
       }
-      `} 
+      
+      @media screen and (max-width: 900px){
+        .container{
+          grid-template-columns: 1fr;
+        }
+      
+        .register-img{
+          display: none;
+        }
+      
+        .wave{
+          display: none;
+        }
+      
+        .register-content{
+          justify-content: center;
+        }
+      }
+      `}  
       </style>
-      </main>
+    </main>
     );
   }
 }
 
-export default Register;
+export default Login;

@@ -24,7 +24,7 @@ export default class AppliancesCategory extends Component {
     let appliances = "Appliances";
 
     try { 
-     axios.get(http + `/products/getCars/${appliances}`) 
+     axios.get(URL + `/products/getCars/${appliances}`) 
      .then(resp => { 
       this.setState(resp.data.products)
      })  

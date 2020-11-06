@@ -55,7 +55,7 @@ const OftadehNavigation = (props) => {
         </Typography>
         <iframe
           title="star repo"
-          src="https://ghbtns.com/github-btn.html?user=mohammadoftadeh&repo=oftadeh-react-admin&type=star&size=large"
+          
           frameworker="0"
           scrolling="0"
           width="75px"

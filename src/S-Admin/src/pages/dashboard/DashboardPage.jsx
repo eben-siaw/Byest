@@ -7,6 +7,8 @@ import OftadehBarChart from "../../components/AdminChart/OftadehBarChart";
 import OftadehPieChart from "../../components/AdminChart/OftadehPieChart";
 import SimpleTable from "./components/SimpleTable";
 import clsx from "clsx";
+import ListIcon from '@material-ui/icons/List';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((them) => ({
   paddingPaper: {
@@ -21,7 +23,12 @@ const useStyles = makeStyles((them) => ({
   visitorChart: {
     // height: "150px"
   },
-}));
+})); 
+
+const handleLogout = () => { 
+  const token = localStorage.removeItem("admintoken"); 
+  window.location = "/";
+}
 
 const DashboardPage = (props) => {
   const { history } = props;
@@ -30,17 +37,14 @@ const DashboardPage = (props) => {
   return (
     <OftadehLayout>
       <h1>Dashboard</h1>
-      <iframe
+      <ListIcon
         title="star repo"
-        src="https://ghbtns.com/github-btn.html?user=mohammadoftadeh&repo=oftadeh-react-admin&type=star"
-        frameworker="0"
-        scrolling="0"
         width="75px"
         height="30px"
-        frameBorder="none"
         style={{ marginBottom: "20px" }}
       />
-      <OftadehBreadcrumbs path={history} />
+      <Button variant="outlined" color="secondary" size="medium" onClick={() => handleLogout()}> Logout </Button> 
+      <br/>
       <Grid container spacing={2}>
         <Grid className={classes.visitorChart} item xs={12}>
           <Paper className={classes.paddingPaper} variant="outlined">
@@ -57,7 +61,7 @@ const DashboardPage = (props) => {
               variant="outlined"
             >
               <Typography className={classes.titlePaper} variant="h5">
-                Foods
+                Analysis
               </Typography>
               <SimpleTable />
             </Paper>

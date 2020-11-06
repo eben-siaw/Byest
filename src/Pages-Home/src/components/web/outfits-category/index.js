@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
- 
+const URL = "https://mekexpress-backend.herokuapp.com"; 
+
  const http = "http://localhost/5000";
 
 export default class OutfitsCategory extends Component { 
@@ -22,7 +23,7 @@ export default class OutfitsCategory extends Component {
      const outfits = "Outfits & Shoes";   
    
       try { 
-         axios.get(http + `/categories/getOutfits/${outfits}`) 
+         axios.get(URL + `/categories/getOutfits/${outfits}`) 
          .then(resp => { 
           this.setState(resp.data.products);   
           })

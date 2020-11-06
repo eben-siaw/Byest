@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios'; 
 
+const URL = "https://mekexpress-backend.herokuapp.com"
+
  const http = "http://localhost:5000";
 
 export default class Household extends Component { 

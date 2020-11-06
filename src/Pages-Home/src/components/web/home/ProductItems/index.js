@@ -7,6 +7,8 @@ import { addToCart } from '../../../../actions/productActions';
 import {useState} from 'react';
 import axios from 'axios';
 import './products.css' 
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css" 
 
 const URL = "https://mekexpress-backend.herokuapp.com"
 
@@ -15,12 +17,15 @@ const http = "http://localhost:5080";
 const Kitchenitem = (props) => { 
 
   const [specials, setSpecials] = useState([]);
-
+ 
+  const [loading, setLoading] = useState(true);
+ 
   const fetchSpecials = async () => { 
     try {
     return await axios.get(URL + "/products/fetchproducts") 
     .then(resp => { 
       setSpecials(resp.data.products);  
+      setLoading(false);
     })
     } catch (error) {
         console.log(error)
@@ -83,7 +88,8 @@ const Kitchenitem = (props) => {
             </div>  
 
             <div className="products-container-wrapper">  
-            {ProductSpecials()}  
+            {ProductSpecials()}   
+          {loading ? <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} timeout={15000}/> : null}
             </div>
 
         </div >

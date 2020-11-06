@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';  
 
- const http = "http://localhost:5080";
+const URL = "https://mekexpress-backend.herokuapp.com"; 
+
+const http = "http://localhost:5080";
 
 export default class Household extends Component { 
    
@@ -22,7 +24,7 @@ export default class Household extends Component {
     let cars = "cars";
 
     try { 
-     axios.get(http + `/products/getCars/${cars}`) 
+     axios.get(URL + `/products/getCars/${cars}`) 
      .then(resp => { 
       this.setState(resp.data.products)
      })  

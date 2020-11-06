@@ -8,6 +8,8 @@ import {useState} from 'react';
 import axios from 'axios';
 import './products.css' 
 
+const URL = "https://mekexpress-backend.herokuapp.com"
+
 const http = "http://localhost:5080";
 
 const Kitchenitem = (props) => { 
@@ -16,7 +18,7 @@ const Kitchenitem = (props) => {
 
   const fetchSpecials = async () => { 
     try {
-    return await axios.get(http + "/products/fetchproducts") 
+    return await axios.get(URL + "/products/fetchproducts") 
     .then(resp => { 
       setSpecials(resp.data.products);  
     })

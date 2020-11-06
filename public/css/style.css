@@ -3136,12 +3136,12 @@ a.at-in {
     border-bottom-left-radius: 8px;
     width: 44px;
     height: 35px;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
     background: #FCCD1E;
 } 
 @media(max-width: 480px) { 
  .footer { 
-    display: none; 
+    /*display: none; */
  }   
 }
 .cart {

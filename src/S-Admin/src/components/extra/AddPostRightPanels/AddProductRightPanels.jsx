@@ -116,9 +116,10 @@ export default function AddPostRightPanels({title, description, price, quantity}
  
   const handleProductSubmit = async () => {  
    
-    if(title === "" || description === "" || imageFile === "") {   
-      return null;
-    } 
+   if(title === "" || description === "" || price === "" || quantity === "" || imageFile === "" || Category === "" || Tags === "") {    
+    toast("All fields are required!");
+    return null;
+   } 
     
     console.log(imageFile);
 

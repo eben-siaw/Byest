@@ -12,7 +12,9 @@ const URL = "https://mekexpress-backend.herokuapp.com";
 
 export default function Singleproduct(props) { 
    
-    const [item, setProduct] = useState([]);
+    const [item, setProduct] = useState([]); 
+
+    const [admin, setAdmin] = useState({});
      
     const {id} = props.match.params; 
     
@@ -20,8 +22,9 @@ export default function Singleproduct(props) {
     try {
     axios.get(URL + `/products/singleproduct/${id}`) 
     .then(response => {  
-      if(response.data.success) { 
-        setProduct(response.data.product); 
+      if(response.data.success) {  
+        setProduct(response.data.product);  
+        setAdmin(response.data.product.Admin);
       }  
     })  
     } catch (error) {
@@ -30,7 +33,9 @@ export default function Singleproduct(props) {
    }, [])   
 
 
-   console.log(item);
+   console.log(item); 
+
+   console.log(admin)
 
         return (
             <div>
@@ -62,7 +67,7 @@ export default function Singleproduct(props) {
                                         <div className="starbox small ghosting"><div className="positioner"><div className="stars"><div className="ghost" style={{ display: 'none', width: '42.5px' }} /><div className="colorbar" style={{ width: '42.5px' }} /><div className="star_holder"><div className="star star-0" /><div className="star star-1" /><div className="star star-2" /><div className="star star-3" /><div className="star star-4" /></div></div></div></div>
                                     </div>
                                     <p className="in-pa"> You are about to make an order, by continuing you agree to the terms and conditions, The owner of this product will get notified.  
-                                    Seller's number {item.Admin.phone} </p>
+                                     Seller's number - {admin.phone}. Call this number.</p>
                                     <ul className="social-top">
                                         <li><a href="/" className="icon facebook"><i className="fa fa-facebook" aria-hidden="true" /><span /></a></li>
                                         <li><a href="/" className="icon twitter"><i className="fa fa-twitter" aria-hidden="true" /><span /></a></li>
@@ -70,7 +75,7 @@ export default function Singleproduct(props) {
                                       <li><a href="/" className="icon dribbble"><i className="fa fa-dribbble" aria-hidden="true" /><span /></a></li>
                                     </ul>
                                     <div className="add add-3">
-                                        <Link to={"/checkout/"+ item.Admin}>  
+                                        <Link to={"/checkout/"+ admin._id}>  
                                         <div className="process_checkout_bk">
                                         <span>Proceed to checkout</span> 
                                     </div> 

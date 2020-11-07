@@ -139,7 +139,7 @@ class Login extends Component {
            		   <div className="div">
            		   		<h5 className="headtitle"></h5>
                       <input type="text" placeholder="Email" name="email" className="signtext" 
-                      onChange={this.handleChange}/> 
+                      onChange={this.handleChange} required/> 
                        {formErrors.email.length > 0 && (
                     <div error={formErrors.email} className="errorMessage"> 
                     !
@@ -154,7 +154,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5 className="headtitle"></h5>
            		    	<input type="password" placeholder="Password" name="password" className="signtext"  
-                     onChange={this.handleChange}/> 
+                     onChange={this.handleChange} required/> 
                       {formErrors.password.length > 0 && (
                 <div error={formErrors.password} className="errorMessage"> 
                 !</div>

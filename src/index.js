@@ -14,6 +14,7 @@ import Register from './S-Admin/src/auth/register';
 import Customer from './Pages-Home/src/components/home-auth/customer';
 import CustRegister from './Pages-Home/src/components/home-auth/custregister';
 import CartPage from './Pages-Home/src/components/home-auth/cart_page';
+import Reactga from 'react-ga';
 
 const routing = ( 
   <Provider store={store}>  
@@ -22,7 +23,7 @@ const routing = (
         <Route exact path="/" component={App} />    
         <Route path="/login" component={Customer} /> 
         <Route path="/register" component={CustRegister} /> 
-        <Route exact path="/carts" component={CartPage} />
+        <Route path="/carts" component={CartPage} />
           {/* Admin Pages  */}
         <Route path="/admin/auth" component={AdminPage} />   
         <Route path="/admin/register" component={Register} /> 

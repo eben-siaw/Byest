@@ -130,7 +130,7 @@ class Login extends Component {
            		   <div className="div">
            		   		<h5></h5>
                     <input type="text" placeholder="First Name" className="input" name="firstName"
-                    onChange={this.handleChange}/> 
+                    onChange={this.handleChange}  required/> 
                   {formErrors.firstName.length > 0 && (
                 <div error={formErrors.firstName} className="errorMessage"> 
                 !</div>
@@ -145,7 +145,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5></h5>
                     <input type="text" placeholder="Last Name" className="input" name="lastName"
-                    onChange={this.handleChange} /> 
+                    onChange={this.handleChange}  required/> 
                     {formErrors.lastName.length > 0 && (
                 <div error={formErrors.lastName} className="errorMessage"> 
                 ! 
@@ -161,7 +161,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5></h5>
            		    <input placeholder="Email" type="email" className="input" name="email"  
-                     onChange={this.handleChange}/> 
+                     onChange={this.handleChange}  required/> 
                       {formErrors.email.length > 0 && (
                 <div error={formErrors.email} className="errorMessage"> 
                 ! 
@@ -177,7 +177,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5></h5>
            		    	<input placeholder="Password" type="password" className="input" name="password" 
-                     onChange={this.handleChange}/> 
+                     onChange={this.handleChange}  required/> 
                       {formErrors.password.length > 0 && (
                 <div error={formErrors.password} className="errorMessage"> 
                 ! 
@@ -193,7 +193,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5></h5>
            		    	<input placeholder="Phone number" type="text" className="input" name="phone" 
-                     onChange={this.handleChange}/> 
+                     onChange={this.handleChange}  required/> 
                       {formErrors.phone.length > 0 && (
                 <div error={formErrors.phone} className="errorMessage"> 
                 ! 
@@ -209,7 +209,7 @@ class Login extends Component {
            		   <div className="div">
            		    	<h5></h5>
            		    	<input type="text" placeholder="Address" className="input" name="address" 
-                     onChange={this.handleChange}/> 
+                     onChange={this.handleChange}  required/> 
                       {formErrors.address.length > 0 && (
                 <div error={formErrors.address} className="errorMessage"> 
                 ! 

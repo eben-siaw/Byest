@@ -91,8 +91,9 @@ class Checkout extends Component {
                                               onChange={event => {
                                                 const { value } = event.target; 
                                                 console.log(value);
-                                                this.setState({ name: value });  }}
-                                              className="text-input" placeholder="Your Name" />
+                                                this.setState({ name: value });  }} 
+                                                required
+                                              className="text-input" label="Full Name" />
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
@@ -100,16 +101,18 @@ class Checkout extends Component {
                                               onChange={event => {
                                                 const { value } = event.target; 
                                                 console.log(value);
-                                                this.setState({phone: value });  }} 
-                                                className="text-input"  placeholder="Phone number" />
+                                                this.setState({phone: value });  }}  
+                                                required
+                                                className="text-input"  label="Phone number" />
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
                                             <TextField variant="outlined" defaultValue={this.state.pincode} 
-                                             className="text-input"  placeholder="Pincode"  
+                                             className="text-input"  label="Pincode"  
                                              onChange={event => {
-                                             const { value } = event.target;
-                                             this.setState({ pincode: value });  }}/>
+                                             const { value } = event.target; 
+                                             this.setState({ pincode: value });  }} 
+                                             required/>
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
@@ -117,31 +120,35 @@ class Checkout extends Component {
                                               onChange={event => {
                                                 const { value } = event.target;
                                                 this.setState({ locality: value });  }}
-                                            className="text-input"  placeholder="Locality" />
+                                            className="text-input"  label="Locality" 
+                                            required />
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={12} lg={12}>
                                             <TextField variant="outlined"  defaultValue={this.state.address}  
                                               onChange={event => {
                                                 const { value } = event.target;
-                                                this.setState({ address: value });  }}
-                                             className="text-input" placeholder="Address(Area and Street)" />
+                                                this.setState({ address: value });  }} 
+                                                required
+                                               className="text-input" label="Address(Area and Street)" />
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
                                             <TextField variant="outlined" defaultValue={this.state.city} 
                                               onChange={event => {
                                                 const { value } = event.target;
-                                                this.setState({ city: value });  }}
-                                             className="text-input"  placeholder="City/District/Town" />
+                                                this.setState({ city: value });  }} 
+                                                required
+                                             className="text-input"  label="City/District/Town" />
                                         </Grid> 
 
                                         <Grid className="address_field_bk" item xs={12} sm={12} md={12} xl={6} lg={6}>
-                                            <TextField variant="outlined" defaultValue={this.state.city} 
+                                            <TextField variant="outlined" defaultValue={this.state.state} 
                                               onChange={event => {
                                                 const { value } = event.target;
-                                                this.setState({ state: value });  }}
-                                               className="text-input"  placeholder="State" />
+                                                this.setState({ state: value });  }} 
+                                                required
+                                               className="text-input"  label="State" />
                                         </Grid> 
 
                                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

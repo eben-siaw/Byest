@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {register} from '../authfunctions'
 import {Link} from 'react-router-dom'; 
+import{toast, ToastContainer} from 'react-toastify'
 
 export default class Register extends Component {
     
@@ -9,8 +10,7 @@ export default class Register extends Component {
         super(props); 
     
         this.state = {  
-          full_name: "", 
-          address: "", 
+          full_name: "",  
           phone: "",  
           email: "", 
           password: ""
@@ -31,14 +31,16 @@ export default class Register extends Component {
 
     const newUser = {  
       fullName: this.state.full_name, 
-      address: this.state.address, 
       Phone: this.state.phone,  
       email: this.state.email, 
       password: this.state.password  
     }
-     register(newUser).then(res => {   
-      console.log(res)
-        //  window.location = "/login"
+     register(newUser).then(({data}) => {    
+         if(!data.error) { 
+            console.log(data); 
+            toast("Accounted Successfully Created!" + data.fullName); 
+            window.location = "/login";
+        }     
      })
     }
      
@@ -75,16 +77,12 @@ export default class Register extends Component {
                                     <div className="clearfix" />
                                 </div> 
                                 <div className="key">
-                                    <i className="fa fa-lock" aria-hidden="true" />
+                                    <i className="fa fa-phone" aria-hidden="true" />
                                     <input value={this.state.phone} type="text" onChange={this.handleOnChange} placeholder="Mobile Number" name="phone"  required />
                                     <div className="clearfix" />
                                 </div>
-                                <div className="key">
-                                    <i className="fa fa-lock" aria-hidden="true" />
-                                    <input type="text" name="address" placeholder="Address" required />
-                                    <div className="clearfix" />
-                                </div>
-                                <input type="submit" defaultValue="Sign Up" />
+                                <input type="submit" defaultValue="Sign Up" /> 
+                                <ToastContainer/>
                             </form>
                         </div> 
                         <div className="forg">

@@ -88,11 +88,11 @@ const Kitchenitem = (props) => {
             </div>  
 
             <div className="products-container-wrapper">  
-            {ProductSpecials()}   
+              {ProductSpecials()}   
 
-            <div className="loader-spin"> 
-             {loading ? <Loader type="ThreeDots" color="#00BFFF" height={60} width={80} timeout={15000}/> : null} 
-            </div>
+               <div className="loader-spin"> 
+                 {loading ? <Loader type="ThreeDots" color="red" height={60} width={80} timeout={15000}/> : null} 
+               </div>
             </div> 
 
         </div >

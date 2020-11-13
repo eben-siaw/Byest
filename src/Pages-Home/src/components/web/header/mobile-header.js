@@ -34,7 +34,7 @@ class Mobileheader extends Component {
                         <div className="search-form">
                             <form>
                                 <button className="btn search__btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                <input type="text" name="search" placeholder="Search for Products..." />
+                                <input type="text" name="search" placeholder="Search for Products.." />
                             </form>
                         </div>
                     </Grid>

@@ -1,10 +1,7 @@
 import React, { useState, useRef } from "react";
-// import { EditorState, convertToRow } from "draft-js";
-// import { Editor } from "react-draft-wysiwyg";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import OftadehLayout from "../../../components/AdminLayout/OftadehLayout";
 import OftadehBreadcrumbs from "../../../components/AdminBreadcrumbs/OftadehBreadcrumbs";
-import { Typography, Grid, makeStyles, TextField, FormControl, InputLabel, Input, InputAdornment } from "@material-ui/core";
+import { Typography, Grid, makeStyles, Button, TextField, FormControl, InputLabel, Input, InputAdornment } from "@material-ui/core";
 import AddPostRightPanels from "../../../components/extra/AddPostRightPanels/AddProductRightPanels";
  
 
@@ -58,6 +55,11 @@ const AddPostPage = props => {
   
   const handleQuantity = (event) => { 
     setQuantity(event.target.value);
+  } 
+
+  const handleLogout = () => { 
+    const token = localStorage.removeItem("admintoken"); 
+    window.location = "/";
   }
 
   return ( 
@@ -67,8 +69,8 @@ const AddPostPage = props => {
       <Typography className={classes.mb3} variant="h5" component="h1">
         Add New Product
       </Typography> 
-
-      <OftadehBreadcrumbs path={history} /> 
+      <Button variant="outlined" color="secondary" size="medium" onClick={() => handleLogout()}> Logout </Button> 
+  {/*<OftadehBreadcrumbs path={history} /> */}
 
       <div className={classes.root}>
         <Grid container spacing={3}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 import {login} from '../authfunctions';
 
@@ -11,7 +12,8 @@ export default class Login extends Component {
 
     this.state = { 
       email: "", 
-      password: ""
+      password: "", 
+      errorMessage: "",
     } 
 
     this.handleOnChange = this.handleOnChange.bind(this); 
@@ -22,7 +24,7 @@ export default class Login extends Component {
     this.setState({[event.target.name]: event.target.value})
    } 
    
-   handleSubmit(event) { 
+  async handleSubmit(event) { 
   
    event.preventDefault();
 
@@ -31,13 +33,22 @@ export default class Login extends Component {
      password: this.state.password  
    } 
    
-    login(user).then(res => { 
-       console.log(res); 
-    })
+   const results = await login(user);  
+        
+    console.log(results); 
+
+      if(results.error) { 
+         toast(`Error occured: ${results.error}`); 
+         this.setState({ errorMessage: results.error });
+         setTimeout(() => this.setState({ errorMessage: "" }), 3000);
+         return;
+       }  
+       toast(`Welcome ${this.state.email}`)
+       window.location = "/videos";
    }
 
     render() { 
-
+    const { errorMessage } = this.state;
         return (
             <div>
                 {/*banner*/}
@@ -52,7 +63,8 @@ export default class Login extends Component {
                 <div className="login">
                     <div className="main-agileits">
                         <div className="form-w3agile">
-                            <h3>Login</h3>
+                            <h3>Login</h3> 
+                           <p style={{color: 'red'}}> {errorMessage} </p>
                             <form onSubmit={this.handleSubmit}>
                                 <div className="key">
                                     <i className="fa fa-envelope" aria-hidden="true" />
@@ -66,12 +78,13 @@ export default class Login extends Component {
                                     value={this.state.password} />
                                     <div className="clearfix" />
                                 </div>
-                                <input type="submit" defaultValue="Login" />
+                                <input type="submit" defaultValue="Login" /> 
+                                <ToastContainer/>
                             </form>
                         </div>
                         <div className="forg">
                             <Link to="#" className="forg-left">Forgot Password</Link>
-                            <Link to="/register" className="forg-right">Register</Link>
+                            <Link to="/register" className="forg-right">Sign Up</Link>
                             <div className="clearfix" />
                         </div>
                     </div>

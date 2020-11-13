@@ -133,7 +133,7 @@ const AllProductsPage = props => {
         </Grid>
         <Grid item>
           <Button
-            onClick={() => history.push("/admin/add-post")}
+            onClick={() => history.push("/admin/page")}
             variant="outlined"
             color="primary"
             size="small"

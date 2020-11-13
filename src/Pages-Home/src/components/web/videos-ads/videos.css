@@ -1,0 +1,17 @@
+.video-container { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+} 
+
+.video-cards { 
+ height: 120px; 
+ min-width: 200px;
+ border-radius: 8px; 
+ cursor: pointer;
+} 
+
+@media (max-width: 480px) { 
+    .video-cards { 
+      width: 100%;
+    }
+}

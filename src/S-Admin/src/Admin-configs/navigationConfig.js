@@ -18,27 +18,27 @@ const navigationConfig = [
         id: "products",
         title: "Products",
         type: "collapse",
-    //    icon: "file_copy",
+    //  icon: "file_copy",
         badge: {
-          title: "2",
+          title: "1",
           bg: "#525E8A",
           fg: "#FFFFFF",
         },
         children: [
           {
             id: "all products",
-            title: "All Products",
+            title: "My Products",
             type: "item",
             url: "/admin/products",
             exact: true,
           },
-          {
+        /*  {
             id: "add post",
             title: "Add Product",
             type: "item",
-            url: "/admin/add-product",
+            url: "/admin/page",
             exact: true,
-          },
+          },*/
         ],
       }, 
       { 
@@ -47,7 +47,21 @@ const navigationConfig = [
        type: "item", 
        url: "/admin/orders", 
        exact: true,
-      },
+      }, 
+      {
+       id: "videos", 
+       title: "Video Ads", 
+       type: "item", 
+       url: "/admin/vids", 
+       exact: true,
+      }, 
+      {
+        id: "charts", 
+        title: "Chart Analysis", 
+        type: "item", 
+        url: "/admin/charts", 
+        exact: true,
+       },
       {
         id: "account",
         title: "My Account",

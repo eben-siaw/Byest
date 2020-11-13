@@ -7,11 +7,7 @@ const URL = "https://mekexpress-backend.herokuapp.com"
 export const register = async (newCustomer) => { 
  
     try {
-       return await axios.post(URL + "/customers/addcustomer", newCustomer)
-       .then(res => {   
-        console.log(res.data)
-        return res.data;
-      })
+       return await axios.post(local + "/customers/addcustomer", newCustomer);
       } catch (error) {
        console.log(error) 
    }
@@ -20,8 +16,12 @@ export const register = async (newCustomer) => {
 
 
 export const login = async (customer) => { 
-
- const {data} = await axios.post(URL + "/customers/login", customer); 
- localStorage.setItem("customertoken", data); 
- window.location = "/cart"
+ try {
+  const { data } = await axios.post(local + "/customers/login", customer); 
+  !data.error && localStorage.setItem("usertoken", data);  
+  return data;
+ } catch (error) {
+    return {error : error.message}
+ }
+ 
 }

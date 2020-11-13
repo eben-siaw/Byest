@@ -6,7 +6,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DateRangeIcon from "@material-ui/icons/DateRange";
-import OfflinePinIcon from "@material-ui/icons/OfflinePin";
+import OfflinePinIcon from "@material-ui/icons/CloudUpload";
 import {
   Grid,
   Button,
@@ -51,6 +51,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const tags = [
   {title1: "make up" }, 
+  {title1: "gadgets"},
   {title1: "design" }, 
   {title1: "travel" },
   {title1: "outings" },
@@ -63,6 +64,9 @@ const useStyles = makeStyles(theme => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular
+  }, 
+  error: { 
+   color: 'red',
   },
   mb3: {
     marginBottom: "1.3rem"
@@ -88,6 +92,8 @@ export default function AddPostRightPanels({title, description, price, quantity}
  const [imageFile, setImageFile] = useState("");
  
  const hiddenFileInput = React.useRef(null);
+ 
+ const [imageErrors, setImageErrors] = useState("");
 
   const classes = useStyles();
 
@@ -108,11 +114,30 @@ export default function AddPostRightPanels({title, description, price, quantity}
   const handleClick = event => {
     hiddenFileInput.current.click();
   }; 
+  
+  const handleCancel = () => { 
+   window.location = "/admin/page"; 
+  }
 
   const handleChange = (event) => {
-    const fileUploaded = setImageFile(event.target.files[0]); 
-    console.log(fileUploaded);
-  }
+     
+    const image = event.target.files[0];
+
+    if(image.type === "image/jpeg" || image.type === "image/jpg" || image.type === "image/png") {   
+
+      const fileUploaded = setImageFile(event.target.files[0]); 
+      console.log(fileUploaded); 
+  
+      setImageErrors(null);
+      return fileUploaded; 
+    }  
+    else { 
+      setImageErrors("Only jpeg formats are allowed!")  
+      window.location = "/admin/page";
+      return null; 
+     
+    }
+  } 
  
   const handleProductSubmit = async () => {  
    
@@ -191,8 +216,8 @@ export default function AddPostRightPanels({title, description, price, quantity}
                 <ListItem>
                   <ListItemIcon>
                     <OfflinePinIcon />
-                  </ListItemIcon>
-                  <span>{imageFile.name}</span>
+                  </ListItemIcon> 
+            {imageErrors ? <p className={classes.error}> {imageErrors} </p> : <span>{imageFile.name}</span> }
                 </ListItem>
               </List>
             </Grid>
@@ -203,7 +228,7 @@ export default function AddPostRightPanels({title, description, price, quantity}
 
         <ExpansionPanelActions>
           <Grid container justify="space-between">
-            <Button color="secondary" size="small">
+            <Button onClick={handleCancel} color="secondary" size="small">
               Cancel
             </Button>
             <Button variant="contained" color="primary" size="small" 

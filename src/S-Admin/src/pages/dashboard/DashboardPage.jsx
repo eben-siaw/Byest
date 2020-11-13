@@ -25,10 +25,6 @@ const useStyles = makeStyles((them) => ({
   },
 })); 
 
-const handleLogout = () => { 
-  const token = localStorage.removeItem("admintoken"); 
-  window.location = "/";
-}
 
 const DashboardPage = (props) => {
   const { history } = props;
@@ -43,7 +39,7 @@ const DashboardPage = (props) => {
         height="30px"
         style={{ marginBottom: "20px" }}
       />
-      <Button variant="outlined" color="secondary" size="medium" onClick={() => handleLogout()}> Logout </Button> 
+    
       <br/>
       <Grid container spacing={2}>
         <Grid className={classes.visitorChart} item xs={12}>

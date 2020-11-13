@@ -264,7 +264,8 @@ class Header extends Component {
                                                         <div className="clearfix" />
                                                     </div>
                                                 </ul>
-                                            </li>
+                                            </li> 
+                                             <li> <Link className="hyper" to="/videos"> <span> VIDEOS </span> </Link> </li>
                                              <li><a href="/admin/auth" className="hyper"><span>POST A PRODUCT</span></a></li> 
                                         </ul>
                                     </div>

@@ -4,7 +4,9 @@ import { Redirect } from "react-router-dom";
 import { DashboardPageConfig } from "../pages/dashboard/DashboardPageConfig";
 import { AboutPageConfig } from "../pages/about/AboutPageConfig";
 import { AddPostPageConfig } from "../pages/posts/Products/AddProductPageConfig"; 
-import {AllOrdersConfig} from "../pages/orders/Orders/OrdersConfig";
+import {AllOrdersConfig} from "../pages/orders/Orders/OrdersConfig"; 
+import {AdsConfig} from "../pages/videos/AllPosts/AdsConfig"; 
+import {PostAdsConfig} from "../pages/videos/PostAds/PostAdsConfig"
 import { AllPostsPageConfig } from "../pages/posts/all-products/AllProductsConfig";
 import { CalendarPageConfig } from "../pages/calendar/CalendarPageConfig";
 import { ForgotPasswordPageConfig } from "../pages/Profile/forgot-password/ForgotPasswordPageConfig";
@@ -18,7 +20,9 @@ const routeConfigs = [
   ...DashboardPageConfig.routes,
   ...AllPostsPageConfig.routes,
   ...AddPostPageConfig.routes, 
-  ...AllOrdersConfig.routes,
+  ...AllOrdersConfig.routes, 
+  ...AdsConfig.routes, 
+  ...PostAdsConfig.routes,
   ...CalendarPageConfig.routes,
   ...ForgotPasswordPageConfig.routes,
   ...ProfilePageConfig.routes,
@@ -34,11 +38,7 @@ const routes = [
   {
     component: () => <Redirect to="/pages/errors/error-404" />
   }
-  // {
-  //   path: "/test",
-  //   exact: true,
-  //   component: <Example />
-  // }
+  
 ];
 
 export default routes;

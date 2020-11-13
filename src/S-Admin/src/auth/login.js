@@ -53,7 +53,6 @@ class Login extends Component {
     if (isformValid(this.state)) {
        login(user).then(res => {  
         console.log(res); 
-        toast("Welcome back!")
      })
 
     } 

@@ -3,7 +3,7 @@ import AddPostPage from "./AddProductPage";
 export const AddPostPageConfig = {
   routes: [
     {
-      path: "/admin/add-product",
+      path: "/admin/page",
       exact: true,
       component: AddPostPage
     }

@@ -13,7 +13,6 @@ export const setCurrentCustomer = (decoded) => {
 
 } 
 
-
 export const setCustomerAuth = (boolean) => { 
  
     return(dispatch) => { 

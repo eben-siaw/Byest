@@ -396,6 +396,7 @@ nav.navbar.navbar-default {
 
 
 
+
 /*--nav--*/
 .multi-column-dropdown li a {
     color: #999 !important;
@@ -3141,7 +3142,7 @@ a.at-in {
 } 
 @media(max-width: 480px) { 
  .footer { 
-    display: none; 
+   /* display: none; */
  }   
 }
 .cart {

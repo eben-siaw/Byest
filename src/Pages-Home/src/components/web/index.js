@@ -20,7 +20,8 @@ import Category from './category-mobile'
 import Cart from './cart';
 import Checkout from './checkout';
 import Singleproduct from './singleproduct/index'; 
-
+import Video from './videos-ads/Video';
+import AdVideos from './videos-ads/AdVideos';
 
 export default class Main extends Component {
   render() {
@@ -35,7 +36,7 @@ export default class Main extends Component {
               <Route  path='/outfits' component={OutfitsCategory} />
               <Route  path='/cars' component={CarsCategory} /> 
               <Route  path='/appliances' component={AppliancesCategory} />
-              <Route exact path="/product-details/:id" component={Singleproduct} />
+              <Route  path="/product-details/:id" component={Singleproduct} />
               <Route  path='/contact' component={Contact} />
               <Route  path='/faq' component={Faq} />
               <Route  path='/term-and-condition' component={Term} />
@@ -44,7 +45,8 @@ export default class Main extends Component {
               <Route  path='/login' component={Login} />
               <Route  path='/register' component={Register} />
               <Route  path='/categories' component={Category} />
-              <Route  path='/carts' component={Cart} />
+              <Route  path='/carts' component={Cart} /> 
+              <Route  path="/videos" component={AdVideos} /> 
               <Route  path='/checkout/:adminId' component={Checkout} />
             </Switch> 
             <div className="no-display">

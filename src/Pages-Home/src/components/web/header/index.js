@@ -42,7 +42,7 @@ class Header extends Component {
                             <Grid container>
                                 <Grid item md={3} lg={2} xl={2}>
                                     <div className="logo">
-                                        <h1><Link to="#"><b>T<br />H<br />E</b><span>Online shopping</span></Link></h1>
+                                        <h1><Link to="#"><b>T<br />H<br />E</b>Mekexpress<span>Online shopping</span></Link></h1>
                                     </div>
                                 </Grid>
                                 <Grid item md={6} lg={7} xl={6}>

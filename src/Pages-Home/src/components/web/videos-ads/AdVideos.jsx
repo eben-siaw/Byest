@@ -8,6 +8,9 @@ import {useSelector} from 'react-redux';
 import { Divider } from '@material-ui/core';
 import './videos.css'; 
 import VideoIcon from '@material-ui/icons/AccountCircle'
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"  
+
 
  const local = "http://localhost:5080"; 
 
@@ -17,6 +20,8 @@ import VideoIcon from '@material-ui/icons/AccountCircle'
 
   const userId = useSelector(state => state.customer.user._id);
   
+  const [loading, setLoading] = useState(true);
+
  const [videoAds, setVideos] = useState([]);  
  const [videoId, setVideoId] = useState([]) 
  const [views, setViewsCount] = useState(0);
@@ -26,6 +31,7 @@ import VideoIcon from '@material-ui/icons/AccountCircle'
   console.log(response.data.videos)
   setVideos(response.data.videos); 
   setVideoId(response.data.videos._id);
+  setLoading(false);
   }   
   
   const getViews = () => { 
@@ -147,7 +153,10 @@ import VideoIcon from '@material-ui/icons/AccountCircle'
         
       </div>    
     <div className="video-container-inner">
-      {renderVideos()} 
+      {renderVideos()}   
+    <div className="loader-spin"> 
+    {loading ? <Loader type="ThreeDots" color="red" height={55} width={77} timeout={15000}/> : null}  
+    </div>
     </div> 
   </div> 
 

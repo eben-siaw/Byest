@@ -1,17 +1,16 @@
-.video-container { 
-  display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
-} 
+:root {
+  /* variables */
+  --color-1: #210a3c;
+  --color-1-translucent: #210a3cde;
+  --color-1-transparent: #210a3c30;
+  --color-2: #006fa7;
+  --color-2-translucent: #006fa7d3;
+  --color-2-transparent: #006fa730;
+  --color-3: #e31859;
+  --color-3-translucent: #e31859d3;
+  --color-3-transparent: #e3185930;
 
-.video-cards { 
- height: 120px; 
- min-width: 200px;
- border-radius: 8px; 
- cursor: pointer;
-} 
-
-@media (max-width: 480px) { 
-    .video-cards { 
-      width: 100%;
-    }
+  --text-color: rgb(88, 88, 88);
+  --gradient: linear-gradient(to right bottom, #210a3c, #006fa7);
+  --radius: 5px;
 }

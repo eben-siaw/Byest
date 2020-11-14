@@ -85,13 +85,13 @@ const VideoPlayback = (props) => {
 
   useEffect(() => {  
   
-    axios.post(URL + '/like/getViews', viewsVariable)
+    axios.post(URL + '/views/getViews', viewsVariable)
     .then(response => {
         console.log('getViews', response.data)
 
         if (response.data.success) { 
           
-          //How many views does this video or comment have 
+          //How many views does this video have 
             setViewsCount(response.data.views.length)
 
             //if I already watched this video or not 

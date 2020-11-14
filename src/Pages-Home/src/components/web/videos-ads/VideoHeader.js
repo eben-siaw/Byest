@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {useState, useEffect} from 'react'
@@ -111,6 +112,10 @@ export default function VideoHeader() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+ 
+ const handleHomeClick = () => { 
+   window.location.href = "/videos";  
+ }
 
   const menuId = 'primary-search-account-menu'; 
 
@@ -199,7 +204,8 @@ export default function VideoHeader() {
             />
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          <div className={classes.sectionDesktop}> 
+          <IconButton onClick={handleHomeClick}> <HomeIcon/> </IconButton>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={messages} color="secondary">
                 <MailIcon />

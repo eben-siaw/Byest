@@ -5,6 +5,9 @@ import VideoThumbnail from 'react-video-thumbnail'
 import moment from 'moment'; 
 import {Link} from 'react-router-dom'; 
 import {useSelector} from 'react-redux'; 
+import { Divider } from '@material-ui/core';
+import './videos.css'; 
+import VideoIcon from '@material-ui/icons/AccountCircle'
 
  const local = "http://localhost:5080"; 
 
@@ -88,16 +91,16 @@ import {useSelector} from 'react-redux';
   <div className="detail"> 
     <div
      className="detail-icon"
-     style={{ background: `var(--color-${color}-transparent)` }}
+     style={{color: `var(--color-${color}-transparent)` }}
     >
-    <i className="ion-videocamera" style={{ color: `var(--color-${color})` }}> </i>
+    <VideoIcon style={{ color: `var(--color-${color})`, fontSize: 24 }} />
    </div>
    <div className="detail-info">
+   <p style={{ fontSize: "15px", color: "grey" }}>{videos.Admin.firstName} {videos.Admin.lastName}</p>
      <h5 style={{ marginBottom: "5px", color: "var(--text-color)" }}>{videos.title}</h5> 
-       <p style={{ fontSize: "15px", color: "grey" }}>{videos.Admin.firstName} {videos.Admin.lastName}</p>
        <p style={{ fontSize: "14px", color: "grey"}}> {views} views • {moment(Date.parse(videos.createdAt)).fromNow()} </p>
-    </div>   
-  </div> 
+    </div>    
+  </div>  
   </div>
   );
 
@@ -160,10 +163,10 @@ import {useSelector} from 'react-redux';
   }
 
   .video-card {
-    width: 75%;
+    width: 80%;
     min-height: 170px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 5px; 
     box-shadow: 0 0 5px #00000032;
     padding: 0px;
     display: grid;
@@ -180,8 +183,9 @@ import {useSelector} from 'react-redux';
     display: flex;
     margin-bottom: auto;
     padding: 20px;
-    padding-top: 25px;
-    background: #fff;
+    padding-top: 30px;
+    background: #fff; 
+    border-bottom: 1px solid black;
   } 
 
   .video-card .detail .detail-icon {
@@ -214,13 +218,19 @@ import {useSelector} from 'react-redux';
   }
   .react-thumbnail-generator .snapshot-generator {
     width: 100% !important;
-    height: 260px !important; 
-    object-fit: contain; 
+    height: 280px !important; 
+    object-fit: cover; 
   }
 
   @media (max-width: 600px) {
     .video-container-inner {
       grid-template-columns: 1fr;
+    } 
+  } 
+
+  @media (max-width: 480px) { 
+    .container { 
+      padding-top: 22px; 
     }
   }
   `}</style>

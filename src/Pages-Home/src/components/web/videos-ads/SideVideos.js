@@ -177,8 +177,8 @@ import {useSelector} from 'react-redux';
   }
   .react-thumbnail-generator .snapshot-generator {
     width: 100% !important;
-    height: 260px !important; 
-    object-fit: contain; 
+    height: 280px !important; 
+    object-fit: cover; 
   }
 
   @media (max-width: 600px) {

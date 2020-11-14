@@ -55,7 +55,7 @@ export default class Footer extends Component {
                                 <p><i className="fa fa-phone" aria-hidden="true" />+91 8375893352</p>
                             </div>
                             <div className="col-md-4 fo-grid1">
-                                <p><Link to="/gmail.com"><i className="fa fa-envelope-o" aria-hidden="true" />pandit.bechu@gmail.com</Link></p>
+                                <p><Link to="/gmail.com"><i className="fa fa-envelope-o" aria-hidden="true" />info.mekexpress@gmail.com</Link></p>
                             </div>
                             <div className="clearfix" />
                         </div>

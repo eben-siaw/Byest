@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import Web from './Pages-Home/src/components/web';
 import NotFound from './Pages-Home/src/components/nomatch';
 import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'; 
-import Reactga from 'react-ga'; 
+import ReactGa from 'react-ga'; 
 
 /* Redux Provider */
 import { Provider } from 'react-redux';
@@ -12,7 +12,10 @@ import { Provider } from 'react-redux';
 
 const App = () => { 
    
-  useEffect(() => { 
+  useEffect(() => {  
+    ReactGa.initialize('G-6DQ8E67HDC'); 
+
+    ReactGa.pageview(window.location.pathname + window.location.search);
     
   })
 

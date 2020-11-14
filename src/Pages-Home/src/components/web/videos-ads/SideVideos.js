@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import VideoThumbnail from 'react-video-thumbnail'
 import moment from 'moment'; 
 import {Link} from 'react-router-dom'; 
+import {useSelector} from 'react-redux';
 
  const local = "http://localhost:5080"; 
 
@@ -11,13 +12,42 @@ import {Link} from 'react-router-dom';
 
  const SideVideos = () => { 
   
+ const userId = useSelector(state => state.customer.user._id)
+
  const [videoAds, setVideos] = useState([]);  
+ const [videoId, setVideoId] = useState([]) 
+ const [views, setViewsCount] = useState(0); 
 
   const getVideos = async () => {  
   const response = await axios.get(local + "/video/getVideoAds"); 
-  console.log(response.data)
-  setVideos(response.data); 
+  console.log(response.data.videos)
+  setVideos(response.data.videos);  
+  setVideoId(response.data.videos._id);
   }   
+
+  const getViews = () => { 
+    axios.post(URL + `/views/getViews`, videoId)
+    .then(response => {
+        console.log('getViews', response.data)
+
+        if (response.data.success) { 
+          
+          //How many views does this video or comment have 
+            setViewsCount(response.data.views.length)
+
+            //if I already watched this video or not 
+            response.data.views.map(view => {
+                if (view.userId === userId) {
+                    return view;
+                }
+            })
+        } else {
+            alert('Failed to get views')
+        }
+    }) 
+
+  }
+
 
   const handleVideoClick = (videoId) => {  
    window.location = `/videoPlayback/${videoId}`
@@ -25,6 +55,7 @@ import {Link} from 'react-router-dom';
  
  useEffect(() => { 
  getVideos(); 
+ getViews();
  },[]);   
   
 
@@ -64,7 +95,7 @@ import {Link} from 'react-router-dom';
    </div>
    <div className="detail-info">
      <h5 style={{ marginBottom: "5px", color: "var(--text-color)" }}>{videos.title}</h5> 
-       <p style={{ fontSize: "15px", color: "grey" }}>{videos.views} views </p>
+       <p style={{ fontSize: "15px", color: "grey" }}>{views} views</p>
     </div>   
   </div> 
   </div>

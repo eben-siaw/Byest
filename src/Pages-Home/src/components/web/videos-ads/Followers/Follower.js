@@ -21,7 +21,9 @@ export default function Follower(props) {
  
   const userTo = props.userTo 
 
-  const userFrom = props.userFrom
+  const userFrom = props.userFrom; 
+
+  const videoId = props.videoId;
 
   const [FollowersNumber, setFollowersNumber] = useState(0) 
 
@@ -31,12 +33,13 @@ export default function Follower(props) {
 
       let Variables = {
               userTo : userTo,
-              userFrom : userFrom
+              userFrom : userFrom, 
+              PostId: videoId
       }
 
       if(Followed) {
           //when we are already followed 
-          axios.post(local + '/follow/unFollow', Variables)
+          axios.post(URL + '/follow/unFollow', Variables)
               .then(response => {
                   if(response.data.success){ 
                       setFollowersNumber(FollowersNumber - 1)
@@ -50,7 +53,7 @@ export default function Follower(props) {
       } else { 
 
           // when we are not followed yet
-          axios.post(local + '/follow/Follow', Variables)
+          axios.post(URL + '/follow/Follow', Variables)
               .then(response => {
                   if(response.data.success) {
                       setFollowersNumber(FollowersNumber + 1)
@@ -67,9 +70,9 @@ export default function Follower(props) {
 
   useEffect(() => {
 
-      const NumberVariables = { userTo: userTo, userFrom: userFrom } 
+      const NumberVariables = { userTo: userTo, userFrom: userFrom, PostId: videoId } 
 
-      axios.post(local + '/follow/followers', NumberVariables)
+      axios.post(URL + '/follow/followers', NumberVariables)
           .then(response => {
               if (response.data.success) {
                 setFollowersNumber(response.data.followers)
@@ -78,7 +81,7 @@ export default function Follower(props) {
               }
           })
 
-      axios.post(local + '/follow/following', NumberVariables)
+      axios.post(URL + '/follow/following', NumberVariables)
           .then(response => {
               if (response.data.success) {
                 setFollowed(response.data.following)
@@ -104,7 +107,7 @@ export default function Follower(props) {
     >
       {!Followed ? "follow" : "unfollow"}
     </Button>   
-    <Typography variant="body2">{FollowersNumber} followers</Typography>
+    <Typography variant="body2">{FollowersNumber} Followers</Typography>
     </div>
   );
 }

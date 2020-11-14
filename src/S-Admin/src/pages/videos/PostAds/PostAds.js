@@ -59,8 +59,8 @@ const PostAds = () => {
    
     const Video = event.target.files[0]; 
  
-     if(Video.size > 15000000 ) { 
-       setFileErrors("Video ad should not exceed 15mb!") 
+     if(Video.size > 18000000 ) { 
+       setFileErrors("Video ad should not exceed 18mb!") 
        return null;
      } 
  
@@ -116,7 +116,7 @@ const PostAds = () => {
       } 
     
       // saving video data to mongo
-      axios.post(local + `/video/saveVideoAds`, details)
+      axios.post(URL + `/video/saveVideoAds`, details)
       .then(res => { 
       if(res.data.message){   
       setLoading(false); 

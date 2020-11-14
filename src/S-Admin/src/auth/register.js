@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 import {register} from './Functions';
 import "./Page.css";
-
+import { toast, ToastContainer } from 'react-toastify';
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -34,7 +34,9 @@ class Login extends Component {
       email: null, 
       phone: null, 
       address: null,
-      password: null,
+      password: null, 
+      errorMessage: "",
+
       formErrors: {
         firstName: "",
         lastName: "", 
@@ -60,8 +62,15 @@ class Login extends Component {
   }  
 
   if(isformValid(this.state)) {
-       register(newUser).then(res => {  
-        console.log(res); 
+       register(newUser).then(({data}) => {  
+        console.log(data);  
+        if(data.error) {  
+          toast("error occured!")
+          this.setState({ errorMessage: data.error });
+          setTimeout(() => this.setState({ errorMessage: "" }), 3000);
+          return;
+        } 
+        toast("Welcome to mekexpress")
         window.location = "/admin/auth"
      })
     } 
@@ -107,7 +116,7 @@ class Login extends Component {
 
   render() { 
 
-    const { formErrors } = this.state;
+    const { formErrors, errorMessage } = this.state;
 
     return ( 
 
@@ -124,9 +133,11 @@ class Login extends Component {
 
             <div className="singup-wrapper">  
            		<div className="input-div one">
-           		   <div className="i">
-           		   		<i className="fas fa-user"></i>
-           		   </div> 
+           		   <div className="i"> 
+                  <small style={{color: 'red'}}> {errorMessage} </small>
+           		   		<i className="fas fa-user"> </i> 
+           		   </div>  
+                
            		   <div className="div">
            		   		<h5></h5>
                     <input type="text" placeholder="First Name" className="input" name="firstName"
@@ -220,7 +231,8 @@ class Login extends Component {
             </div> 
 
             	<Link to="/admin/auth">Sign in to your account?</Link>
-            	<input type="submit" className="btn" value="Register"/>
+            	<input type="submit" className="btn" value="Register"/> 
+              <ToastContainer/>
             </form>
         </div> 
       </div>  
@@ -234,7 +246,7 @@ class Login extends Component {
       }
       
       .container{
-          width: 100vw;
+          width: 100%;
           height: 100vh;
           display: grid;
           grid-template-columns: repeat(2, 1fr);

@@ -34,7 +34,8 @@ class Login extends Component {
 
     this.state = {
       email: null,
-      password: null,
+      password: null, 
+      errorMessage: "",
       formErrors: {
         email: "",
         password: ""
@@ -42,22 +43,7 @@ class Login extends Component {
     };
   }
 
-  handleSubmit = (event) => { 
-
-    event.preventDefault(); 
-
-    const user = { 
-      email: this.state.email, 
-      password: this.state.password
-    }
-    if (isformValid(this.state)) {
-       login(user).then(res => {  
-        console.log(res); 
-     })
-
-    } 
-  }; 
- 
+    
   componentWillMount() {
    if (localStorage.getItem("admintoken")) window.location = "/admin/page";
   }
@@ -84,9 +70,32 @@ class Login extends Component {
       default:
         break;
     }
-
+    
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
+   
+
+  handleSubmit = async (event) => { 
+
+    event.preventDefault(); 
+
+    const user = { 
+      email: this.state.email, 
+      password: this.state.password
+    } 
+
+     const results = await login(user);  
+      console.log(results);
+      if(results.error) {  
+      toast("An error occured!") 
+      this.setState({ errorMessage: results.error });
+      setTimeout(() => this.setState({ errorMessage: "" }), 3000);
+      } else { 
+        toast("Welcome back!"); 
+        window.location = "/admin/page";
+    }
+  
+  }; 
 
   render() {  
 
@@ -110,7 +119,7 @@ class Login extends Component {
    });
 
 
-    const { formErrors } = this.state;
+    const { formErrors, errorMessage } = this.state;
 
     return ( 
 
@@ -130,7 +139,7 @@ class Login extends Component {
 		     	<form onSubmit={this.handleSubmit}> 
            <img src="/img/avatar.svg" />
 			    	<h2 className="title">Welcome</h2>  
-
+            <small style={{color: 'red'}}> {errorMessage} </small>
            		<div className="signtext-div one">
            		   <div className="i">
            		   		<i className="fas fa-user"></i>

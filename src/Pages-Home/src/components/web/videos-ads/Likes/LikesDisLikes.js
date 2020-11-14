@@ -58,7 +58,7 @@ function LikeDislikes(props) {
 
     useEffect(() => {
 
-        axios.post(local + '/like/getLikes', variable)
+        axios.post(URL + '/like/getLikes', variable)
             .then(response => {
                 console.log('getLikes',response.data)
 
@@ -77,7 +77,7 @@ function LikeDislikes(props) {
                 }
             })
 
-        axios.post(local + '/like/getDislikes', variable)
+        axios.post(URL + '/like/getDislikes', variable)
             .then(response => {
                 console.log('getDislike',response.data)
                 if (response.data.success) {
@@ -103,7 +103,7 @@ function LikeDislikes(props) {
 
         if (LikeAction === null) {
 
-            axios.post(local + '/like/upLike', variable)
+            axios.post(URL + '/like/upLike', variable)
                 .then(response => {
                     if (response.data.success) {
 
@@ -127,7 +127,7 @@ function LikeDislikes(props) {
 
         } else {
 
-            axios.post(local + '/like/unLike', variable)
+            axios.post(URL + '/like/unLike', variable)
                 .then(response => {
                     if (response.data.success) {
 
@@ -148,7 +148,7 @@ function LikeDislikes(props) {
 
         if (DislikeAction !== null) {
 
-            axios.post(local + '/like/unDisLike', variable)
+            axios.post(URL + '/like/unDisLike', variable)
                 .then(response => {
                     if (response.data.success) {
 
@@ -162,7 +162,7 @@ function LikeDislikes(props) {
 
         } else {
 
-            axios.post(local + '/like/upDisLike', variable)
+            axios.post(URL + '/like/upDisLike', variable)
                 .then(response => {
                     if (response.data.success) {
 

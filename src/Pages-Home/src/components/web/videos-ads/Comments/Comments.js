@@ -13,7 +13,7 @@ import SendIcon from '@material-ui/icons/Send';
 
 const Comments = (props) => { 
 
-  //  const userId = useSelector(state => state.customer.user._id) 
+   const userId = useSelector(state => state.customer.user._id) 
 
     const [Comment, setComment] = useState("")
 
@@ -26,11 +26,11 @@ const Comments = (props) => {
 
         const variables = {
             message: Comment,
-       //   user: userId,
+            user: userId,
             postId: props.postId
         }
 
-        axios.post(local + '/comment/saveComment', variables)
+        axios.post(URL + '/comment/saveComment', variables)
             .then(response => {
                 if (response.data.success) {
                     setComment("")

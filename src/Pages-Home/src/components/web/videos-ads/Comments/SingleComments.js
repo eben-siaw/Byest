@@ -8,7 +8,6 @@ import LikeDislikes from '../Likes/LikesDisLikes';
 //import clsx from '@material-ui/'
 
 
-
 const URL = "https://mekexpress-backend.herokuapp.com"; 
 
 const local = "http://localhost:5080"
@@ -40,7 +39,7 @@ const SingleComment = (props) => {
         }
 
 
-        axios.post(local + '/comment/saveComment', variables)
+        axios.post(URL + '/comment/saveComment', variables)
             .then(response => {
                 if (response.data.success) {
                     setCommentValue("")
@@ -61,7 +60,7 @@ const SingleComment = (props) => {
         <div>
             <Comment
                 actions={actions}
-              //  author={props.comment.writer.name}
+                author={props.comment.user.fullName}
                 avatar={
                     <Avatar> M </Avatar>
                 }

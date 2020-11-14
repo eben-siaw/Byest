@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import axios from 'axios'; 
 
 const URL = "https://mekexpress-backend.herokuapp.com";
@@ -7,31 +6,20 @@ const http = "http://localhost:5080";
 
 export const register = (newUser) => { 
     try {
-        return axios.post(http + "/admins/register", newUser) 
-        .then(results => {  
-            console.log(results.data);
-           return results.data;
-        });
+        return axios.post(URL + "/admins/register", newUser); 
     } catch (error) {
         console.log(error);
     }
   
-
 } 
 
 export const login = async (user) => { 
     try {
-    return await axios.post(http + "/admins/login", user)   
-    .then(response => {  
-        if(response.data) {  
-         toast("Welcome back!")   
-         window.location = "/admin/page"
-         localStorage.setItem("admintoken", response.data);
-        }  
-    })
-    
+    const {data} = await axios.post(URL + "/admins/login", user)   
+    !data.error && localStorage.setItem("admintoken", data);
+     return data;  
     } catch (error) {
-        console.log(error);
+      return {error: error.message};
     }
 
 }

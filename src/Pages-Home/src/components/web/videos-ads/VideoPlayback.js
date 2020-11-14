@@ -23,8 +23,10 @@ const VideoPlayback = (props) => {
   const userId = useSelector(state => state.customer.user._id);
 
   // declare the states
-  const [video, setVideo] = useState([]); 
-  const [views, setViewsCount] = useState({});
+  const [video, setVideo] = useState([]);  
+
+  const [views, setViewsCount] = useState(0); 
+  const [isViewed, setViewed] = useState(false);
 
   const [postUser, setPostUser] = useState(null); 
   const [first, setFirstName] = useState(null);
@@ -32,14 +34,20 @@ const VideoPlayback = (props) => {
 
   const videovariable = {
     videoId: videoId, 
-    updateViews: true
   };  
+
+  const viewsVariable = { 
+   videoId: videoId,  
+   userFrom: userId, 
+   userTo: postUser,
+   updateViews: true
+  }
 
  
   // get video clicked and update views + 1
   useEffect(() => { 
 
-    axios.post(local + `/video/playAd`, videovariable) 
+    axios.post(URL + `/video/playAd`, videovariable) 
     .then((response) => {
       if (response.data.success) {
         console.log('response.data.video', response.data.video);
@@ -52,16 +60,17 @@ const VideoPlayback = (props) => {
       }
     });  
 
-    axios.post(local + '/views/count', videoId)
+    axios.post(URL + '/views/count', viewsVariable)
     .then(response => { 
       if(response.data.success) { 
-        console.log(response.data.count);
-         return response.data.count;
+        setViewsCount(views + 1); 
+        setViewed(true); 
+        localStorage.setItem(true, isViewed);
       }
     })
   
     // get already comments
-    axios.post(local + `/comment/getComments`, videovariable)  
+    axios.post(URL + `/comment/getComments`, videovariable)  
     .then(response => { 
        if(response.data.success) { 
         console.log('response.data.comments', response.data.comments) 
@@ -76,16 +85,29 @@ const VideoPlayback = (props) => {
 
   useEffect(() => {  
   
-    return axios.get(local + `/views/getViews/${videoId}`)  
-    .then(results => { 
-      setViewsCount(results.data.views);
-    })
-     .catch(error => { 
-       return error;
-     })
+    axios.post(URL + '/like/getViews', viewsVariable)
+    .then(response => {
+        console.log('getViews', response.data)
+
+        if (response.data.success) { 
+          
+          //How many views does this video or comment have 
+            setViewsCount(response.data.views.length)
+
+            //if I already watched this video or not 
+            response.data.views.map(view => {
+                if (view.userId === props.userId) {
+                    setViewed(true);
+                }
+            })
+        } else {
+            alert('Failed to get views')
+        }
+    }) 
+
   },[]) 
 
-  console.log(views)
+  console.log(views);
    
 
   function UpdateComments(newComment) { 
@@ -109,9 +131,9 @@ const VideoPlayback = (props) => {
       </div> 
    
       <div className="inner-frame">  
-        <p>{moment(Date.parse(video.createdAt)).fromNow()} </p>
+      <small> {views} views • {moment(Date.parse(video.createdAt)).fromNow()} </small>
         <LikesDisLikes video videoId={videoId} userFrom={userId} userTo={postUser}/>    
-        <Follower userFrom={userId} userTo={postUser}/>
+        <Follower userFrom={userId} userTo={postUser} videoId={video._id}/>
       </div> 
 
        <div >  

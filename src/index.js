@@ -17,7 +17,8 @@ import CartPage from './Pages-Home/src/components/home-auth/cart_page';
 import {NotificationContainer} from 'react-notifications' 
 import Video from './Pages-Home/src/components/web/videos-ads/Video';
 import VideoPage from './Pages-Home/src/components/home-auth/videos-page';
-
+import PasswordReset from './S-Admin/src/auth/PasswordReset/Reset';
+import ChangePassword  from './S-Admin/src/auth/PasswordReset/NewPassword';
 
 
 const routing = (  
@@ -30,10 +31,13 @@ const routing = (
         <Route path="/register" component={CustRegister} /> 
         <Route path="/carts" component={CartPage} /> 
         <Route path="/videos" component={VideoPage} />
-        <Route  path="/videoPlayback/:videoId" component={Video} />
+        <Route  path="/videoPlayback/:videoId" component={Video} /> 
+
           {/* Admin Pages  */}
         <Route path="/admin/auth" component={AdminPage} />   
-        <Route path="/admin/register" component={Register} /> 
+        <Route path="/admin/register" component={Register} />  
+        <Route path="/admin/reset" component={PasswordReset} /> 
+        <Route path="/admin/reset-pass/:token" component={ChangePassword} />
         <Route path="/admin/page" component={AdminDashboard}/>  
         <Route path="/notFound" component={NotFound} /> 
         <NotificationContainer/>

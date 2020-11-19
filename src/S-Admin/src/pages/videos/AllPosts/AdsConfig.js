@@ -1,11 +1,11 @@
-import AdVideos from "./Ads";
+import MyAds from "./Ads";
 
 export const AdsConfig = {
   routes: [
     {
-      path: "/admin/videos",
+      path: "/admin/ads",
       exact: true,
-      component: AdVideos
+      component: MyAds
     }
   ]
 };

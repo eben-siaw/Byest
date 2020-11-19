@@ -31,14 +31,13 @@ export default class Register extends Component {
 
     const newUser = {  
       fullName: this.state.full_name, 
-      Phone: this.state.phone,  
       email: this.state.email, 
       password: this.state.password  
     }
      register(newUser).then(({data}) => {    
          if(!data.error) { 
             console.log(data); 
-            toast("Accounted Successfully Created!" + data.fullName); 
+            toast("Success! Login to watch ads"); 
             window.location = "/login";
         }     
      })
@@ -76,11 +75,6 @@ export default class Register extends Component {
                                     <input value={this.state.password} type="password" onChange={this.handleOnChange} placeholder="Password"  name="password" required />
                                     <div className="clearfix" />
                                 </div> 
-                                <div className="key">
-                                    <i className="fa fa-phone" aria-hidden="true" />
-                                    <input value={this.state.phone} type="text" onChange={this.handleOnChange} placeholder="Mobile Number" name="phone"  required />
-                                    <div className="clearfix" />
-                                </div>
                                 <input type="submit" defaultValue="Sign Up" /> 
                                 <ToastContainer/>
                             </form>

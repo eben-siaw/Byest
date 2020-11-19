@@ -1,8 +1,7 @@
 import React, { Component } from "react";   
 import {Link} from 'react-router-dom';
-import {login} from './Functions';
-import "./Page.css";
-import HomeIcon from '@material-ui/icons/Home';
+import {NewPassword} from '../Functions';
+import "../Page.css";
 import { IconButton } from "@material-ui/core";
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,20 +24,19 @@ const isformValid = ({ formErrors, ...rest }) => {
   });
 
   return valid;
-};
-
-class Login extends Component { 
+}
+class ChangePassword extends Component { 
 
   constructor(props) {
     super(props);
 
     this.state = {
-      email: null,
-      password: null, 
+      password: "",
+      password2: "",
       errorMessage: "",
       formErrors: {
-        email: "",
-        password: ""
+        password: "",
+        password2: ""
       }
     };
   }
@@ -58,14 +56,11 @@ class Login extends Component {
     let formErrors = { ...this.state.formErrors };
 
     switch (name) {
-      case "email":
-        formErrors.email = emailRegex.test(value)
-          ? ""
-          : "invalid email address";
-        break;
       case "password":
-        formErrors.password =
-          value.length < 8 ? "minimum 8 characaters required" : "";
+        formErrors.password = value.length < 8 ? "minimum 8 characaters required" : "";
+        break;
+      case "password2":
+        formErrors.password2 = value.length < 8 ? "minimum 8 characaters required" : "";
         break;
       default:
         break;
@@ -74,26 +69,39 @@ class Login extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
    
-
   handleSubmit = async (event) => { 
 
     event.preventDefault(); 
+    
+    const {token} = this.props.match.params;
 
-    const user = { 
-      email: this.state.email, 
-      password: this.state.password
+    const details = { 
+      password: this.state.password,
+      password2: this.state.password2,  
+      token: token
     } 
+    
+     const password = this.state.password; 
+     const password2 = this.state.password2; 
+     
+     if(password !== password2) { 
+      this.setState({ errorMessage: "Passwords do not match" });
+      setTimeout(() => this.setState({ errorMessage: "" }), 3050); 
+      return null;
+     }
 
-     const results = await login(user);  
-      console.log(results);
-      if(results.error) {  
+     const results = await NewPassword(details);  
+
+      console.log(results.data); 
+
+      if(results.data.error) {  
       toast("An error occured!") 
-      this.setState({ errorMessage: results.error });
-      setTimeout(() => this.setState({ errorMessage: "" }), 3000);
-      } else { 
-        toast("Welcome back!"); 
-        window.location = "/admin/page";
-    }
+      this.setState({ errorMessage: results.data.error});
+      setTimeout(() => this.setState({ errorMessage: "" }), 3050);
+      } else {  
+       toast("Success! Login with your new password!"); 
+         window.location.href = "/admin/auth"; 
+     }
   
   }; 
 
@@ -125,32 +133,27 @@ class Login extends Component {
 
     <main> 
         <img className="wave" src="/img/wave.png" />
-	       <div className="container"> 
+	    <div className="container"> 
         
 	    	<div className="img">
 		     	<img src="/img/bg.svg" />
 	      </div>  
 	      <div class="login-content"> 
-        <div className="homeicon">   
-          <IconButton onClick={() => this.homeClick()}> 
-           <HomeIcon color="inherit"/>  
-           </IconButton>
-           </div>
 		     	<form onSubmit={this.handleSubmit}> 
            <img src="/img/avatar.svg" />
-			    	<h2 className="title">Welcome</h2>  
+			    	<h2 className="title">New Password</h2>  
             <small style={{color: 'red'}}> {errorMessage} </small> 
 
-           		<div className="signtext-div one">
+            <div className="signtext-div one">
            		   <div className="i">
            		   		<i className="fas fa-user"></i>
            		   </div>
            		   <div className="div">
            		   		<h5 className="headtitle"></h5>
-                      <input type="text" placeholder="Email" name="email" className="signtext" 
+                      <input type="password" placeholder="Enter New Password" name="password" className="signtext" 
                       onChange={this.handleChange} required/> 
-                       {formErrors.email.length > 0 && (
-                    <div error={formErrors.email} className="errorMessage"> 
+                       {formErrors.password.length > 0 && (
+                    <div error={formErrors.password} className="errorMessage"> 
                     !
                     </div>
                 )}
@@ -162,17 +165,16 @@ class Login extends Component {
            		   </div>
            		   <div className="div">
            		    	<h5 className="headtitle"></h5>
-           		    	<input type="password" placeholder="Password" name="password" className="signtext"  
+           		    	<input type="password" placeholder="Confirm Password" name="password2" className="signtext"  
                      onChange={this.handleChange} required/> 
-                      {formErrors.password.length > 0 && (
-                <div error={formErrors.password} className="errorMessage"> 
+                      {formErrors.password2.length > 0 && (
+                <div error={formErrors.password2} className="errorMessage"> 
                 !</div>
                 )}
-            	   </div>
             	</div> 
-              <Link className="block" style={{color: 'red'}} to="/admin/reset">Forgot password?</Link>
-            	<Link className="block" style={{color: 'dodgerblue'}} to="/admin/register">Create an Account</Link>
-            	<input type="submit" className="btn" value="Login"/> 
+             </div>
+            	<Link to="/admin/auth">Sign in instead?</Link>
+            	<input type="submit" className="btn" value="Update Password"/> 
               <ToastContainer/>
             </form>
         </div>
@@ -187,11 +189,11 @@ class Login extends Component {
       }
       
       .container{
-          width: 100vw;
-          height: 100vh;
+          width: 100%;
+          height: 100%;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          grid-gap :7rem;
+          grid-gap: 7rem;
           padding: 0 2rem;
       }
       
@@ -199,12 +201,6 @@ class Login extends Component {
         position: absolute; 
         top: 20px; 
         cursor: pointer;
-      }
-      
-      .block { 
-       display: inline-block; 
-       margin-left: 10px; 
-       padding: 1.5em;
       }
 
       .errorMessage { 
@@ -502,4 +498,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ChangePassword;

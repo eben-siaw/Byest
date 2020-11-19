@@ -151,7 +151,7 @@ class Login extends Component {
 
            		<div className="input-div pass">
            		   <div className="i"> 
-           		    	<i className="fas fa-lock"></i>
+           		    	<i className="fas fa-user"></i>
            		   </div>
            		   <div className="div">
            		    	<h5></h5>
@@ -167,7 +167,7 @@ class Login extends Component {
 
               <div className="input-div pass">
            		   <div className="i"> 
-           		    	<i className="fas fa-lock"></i>
+           		    	<i className="fas fa-mail"></i>
            		   </div>
            		   <div className="div">
            		    	<h5></h5>
@@ -199,7 +199,7 @@ class Login extends Component {
 
               <div className="input-div pass">
            		   <div className="i"> 
-           		    	<i className="fas fa-lock"></i>
+           		    	<i className="fas fa-phone"></i>
            		   </div>
            		   <div className="div">
            		    	<h5></h5>
@@ -215,7 +215,7 @@ class Login extends Component {
 
               <div className="input-div pass">
            		   <div className="i"> 
-           		    	<i className="fas fa-lock"></i>
+           		    	<i className="fas fa-place"></i>
            		   </div>
            		   <div className="div">
            		    	<h5></h5>

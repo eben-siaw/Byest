@@ -3233,8 +3233,8 @@ img.img-head {
 .search-form {
     width: 95%;
 }
-.spec h3 {
-    font-size: 1.7em;
+.spec h3 { 
+    font-size: 1.8em;
 }
 .ser-t {
     width: 64%;
@@ -3258,7 +3258,7 @@ img.img-head {
 .offer {
     right: -8px;
 }
-.container {
+.container { 
     padding-right: 5px;
     padding-left: 5px;
 }

@@ -76,8 +76,8 @@ const Kitchenitem = (props) => {
 
         <div className="product">
             <div className="container ">
-                <div className="spec ">
-                    <h3>Special Offers</h3>
+                <div className="spec">
+                    <h3 style={{marginTop: 16}}>Special Offers</h3>
                     <div className="ser-t">
                         <b />
                         <span><i /></span>
@@ -87,13 +87,13 @@ const Kitchenitem = (props) => {
                 </div>
             </div>  
 
-            <div className="products-container-wrapper">  
+          <div className="products-container-wrapper">  
               {ProductSpecials()}   
 
                <div className="loader-spin"> 
-                 {loading ? <Loader type="ThreeDots" color="red" height={60} width={80} timeout={15000}/> : null} 
+                 {loading ? <Loader type="ThreeDots" color="red" height={60} width={80} timeout={19000}/> : null} 
                </div>
-            </div> 
+          </div> 
 
         </div >
 

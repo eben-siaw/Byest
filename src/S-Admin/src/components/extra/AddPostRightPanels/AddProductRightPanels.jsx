@@ -122,26 +122,22 @@ export default function AddPostRightPanels({title, description, price, quantity}
   const handleChange = (event) => {
      
     const image = event.target.files[0];
-
-    if(image.type === "image/jpeg" || image.type === "image/jpg" || image.type === "image/png") {   
-
-      const fileUploaded = setImageFile(event.target.files[0]); 
-      console.log(fileUploaded); 
-  
-      setImageErrors(null);
-      return fileUploaded; 
-    }  
-    else { 
-      setImageErrors("Only jpeg formats are allowed!")  
-      window.location = "/admin/page";
+    
+    if(!image.name.match(/\.(jpeg|jpg|png|gif)$/)) { 
+      setImageErrors("Only jpeg, jpg formats are allowed!")  
       return null; 
-     
     }
+
+    const fileUploaded = setImageFile(event.target.files[0]); 
+    console.log(fileUploaded); 
+  
+    setImageErrors("");
+    return fileUploaded; 
   } 
  
   const handleProductSubmit = async () => {  
    
-   if(title === "" || description === "" || price === "" || quantity === "" || imageFile === "" || Category === "" || Tags === "") {    
+   if(title === "" || description === "" || price === "" || quantity === "" || imageFile === "" || Category === "") {    
     toast("All fields are required!");
     return null;
    } 

@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default class Carousel extends Component {
     render() {
         var settings = {
-            dots: false,
+            dots: true,
             infinite: true,
             autoplay: true,
             speed: 2000,
@@ -20,14 +20,15 @@ export default class Carousel extends Component {
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12} style={{ marginTop: '9rem' }}>
                     <Slider {...settings}>
                         <div>
-                            <img src="images/super3.jpg" alt="supermarket"/>
+                            <img src="/images/super4.jpg" alt="laptops"/>
                         </div>
                         <div>
-                            <img src="images/super2.jpg" alt="supermarket"/>
+                            <img src="images/super3.jpg" alt="phones"/>
                         </div>
                         <div>
-                            <img src="images/super4.jpg" alt="supermarket"/>
-                        </div>
+                            <img src="images/super4.jpg" alt="shoes"/>
+                        </div> 
+                       
                     </Slider>
                 </Grid>
 

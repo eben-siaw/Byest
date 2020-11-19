@@ -3,7 +3,7 @@ import AboutPage from "./AboutPage";
 export const AboutPageConfig = {
   routes: [
     {
-      path: "/pages/about",
+      path: "/admin/about",
       exact: true,
       component: AboutPage
     }

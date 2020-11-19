@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 
-const local = "http://localhost:5080";
+//const local = "http://localhost:5080";
 
 const URL = "https://mekexpress-backend.herokuapp.com"
 
@@ -13,7 +13,6 @@ export const register = async (newCustomer) => {
    }
     
 } 
-
 
 export const login = async (customer) => { 
  try {

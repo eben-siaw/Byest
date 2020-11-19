@@ -1,4 +1,4 @@
- import OftadehLayout from '../../../components/AdminLayout/OftadehLayout';
+import OftadehLayout from '../../../components/AdminLayout/OftadehLayout';
 import React, {useEffect, useState, useCallback } from 'react';  
 import axios from 'axios'; 
 import {TextField, Fab, InputLabel} from '@material-ui/core';
@@ -16,9 +16,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from 'react-router-dom' 
 
-
-const URL = "https://nilee-nodedatabase.herokuapp.com";  
-
+const URL = "https://mekexpress-backend.herokuapp.com";
+  
 const local = "http://localhost:5080";  
 
 const useStyles = makeStyles((theme) => ({ 
@@ -58,21 +57,24 @@ const PostAds = () => {
   const handleOnChange = (event) => {  
    
     const Video = event.target.files[0]; 
- 
-     if(Video.size > 18000000 ) { 
-       setFileErrors("Video ad should not exceed 18mb!") 
-       return null;
-     } 
- 
-      if(Video.type !== "video/mp4") { 
-       setFileErrors("Only mp4 video formats are supported!") 
-       return null;
-     } 
      
-     if(Video.type === "video/mp4" || Video.size < 15000000 || Video.type === "video/mkv") { 
-       setFileErrors(""); 
-       setVideoFile(event.target.files[0]);  
-     }
+     if(!Video) { 
+      setFileErrors("Please select a video!"); 
+      return; 
+     } 
+
+     if(Video.size > 15000000) { 
+      setFileErrors("Video should not exceed 15mb!") 
+      return null;
+     } 
+
+     if(!Video.name.match(/\.(mp4|mkv|flv|avi)$/)) { 
+      setFileErrors("Video should be an mp4 format!") 
+      return null;
+    }
+    
+    setFileErrors(""); 
+    setVideoFile(event.target.files[0]); 
   } 
   
   console.log(videoFile);
@@ -84,7 +86,7 @@ const PostAds = () => {
       //validation  
     if(videotitle === "" || description === "" || videoFile === "") {  
         toast("All Fields are required"); 
-        return null;
+        return;
     }
       
     console.log(videoFile); 
@@ -100,13 +102,17 @@ const PostAds = () => {
     (snapshot) => {},
     (error) => {
     alert(error);
+    toast("Network error!"); 
+    setLoading(false); 
     },
     () => { 
    
     storage.ref('Advideos').child(videoFile.name).getDownloadURL().then(url => {  
     
-      setfirebaseVideo({url})
-    
+      setfirebaseVideo({url}) 
+
+      console.log(url); 
+
       const details = { 
         Admin: admin,  
         title: videotitle, 
@@ -120,7 +126,7 @@ const PostAds = () => {
       .then(res => { 
       if(res.data.message){   
       setLoading(false); 
-      toast("Your Video has been Uploaded!")
+      toast("Your Video has been submitted successfully!");
       window.location = "/videos";
       } 
     })  
@@ -138,7 +144,7 @@ const PostAds = () => {
   return ( 
     <OftadehLayout> 
     <div className={classes.root}>   
-  <div className="side-btn"> <Link style={{textDecoration: 'none'}} to="/admin/videos"><Button variant="outlined" color="primary" size="large"> My Videos </Button> </Link> </div> 
+  <div className="side-btn"> <Link style={{textDecoration: 'none'}} to="/admin/ads"><Button variant="outlined" color="primary" size="large"> My Videos </Button> </Link> </div> 
     <label htmlFor="video">
        <input
          style={{ display: 'none' }}
@@ -187,7 +193,8 @@ const PostAds = () => {
       </div>
         
       <div style={{padding: 10}}> 
-        {loading ? <LoadingSpin  color="green" timeout={150000}/> : null } 
+        {loading ? <LoadingSpin height={70}
+         width={70} color="red" timeout={150000}/>  : null } 
       </div>  
       <style jsx>{` 
       .errors-show { 

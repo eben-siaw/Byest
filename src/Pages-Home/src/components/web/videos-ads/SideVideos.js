@@ -19,7 +19,7 @@ import {useSelector} from 'react-redux';
  const [views, setViewsCount] = useState(0); 
 
   const getVideos = async () => {  
-  const response = await axios.get(local + "/video/getVideoAds"); 
+  const response = await axios.get(URL + "/video/getVideoAds"); 
   console.log(response.data.videos)
   setVideos(response.data.videos);  
   setVideoId(response.data.videos._id);
@@ -95,7 +95,7 @@ import {useSelector} from 'react-redux';
    </div>
    <div className="detail-info">
      <h5 style={{ marginBottom: "5px", color: "var(--text-color)" }}>{videos.title}</h5> 
-       <p style={{ fontSize: "15px", color: "grey" }}>{views} views</p>
+    <p style={{ fontSize: "15px", color: "grey" }}>{videos.Admin.firstName}</p>
     </div>   
   </div> 
   </div>

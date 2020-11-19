@@ -12,7 +12,7 @@ import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"  
 
 
- const local = "http://localhost:5080"; 
+ //const local = "http://localhost:5080"; 
 
  const URL = "https://mekexpress-backend.herokuapp.com";
 
@@ -23,47 +23,41 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
   const [loading, setLoading] = useState(true);
 
  const [videoAds, setVideos] = useState([]);  
- const [videoId, setVideoId] = useState([]) 
+ 
+ const [isViewed, setViewed] = useState(false); 
  const [views, setViewsCount] = useState(0);
 
+ 
+
   const getVideos = async () => {  
-  const response = await axios.get(local + "/video/getVideoAds"); 
+  const response = await axios.get(URL + "/video/getVideoAds"); 
   console.log(response.data.videos)
   setVideos(response.data.videos); 
-  setVideoId(response.data.videos._id);
   setLoading(false);
   }   
   
-  const getViews = () => { 
-    axios.post(local + `/views/getViews`, videoId)
-    .then(response => {
-        console.log('getViews', response.data)
+  const handleVideoClick = (videoId) => {     
+   
+    const viewsVariable = {  
+      userFrom: userId, 
+      updateViews: true,
+      videoId: videoId
+     }
 
-        if (response.data.success) { 
-          
-          //How many views does this video or comment have 
-            setViewsCount(response.data.views.length)
+    axios.post(URL + '/views/count',  viewsVariable)
+    .then(response => { 
+      if(response.data.success) { 
+        setViewsCount(views + 1); 
+        setViewed(true); 
+        localStorage.setItem(true, isViewed);
+      }
+    })
 
-            //if I already watched this video or not 
-            response.data.views.map(view => {
-                if (view.userId === userId) {
-                    return view;
-                }
-            })
-        } else {
-            alert('Failed to get views')
-        }
-    }) 
-
-  }
-
-  const handleVideoClick = (videoId) => {    
-   window.location = `/videoPlayback/${videoId}`
+   window.location = `/videoPlayback/${videoId}` 
   }
  
  useEffect(() => { 
  getVideos();  
- getViews();
  },[]);   
   
 
@@ -99,12 +93,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
      className="detail-icon"
      style={{color: `var(--color-${color}-transparent)` }}
     >
-    <VideoIcon style={{ color: `var(--color-${color})`, fontSize: 24 }} />
+    <i className="fas fa-ad" style={{ color: `var(--color-${color})`, fontSize: 24 }} ></i>
    </div>
    <div className="detail-info">
    <p style={{ fontSize: "15px", color: "grey" }}>{videos.Admin.firstName} {videos.Admin.lastName}</p>
      <h5 style={{ marginBottom: "5px", color: "var(--text-color)" }}>{videos.title}</h5> 
-       <p style={{ fontSize: "14px", color: "grey"}}> {views} views • {moment(Date.parse(videos.createdAt)).fromNow()} </p>
+       <p style={{ fontSize: "14px", color: "grey"}}> ads • {moment(Date.parse(videos.createdAt)).fromNow()} </p>
     </div>    
   </div>  
   </div>
@@ -117,7 +111,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
  return ( 
   
    
-  <div>
+  <div className="ads-container">
   <div id="myCarousel" className="carousel slide" data-ride="carousel">
       {/* Indicators */}
       <ol className="carousel-indicators">
@@ -137,7 +131,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
           </div>
       </div>
   </div>{/* /End of carousel */} 
-    <br/>
+    <br/> 
+
     <div className="product">  
      
      <div className="container"> 
@@ -211,6 +206,10 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
     flex: 1;
     margin-left: 10px;
     padding: 10px 0;
+  } 
+
+  .ads-container { 
+    padding-top: 135px;
   }
 
   .video-card .actions {
@@ -236,7 +235,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
       grid-template-columns: 1fr;
     } 
   } 
-
+  
   @media (max-width: 480px) { 
     .container { 
       padding-top: 22px; 

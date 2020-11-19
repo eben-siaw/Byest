@@ -10,7 +10,7 @@ import LikeDislikes from '../Likes/LikesDisLikes';
 
 const URL = "https://mekexpress-backend.herokuapp.com"; 
 
-const local = "http://localhost:5080"
+//const local = "http://localhost:5080"
 
 const SingleComment = (props) => { 
 
@@ -62,7 +62,7 @@ const SingleComment = (props) => {
                 actions={actions}
                 author={props.comment.user.fullName}
                 avatar={
-                    <Avatar> M </Avatar>
+                    <Avatar style={{color: 'red'}}> M </Avatar>
                 }
                 content={
                     <p>

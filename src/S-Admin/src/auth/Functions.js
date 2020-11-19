@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = "https://mekexpress-backend.herokuapp.com";
 
-const http = "http://localhost:5080";
+//const http = "http://localhost:5080";
 
 export const register = (newUser) => { 
     try {
@@ -22,4 +22,20 @@ export const login = async (user) => {
       return {error: error.message};
     }
 
+} 
+
+export const Reset = async (user) => { 
+    try {
+       return axios.post(URL + "/admins/reset-password", user);  
+    } catch (error) {
+      console.warn(error)
+    }
+} 
+
+export const NewPassword = async (details) => { 
+    try {
+     return axios.post(URL + "/admins/new-password", details);
+    } catch (error) {
+     console.warn(error);
+    }
 }

@@ -10,14 +10,16 @@ import moment from 'moment'
 import Follower from "./Followers/Follower";
 import Avatar from '@material-ui/core/Avatar';
 import SideVideos from './SideVideos';
+import { Divider } from "@material-ui/core";
 
-const URL = "https://nilee-nodedatabase.herokuapp.com";
+const URL = "https://mekexpress-backend.herokuapp.com";
 
-const local = "http://localhost:5080"
+//const local = "http://localhost:5080"
 
 const VideoPlayback = (props) => { 
  
-  const videoId  = props.videoId;
+  const videoId  = props.videoId; 
+  
   const [commentList, setMessagelist] = useState([]) 
 
   const userId = useSelector(state => state.customer.user._id);
@@ -36,13 +38,6 @@ const VideoPlayback = (props) => {
     videoId: videoId, 
   };  
 
-  const viewsVariable = { 
-   videoId: videoId,  
-   userFrom: userId, 
-   userTo: postUser,
-   updateViews: true
-  }
-
  
   // get video clicked and update views + 1
   useEffect(() => { 
@@ -59,15 +54,6 @@ const VideoPlayback = (props) => {
         alert("Failed to get Video");
       }
     });  
-
-    axios.post(URL + '/views/count', viewsVariable)
-    .then(response => { 
-      if(response.data.success) { 
-        setViewsCount(views + 1); 
-        setViewed(true); 
-        localStorage.setItem(true, isViewed);
-      }
-    })
   
     // get already comments
     axios.post(URL + `/comment/getComments`, videovariable)  
@@ -80,12 +66,8 @@ const VideoPlayback = (props) => {
           alert("failed to get comments") 
        }
     })    
-    
-  }, []);  
 
-  useEffect(() => {  
-  
-    axios.post(URL + '/views/getViews', viewsVariable)
+    axios.get(URL + `/views/getViews/${videoId}`)
     .then(response => {
         console.log('getViews', response.data)
 
@@ -104,9 +86,10 @@ const VideoPlayback = (props) => {
             alert('Failed to get views')
         }
     }) 
+    
+  }, []);  
 
-  },[]) 
-
+  
   console.log(views);
    
 
@@ -131,13 +114,14 @@ const VideoPlayback = (props) => {
       </div> 
    
       <div className="inner-frame">  
-      <small> {views} views • {moment(Date.parse(video.createdAt)).fromNow()} </small>
+      <small style={{fontFamily: 'sans-serif', fontSize: 17}} className="view-text"> {views} views </small>
         <LikesDisLikes video videoId={videoId} userFrom={userId} userTo={postUser}/>    
         <Follower userFrom={userId} userTo={postUser} videoId={video._id}/>
       </div> 
-
-       <div >  
-         <span className="username"> <Avatar> M </Avatar> </span> 
+     <Divider/> 
+     <br/>
+       <div>  
+         <span className="username"> <Avatar style={{background: 'orange'}}> M </Avatar> </span> 
          <span className="username"> {first} {last} </span>
        </div>
         
@@ -184,12 +168,16 @@ const VideoPlayback = (props) => {
           display: flex; 
           flex-direction: row; 
           justify-content: space-around; 
-          padding: 18px;
+          padding: 20px;
         } 
        
         .stream-wrapper::-webkit-scrollbar {
           display: none;
-        } 
+        }  
+
+        .view-text { 
+         padding-top: 14px; 
+        }
 
         .username { 
           display: inline-block; 
@@ -217,17 +205,28 @@ const VideoPlayback = (props) => {
           }
           .desc {
             font-size: 14px;
-          } 
-          
+          }  
+
           .side-stream-wrapper { 
             display: none;
+          } 
+          
+          .view-text { 
+            padding-right: 13px; 
+            padding-top: 12px;
           }
+
+          .inner-frame { 
+            padding: 24px;
+            padding-right: 1.2rem;
+          } 
 
           .stream-container-wrapper{ 
             display: flex; 
             flex-direction: column; 
             overflow: auto; 
-            padding-right: 14px;
+            padding-right: 14px; 
+            width: 80% !important;
           }
         }
       `}</style>

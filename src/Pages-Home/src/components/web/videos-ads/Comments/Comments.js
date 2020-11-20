@@ -6,7 +6,7 @@ import ReplyComment from './ReplyComments';
 import { TextField } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
- const local = "http://localhost:5080"; 
+// const local = "http://localhost:5080"; 
 
  const URL = "https://mekexpress-backend.herokuapp.com";
 

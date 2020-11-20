@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const URL = "https://mekexpress-backend.herokuapp.com"; 
 
-const http = "http://localhost:5080";
+//const http = "http://localhost:5080";
 
 export default class Household extends Component { 
    

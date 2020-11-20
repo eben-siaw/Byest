@@ -15,7 +15,6 @@ export default class Login extends Component {
       password: "", 
       errorMessage: "",
     } 
-
     this.handleOnChange = this.handleOnChange.bind(this); 
     this.handleSubmit = this.handleSubmit.bind(this);
    }

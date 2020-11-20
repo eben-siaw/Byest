@@ -11,7 +11,6 @@ export const register = async (newCustomer) => {
       } catch (error) {
        console.log(error) 
    }
-    
 } 
 
 export const login = async (customer) => { 

@@ -1,3 +1,4 @@
+import { Divider } from '@material-ui/core';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
@@ -30,12 +31,18 @@ class Sidebar extends Component {
                 <div id="mySidenav" className="sidenav" >
                     <ul onClick={(e) => this.handleClose()}>
                         <li><Link to="#" className="closebtn">&times;</Link></li>
-                        <li><Link to="/">Home</Link></li> 
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/categories">Shop By Category</Link></li> 
-                        <li> <Link to="/videos"> Videos</Link> </li>
-                        <li><Link to="/carts">My Cart</Link></li> 
-                        <li><a href="/admin/auth">POST A PRODUCT</a></li>              
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-home"></i> <Link style={{display: 'inline-block'}} to="/">Home</Link> </li>  
+                        <Divider/>
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-lock"></i> <Link style={{display: 'inline-block'}} to="/login">Login</Link></li> 
+                        <Divider/>
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-list-alt"></i> <Link style={{display: 'inline-block'}} to="/categories">Shop By Category</Link></li>  
+                        <Divider/>
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-video"></i>  <Link style={{display: 'inline-block'}} to="/videos"> Videos</Link> </li> 
+                        <Divider/>
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-shopping-cart"></i> <Link style={{display: 'inline-block'}} to="/carts">My Cart</Link></li>  
+                        <Divider/>
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-user-alt"></i> <a style={{display: 'inline-block'}} href="/admin/auth">POST A PRODUCT</a></li>   
+                        <Divider/>            
                     </ul>
                 </div>
             </div>

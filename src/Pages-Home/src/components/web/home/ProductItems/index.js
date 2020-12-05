@@ -12,7 +12,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const URL = "https://mekexpress-backend.herokuapp.com"
 
-const http = "http://localhost:5080";
+//const http = "http://localhost:5080";
 
 const Kitchenitem = (props) => { 
 
@@ -39,14 +39,16 @@ const Kitchenitem = (props) => {
   const ProductSpecials = () => {  
 
     return specials.map((products, index) => {  
-        // return jsx "/images/of.png"
+        // return jsx "/images/of.png" img-responsive
      return(
        
        <div className="box-card">
                <Link to="/" data-toggle="modal" data-target="#myModal1" className="offer-img"> 
-                   <img src={products.productImage} className="img-responsive" alt="products" /> 
                    <div className="offer"><p><span>Offer</span></p></div>
-               </Link>
+               </Link> 
+               <div className="item_image">
+                <img src={products.productImage}  alt="products" /> 
+                </div> 
                <div className="mid-1">
                    <div className="women">
                        <h6><Link to="/product-details">{products.productName}</Link></h6>

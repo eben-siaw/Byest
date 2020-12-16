@@ -58,7 +58,7 @@ export default class Register extends Component {
                 <div className="login">
                     <div className="main-agileits">
                         <div className="form-w3agile form1">
-                            <h3>Register</h3>
+                            <h3>Sign Up</h3>
                             <form onSubmit={this.handleSubmit}>
                                 <div className="key">
                                     <i className="fa fa-user" aria-hidden="true" />

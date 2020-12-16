@@ -35,9 +35,9 @@ class Sidebar extends Component {
                         <Divider/>
                         <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-lock"></i> <Link style={{display: 'inline-block'}} to="/login">Login</Link></li> 
                         <Divider/>
-                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-list-alt"></i> <Link style={{display: 'inline-block'}} to="/categories">Shop By Category</Link></li>  
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-list-alt"></i> <Link style={{display: 'inline-block'}} to="/categories">Product Categories</Link></li>  
                         <Divider/>
-                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-video"></i>  <Link style={{display: 'inline-block'}} to="/videos"> Videos</Link> </li> 
+                        <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-video"></i>  <Link style={{display: 'inline-block'}} to="/videos"> Businesses</Link> </li> 
                         <Divider/>
                         <li><i style={{display: 'inline-block', color: 'orange'}} className="fas fa-shopping-cart"></i> <Link style={{display: 'inline-block'}} to="/carts">My Cart</Link></li>  
                         <Divider/>

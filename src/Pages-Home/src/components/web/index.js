@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './home/index';
+import Home from './home';
 import Header from './header';
 import Footer from './footer';
 import NotFound from '../nomatch'

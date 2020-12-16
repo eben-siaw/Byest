@@ -265,7 +265,7 @@ class Header extends Component {
                                                     </div>
                                                 </ul>
                                             </li> 
-                                             <li> <Link className="hyper" to="/videos"> <span> VIDEOS </span> </Link> </li>
+                                             <li> <Link className="hyper" to="/videos"> <span> Businesses </span> </Link> </li>
                                              <li><a href="/admin/auth" className="hyper"><span>POST A PRODUCT</span></a></li> 
                                         </ul>
                                     </div>

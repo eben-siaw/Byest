@@ -150,7 +150,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
     <div className="video-container-inner">
       {renderVideos()}   
     <div className="loader-spin"> 
-    {loading ? <Loader type="ThreeDots" color="red" height={55} width={77} timeout={15000}/> : null}  
+    {loading ? <Loader type="ThreeDots" color="red" height={55} width={65} timeout={15000}/> : null}  
     </div>
     </div> 
   </div> 

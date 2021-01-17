@@ -128,7 +128,7 @@ class Login extends Component {
 	       </div>   
 
 	      <div class="register-content">
-		     	<form onSubmit={this.handleSubmit} noValidate>
+		     	<form onSubmit={this.handleSubmit}>
 			   	<img src="/img/avatar.svg" />			  
 
             <div className="singup-wrapper">  

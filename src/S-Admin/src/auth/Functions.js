@@ -21,7 +21,6 @@ export const login = async (user) => {
     } catch (error) {
       return {error: error.message};
     }
-
 } 
 
 export const Reset = async (user) => { 
